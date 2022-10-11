@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/dashboard/users/addUser.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/dashboard/users" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/dashboard/users/editUserForm.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/dashboard/users" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/index.html" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/users.html" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/users.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+      </map>
+    </option>
+  </component>
+</project>
