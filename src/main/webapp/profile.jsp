@@ -36,6 +36,9 @@
     </div>
 </main>
 
+<jsp:include page="/WEB-INF/pages/user/update_form.jsp"/>
+
 <script src="./js/white-theme.js"></script>
+<script src="./js/modal-button.js"></script>
 </body>
 </html>

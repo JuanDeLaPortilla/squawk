@@ -2,7 +2,7 @@
 <div class="card">
   <span class="close" id="closeModalBtn1">&times;</span>
   <h4>Iniciar Sesi&oacute;n</h4>
-    <p class="text-muted">Al continuar, aceptas nuestros <a href="#"><b>T&eacute;rminos y Condiciones</b></a></p><br>
+    <p class="text-muted">Al continuar, aceptas nuestros <a href="${pageContext.request.contextPath}/terms.jsp"><b>T&eacute;rminos y Condiciones</b></a></p><br>
     <form action="${pageContext.request.contextPath}/session?action=login" method="post">
       <label>Correo Electr&oacute;nico</label><br>
       <input type = "email" class="login-input" placeholder="Correo Electr&oacute;nico" name="email" required><br>

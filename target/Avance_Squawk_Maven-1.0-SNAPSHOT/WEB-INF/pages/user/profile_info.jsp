@@ -16,7 +16,7 @@
         </div>
 
         <div class="buttons">
-            <label class="btn btn-primary">Actualizar Info</label>
+            <label class="btn btn-primary" id="modalBtn">Actualizar Info</label>
             <a href="${pageContext.request.contextPath}/submit" class="btn btn-primary">Crear un Cuack</a>
         </div>
 

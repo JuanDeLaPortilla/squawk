@@ -23,7 +23,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Descripción</th>
+                            <th>Descripci&oacute;n</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -47,7 +47,7 @@
                     <div class="item add-product">
                         <div>
                             <span class="material-icons-sharp">add</span>
-                            <h3>Añadir Tag</h3>
+                            <h3>A&ntilde;adir Tag</h3>
                         </div>
                     </div>
                 </div>

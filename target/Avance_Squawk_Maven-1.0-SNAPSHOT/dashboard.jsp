@@ -75,7 +75,7 @@
             <!-----END OF INSIGHTS-------->       
 
             <div class="recent-orders">
-                <h2>Últimos Usuarios Registrados</h2>
+                <h2>&Uacute;ltimos Usuarios Registrados</h2>
                 <table>
                     <thead>
                         <tr>
@@ -116,7 +116,7 @@
                         </div>
                         <div class="message">
                             <p>Joseph Gianfranco <b>Cavero Ramos</b></p>
-                            <small class="text-muted">Ingeniero de Sistemas e Informática</small>
+                            <small class="text-muted">Ingeniero de Sistemas e Inform&aacute;tica</small>
                         </div>
                     </div>
                     <div class="update">
@@ -124,17 +124,17 @@
                             <img src=".//images/juan.jpg">
                         </div>
                         <div class="message">
-                            <p>Juan José <b>De La Portilla Cárdenas</b></p>
+                            <p>Juan Jos&eacute; <b>De La Portilla C&aacute;rdenas</b></p>
                             <small class="text-muted">Ingeniero de Software</small>
                         </div>
                     </div>
                     <div class="update">
                         <div class="profile-photo">
-                            <img src=".//images/logo.webp">
+                            <img src=".//images/sindell.jpg">
                         </div>
                         <div class="message">
                             <p>Sindell Lilian <b>Leon Paucar</b></p>
-                            <small class="text-muted">Ingeniera de Sistemas e Informática</small>
+                            <small class="text-muted">Ingeniera de Sistemas e Inform&aacute;tica</small>
                         </div>
                     </div>
                     <div class="update">
@@ -201,7 +201,7 @@
         </div>
     </div>
 
-    <script src="./js/users.js"></script>
+    <script src="./js/users.js?v=1"></script>
     <script src="./js/a-dashboard.js"></script>
     <script src="./js/white-theme.js"></script>
 </body>

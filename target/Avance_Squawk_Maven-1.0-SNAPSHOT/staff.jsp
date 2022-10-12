@@ -24,10 +24,10 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Correo</th>
-                    <th>Cumpleaños</th>
-                    <th>Fotografía</th>
+                    <th>Cumplea&ntilde;os</th>
+                    <th>Fotograf&iacute;a</th>
                     <th>Estado</th>
-                    <th>Fecha de Creación</th>
+                    <th>Fecha de Creaci&oacute;n</th>
                     <th></th>
                 </tr>
                 </thead>

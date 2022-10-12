@@ -743,6 +743,7 @@ main .recent-orders a {
     z-index: auto;
     align-items: center;
     justify-content: center;
+    background-color: transparent;
 }
 
 .pop-up .card {

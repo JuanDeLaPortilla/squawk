@@ -27,7 +27,7 @@
                             <th>Correo</th>
                             <th>Tag</th>
                             <th>URL</th>
-                            <th>Calificación</th>
+                            <th>Calificaci&oacute;n</th>
                             <th>Estado</th>
                             <th></th>
                         </tr>
@@ -52,7 +52,7 @@
                     <div class="item add-product">
                         <div>
                             <span class="material-icons-sharp">add</span>
-                            <h3>Añadir Cuack</h3>
+                            <h3>A&ntilde;adir Cuack</h3>
                         </div>
                     </div>
                 </div>

@@ -5,11 +5,14 @@ import com.squawk.webapp.services.LoginService;
 import com.squawk.webapp.services.LoginServiceImpl;
 import com.squawk.webapp.services.UserService;
 import com.squawk.webapp.services.UserServiceImpl;
+import com.squawk.webapp.services.LoginService;
+import com.squawk.webapp.services.LoginServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -54,10 +57,16 @@ public class UserServlet extends HttpServlet {
                 case "add":
                 case "edit":
                     this.addUser(req, resp, service);
+                    this.defaultAction(req,resp,service);
                     break;
                 case "sign-up":
+                    this.addUser(req,resp,service);
+                    getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+                    break;
                 case "update":
-                    this.signUpUser(req,resp,service);
+                    this.addUser(req,resp,service);
+                    this.updateUser(req,resp,service);
+                    getServletContext().getRequestDispatcher("/profile.jsp").forward(req, resp);
                     break;
                 default:
                     this.defaultAction(req, resp, service);
@@ -105,12 +114,10 @@ public class UserServlet extends HttpServlet {
         }
 
         //crea un usuario que recibe cada valor
-        User user = getUser(name, birthday, img, email, password, id, type);
+        User user = getUserInfo(name, birthday, img, email, password, id, type);
 
         //llama al service para pasarle el usuario
         service.add(user);
-        //devuelve al listado de usuarios
-        this.defaultAction(req, resp, service);
     }
 
 
@@ -161,39 +168,19 @@ public class UserServlet extends HttpServlet {
         req.getRequestDispatcher(jspEdit).forward(req, resp);
     }
 
-    private void signUpUser(HttpServletRequest req, HttpServletResponse resp, UserService service) throws ServletException, IOException {
-        //recuperamos los valores del formulario
-        String name = req.getParameter("nickname");
-        String birthdayStr = req.getParameter("birthday");
-        LocalDate birthday = LocalDate.parse(birthdayStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        String img = req.getParameter("img");
+    private void updateUser(HttpServletRequest req, HttpServletResponse resp, UserService service) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        //valores con try-catch
-        String idStr;
-        try {
-            idStr = req.getParameter("idUser");
-        } catch (NullPointerException e) {
-            idStr = "";
-        }
-        long id;
-        try {
-            id = Long.parseLong(idStr);
-        } catch (NumberFormatException e) {
-            id = 0L;
-        }
-        //se inicia el tipo de usuario como 1
-        int type=1;
 
-        //crea un usuario que recibe cada valor
-        User user = getUser(name,birthday,img,email,password,id,type);
+        //verifica si ha iniciado sesion
+        Optional<User> optionalUser = service.login(email, password);
 
-        //llama al service para pasarle el usuario
-        service.add(user);
-        //devuelve al inicio
-        getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+        if (optionalUser.isPresent()) {
+            HttpSession session = req.getSession();
+            session.setAttribute("user", optionalUser);
+        }
     }
-    private static User getUser(String name, LocalDate birthday, String img, String email, String password, long id, int type) {
+    private static User getUserInfo(String name, LocalDate birthday, String img, String email, String password, long id, int type) {
         User user = new User();
         user.setId(id);
         user.setName(name);

@@ -24,16 +24,16 @@
 
                         <!-- ABOUT US -->
                         <div id="about-us">
-                            <h1>¡Conoce Quienes Somos!</h1>
+                            <h1>&iexcl;Conoce Quienes Somos!</h1>
                             <div class="row">
                                 <div class="team-col">
                                     <p> 
-                                        Estudiante de Ingenieria de Software en la Universidad Tecnológica del Perú.
-                                        Encargado de la elaboración del apartado "Login" del presente proyecto.
+                                        Squawk es una p&aacute;gina colaborativa en la que los usuarios pueden escribir rese&ntilde;as de productos locales y populares
+                                        que puedan dar m&aacute;s claridad a posibles nuevos compradores sobre su experiencia con el producto adquirido.
                                     </p>
                                 </div>
                                 <div class="team-col">
-                                    <img src="./img/gian.jpg">
+                                    <img src="./images/Patofondo.jpg">
                                 </div>
                             </div> 
                         </div>
@@ -41,30 +41,28 @@
 
                         <!-- OUR PURPOUSE AND VISION -->
                         <div id="our-purpouse-vision">
-                            <h1>¡Conoce Nuestra Misión y Visión</h1>
+                            <h1>&iexcl;Conoce Nuestra Misi&oacute;n y Visi&oacute;n!</h1>
                             <div class="row">
                                 <div class="team-col two">
-                                    <img src="./img/gian.jpg">
+                                    <img src="./images/mision.jpg">
                                 </div> 
                                 <div class="team-col one">
-                                    <h2>Nuestra Misión</h2>
+                                    <h2>Nuestra Misi&oacute;n</h2>
                                     <p> 
-                                        Estudiante de Ingenieria de Software en la Universidad Tecnológica del Perú.
-                                        Encargado de la elaboración del apartado "Login" del presente proyecto.
+                                        En Squawk, nuestra misi&oacute;n es que los usuarios puedan compartir sus opiniones de todos sus productos adquiridos.
                                     </p>
                                 </div>
                             </div> 
 
                             <div class="row">
                                 <div class="team-col">
-                                    <h2>Nuestra Visión</h2>
+                                    <h2>Nuestra Visi&oacute;n</h2>
                                     <p> 
-                                        Estudiante de Ingenieria de Software en la Universidad Tecnológica del Perú.
-                                        Encargado de la elaboración del apartado "Login" del presente proyecto.
+                                        Nuestra visi&oacute;n apunta a convertirnos en la p&aacute;gina m&aacute;s importante y confiable de rese&ntilde;as a nivel mundial.
                                     </p>
                                 </div>
                                 <div class="team-col">
-                                    <img src="./img/gian.jpg">
+                                    <img src="./images/vision.jpg">
                                 </div>
                             </div> 
                         </div>
@@ -72,15 +70,17 @@
 
                         <!-- OUR VALUES -->
                         <div id="our-values">
-                            <h1>¡Conoce Nuestros Valores!</h1>
+                            <h1>&iexcl;Conoce Nuestros Valores!</h1>
                             <div class="row">
                                 <div class="team-col two">
-                                    <img src="./img/gian.jpg">
+                                    <img src="./images/valores.jpg">
                                 </div>
                                 <div class="team-col one">
                                     <p> 
-                                        Estudiante de Ingenieria de Software en la Universidad Tecnológica del Perú.
-                                        Encargado de la elaboración del apartado "Login" del presente proyecto.
+                                        Libertad de expresi&oacute;n.<br><br>
+                                        Respeto.<br><br>
+                                        Comunidad.<br><br>
+                                        
                                     </p>
                                 </div>
 
@@ -90,14 +90,14 @@
 
                         <!-- OUR TEAM -->
                         <div id="our-team">
-                            <h1>¡Conoce a Nuestro Equipo!</h1>
+                            <h1>&iexcl;Conoce a Nuestro Equipo!</h1>
                             <div class="row">
                                 <div class="team-col">
                                     <h2>Gianpierre Vargas</h2>
-                                    <p class="age">20 años</p>
+                                    <p class="age">20 a&ntilde;os</p>
                                     <p> 
-                                        Estudiante de Ingenieria de Software en la Universidad Tecnológica del Perú.
-                                        Encargado de la elaboración del apartado "Login" del presente proyecto.
+                                        Soy estudiante de 6to ciclo de la carrera de Ingenier&iacute;a de Software.
+                                        Formo parte de la creaci&oacute;n y actualizaci&oacute;n de la p&aacute;gina Squawk como Analista.
                                     </p>
                                 </div>
                                 <div class="team-col">
@@ -111,10 +111,10 @@
                                 </div>
                                 <div class="team-col one">
                                     <h2>Juan De La Portilla</h2>
-                                    <p class="age">19 años</p>
+                                    <p class="age">19 a&ntilde;os</p>
                                     <p>
-                                        Estudiante de Ingenieria de Software en la Universidad Tecnológica del Perú.
-                                        Encargado de la elaboración del apartado "Inicio" del presente proyecto.
+                                        Soy estudiante de 6to ciclo de la carrera de Ingenier&iacute;a de Software.
+                                        Formo parte de la creaci&oacute;n y actualizaci&oacute;n de la p&aacute;gina Squawk como T&eacute;cnico en c&oacute;digos .
                                     </p>
                                 </div>
                             </div>
@@ -122,10 +122,10 @@
                             <div class="row">
                                 <div class="team-col">
                                     <h2>Joseph Cavero</h2>
-                                    <p class="age">19 años</p>
+                                    <p class="age">19 a&ntilde;os</p>
                                     <p>
-                                        Estudiante de Ingenieria de Sistemas e Informática en la Universidad Tecnológica del Perú.
-                                        Encargado de la elaboración del apartado "Quienes Somos" del presente proyecto.
+                                        Soy estudiante de 6to ciclo de la carrera de Ingenier&iacute;a de Sistemas e Inform&aacute;tica.
+                                        Formo parte de la creaci&oacute;n del prototipado en Balsamiq de la p&aacute;gina Squawk como Lider QA.
                                     </p>
                                 </div>
                                 <div class="team-col">
@@ -135,14 +135,14 @@
 
                             <div class="row">
                                 <div class="team-col two">
-                                    <img src="./img/seiyi.jpg">
+                                    <img src="./images/sindell.jpg?v=1">
                                 </div>
                                 <div class="team-col one">
-                                    <h2>Seiyi Suehiro</h2>
-                                    <p class="age">19 años</p>
+                                    <h2>Sindell Leon</h2>
+                                    <p class="age">20 a&ntilde;os</p>
                                     <p>
-                                        Estudiante de Ingenieria de Sistemas e Informática en la Universidad Tecnológica del Perú.
-                                        Encargado de la elaboración del apartado "Registrarse" del presente proyecto.
+                                        Soy estudiante de 6to ciclo de la carrera de Ingenier&iacute;a de Sistemas e Inform&aacute;tica.
+                                        Formo parte de la creaci&oacute;n y actualizaci&oacute;n de la p&aacute;gina Squawk como Project Manager / Scrum Master.
                                     </p>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                         <div class="terms-list">
                             <ul>
                                 <li><a href="#about-us">Quienes Somos</a></li>
-                                <li><a href="#our-purpouse-vision">Nuestra Mision y Visión</a></li>
+                                <li><a href="#our-purpouse-vision">Nuestra Misi&oacute;n y Visi&oacute;n</a></li>
                                 <li><a href="#our-values">Nuestros Valores</a></li>
                                 <li><a href="#our-team">Nuestro Equipo</a></li> 
                             </ul>

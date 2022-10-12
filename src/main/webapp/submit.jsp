@@ -39,10 +39,10 @@
                         <div class="terms-list">
                             <ol>
                                 <li>Recuerda a las personas</li>
-                                <li>Compórtate como lo harías en la vida real</li>
+                                <li>Comp&oacute;rtate como lo har&iacute;as en la vida real</li>
                                 <li>No faltes el respeto a nadie, ni a las empresas</li>
                             </ol>
-                            <p class="text-muted">Porfavor, ten en cuenta los <a href="#"><b>Terminos y Condiciones de Squawk!</b></a> antes de publicar algo</p>
+                            <p class="text-muted">Porfavor, ten en cuenta los <a href="#"><b>T&eacute;rminos y Condiciones de Squawk!</b></a> antes de publicar algo</p>
                         </div>
                     </div>
                 </div>

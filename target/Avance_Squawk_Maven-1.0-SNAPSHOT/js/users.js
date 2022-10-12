@@ -27,7 +27,7 @@ const Users = [
         userEmail: 'sindell@gmail.com',
         userPassword: '********',
         userBirthday: '13-01-2000',
-        userImg: './/images/logo.webp',
+        userImg: './/images/sindell.jpg',
         userType: 'Admin',
         status: 'Suspendido',
         userCD: '01-09-2022'

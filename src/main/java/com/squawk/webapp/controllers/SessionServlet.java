@@ -66,7 +66,7 @@ public class SessionServlet extends HttpServlet {
 
             resp.sendRedirect(req.getContextPath() + "/index.jsp");
         } else {
-            resp.sendRedirect(req.getContextPath() + "/index.js");
+            resp.sendRedirect(req.getContextPath() + "/index.jsp");
         }
     }
 
