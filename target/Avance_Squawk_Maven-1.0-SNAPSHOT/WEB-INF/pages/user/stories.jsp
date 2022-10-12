@@ -3,7 +3,7 @@
         <div class="profile-photo">
             <img src="./img/profile-8.jpg"/>
         </div>
-        <p class="name">Tu Cuack</p>
+        <p class="name">John Frusci</p>
     </div>
     <div class="story">
         <div class="profile-photo">

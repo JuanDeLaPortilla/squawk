@@ -9,7 +9,7 @@
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=2"/>
+    <link rel="stylesheet" href="./css/style.css?v=4"/>
 </head>
 
 <body>

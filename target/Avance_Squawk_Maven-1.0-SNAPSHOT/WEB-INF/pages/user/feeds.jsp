@@ -9,7 +9,7 @@
                 </div>
                 <div class="ingo">
                     <h3>Lana Rose</h3>
-                    <small>Dubai, HACE 15 MINUTOS</small>
+                    <small>HACE 15 MINUTOS</small>
                 </div>
             </div>
             <span class="edit">
@@ -18,7 +18,7 @@
         </div>
 
         <div class="photo">
-            <img src="./img/feed-1.jpg">
+            <img src="./img/feed-1.jpg?v=1">
         </div>
 
         <div class="action-button">
@@ -40,8 +40,8 @@
         </div>
 
         <div class="caption">
-            <p><b>Lana Rose</b> Lorem ipsum dolor sit quisquam eius.
-                <span class="harsh-tag">#lifestyle</span></p>
+            <p><b>Lana Rose</b> Me da&ntilde;&oacute; la piel, no recomiendo el Pack Isdin Protecci&oacute;n con Color.
+                <span class="harsh-tag"></span></p>
         </div>
         <div class="comments text-muted">
             Mira todos los <b>277</b> comentarios
@@ -57,7 +57,7 @@
                 </div>
                 <div class="ingo">
                     <h3>Elena Nito</h3>
-                    <small>El Bosque, HACE 42 MINUTOS</small>
+                    <small>HACE 42 MINUTOS</small>
                 </div>
             </div>
             <span class="edit">
@@ -66,7 +66,7 @@
         </div>
 
         <div class="photo">
-            <img src="./img/feed-2.jpg">
+            <img src="./img/feed-2.jpg?v=1">
         </div>
 
         <div class="action-button">
@@ -88,8 +88,8 @@
         </div>
 
         <div class="caption">
-            <p><b>Lana Rose</b> Lorem ipsum dolor sit quisquam eius.
-                <span class="harsh-tag">#lifestyle</span></p>
+            <p><b>Elena Nito</b> La bater&iacute;a no dura mucho del celular Samsung Galaxy A23 128GB 4GB.
+                <span class="harsh-tag"></span></p>
         </div>
         <div class="comments text-muted">
             Mira todos los <b>69</b> comentarios
@@ -105,7 +105,7 @@
                 </div>
                 <div class="ingo">
                     <h3>Jacky Sieras</h3>
-                    <small>Lema, HACE 23 MINUTOS</small>
+                    <small>HACE 23 MINUTOS</small>
                 </div>
             </div>
             <span class="edit">
@@ -114,7 +114,7 @@
         </div>
 
         <div class="photo">
-            <img src="./img/feed-3.jpg">
+            <img src="./img/feed-3.jpg?v=1">
         </div>
 
         <div class="action-button">
@@ -136,8 +136,8 @@
         </div>
 
         <div class="caption">
-            <p><b>Lana Rose</b> Lorem ipsum dolor sit quisquam eius.
-                <span class="harsh-tag">#lifestyle</span></p>
+            <p><b>Jacky Sieras</b> Botas de combate minimalista con cremallera lateral, la mejor compra que hice.
+                <span class="harsh-tag"></span></p>
         </div>
         <div class="comments text-muted">
             Mira todos los <b>277</b> comentarios
@@ -152,8 +152,8 @@
                     <img src="./img/profile-6.jpg">
                 </div>
                 <div class="ingo">
-                    <h3>Lana Rose</h3>
-                    <small>El Amazonas, HACE 69 HORAS</small>
+                    <h3>Joseph Cavero</h3>
+                    <small>HACE 69 HORAS</small>
                 </div>
             </div>
             <span class="edit">
@@ -162,7 +162,7 @@
         </div>
 
         <div class="photo">
-            <img src="./img/feed-4.jpg">
+            <img src="./img/feed-4.jpg?v=1">
         </div>
 
         <div class="action-button">
@@ -184,8 +184,8 @@
         </div>
 
         <div class="caption">
-            <p><b>Lana Rose</b> Lorem ipsum dolor sit quisquam eius.
-                <span class="harsh-tag">#lifestyle</span></p>
+            <p><b>Joseph Cavero</b> FIFA World Cup Qatar 2022 &Aacute;lbum Tapa Dura + 1 Paquetón, ahora si podr&eacute; completar mi sue&ntilde;o.
+                <span class="harsh-tag"></span></p>
         </div>
         <div class="comments text-muted">
             Mira todos los <b>54</b> comentarios
@@ -201,7 +201,7 @@
                 </div>
                 <div class="ingo">
                     <h3>Leslie Serrano</h3>
-                    <small>Paris, HACE 43 MINUTOS</small>
+                    <small>HACE 43 MINUTOS</small>
                 </div>
             </div>
             <span class="edit">
@@ -210,7 +210,7 @@
         </div>
 
         <div class="photo">
-            <img src="./img/feed-5.jpg">
+            <img src="./img/feed-5.jpg?v=1">
         </div>
 
         <div class="action-button">
@@ -232,8 +232,8 @@
         </div>
 
         <div class="caption">
-            <p><b>Lana Rose</b> Lorem ipsum dolor sit quisquam eius.
-                <span class="harsh-tag">#lifestyle</span></p>
+            <p><b>Leslie Serrano</b> Mejor&eacute; en mis juegos gracias al Teclado Gamer Mec&aacute;nico T-Dagger BORA WHITE Rainbow T-TGK313W-RD-SP.
+                <span class="harsh-tag"></span></p>
         </div>
         <div class="comments text-muted">
             Mira todos los <b>47</b> comentarios

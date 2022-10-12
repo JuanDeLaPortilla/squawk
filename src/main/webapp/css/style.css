@@ -254,27 +254,27 @@ main .container.two-rows{
 }
 
 .middle .stories .story:nth-child(1){
-    background:url('../img/story-1.jpg') no-repeat center center/cover;
+    background:url('../img/story-1.jpg?v=1') no-repeat center center/cover;
 }
 
 .middle .stories .story:nth-child(2){
-    background:url('../img/story-2.jpg') no-repeat center center/cover;
+    background:url('../img/story-2.jpg?v=1') no-repeat center center/cover;
 }
 
 .middle .stories .story:nth-child(3){
-    background:url('../img/story-3.jpg') no-repeat center center/cover;
+    background:url('../img/story-3.jpg?v=1') no-repeat center center/cover;
 }
 
 .middle .stories .story:nth-child(4){
-    background:url('../img/story-4.jpg') no-repeat center center/cover;
+    background:url('../img/story-4.jpg?v=1') no-repeat center center/cover;
 }
 
 .middle .stories .story:nth-child(5){
-    background:url('../img/story-5.jpg') no-repeat center center/cover;
+    background:url('../img/story-5.jpg?v=1') no-repeat center center/cover;
 }
 
 .middle .stories .story:nth-child(6){
-    background:url('../img/story-6.jpg') no-repeat center center/cover;
+    background:url('../img/story-6.jpg?v=1') no-repeat center center/cover;
 }
 
 .middle .story .profile-photo{
