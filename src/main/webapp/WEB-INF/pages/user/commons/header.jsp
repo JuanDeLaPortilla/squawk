@@ -14,8 +14,9 @@
         </div>
 
         <div class="create">
-            <a href="${pageContext.request.contextPath}/submit"><label class="btn btn-primary">Crear</label></a>
-
+            <c:if test="${sessionScope.user.present}">
+                <a href="${pageContext.request.contextPath}/submit"><label class="btn btn-primary">Crear</label></a>
+            </c:if>
             <!-- DROPDOWN MENU -->
             <details>
                 <summary class="profile-photo">

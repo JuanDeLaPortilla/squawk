@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,14 +26,15 @@
             <jsp:include page="/WEB-INF/pages/user/stories.jsp"/>
 
             <!-- CREATE CUACK -->
-            <a class="create-post" href="${pageContext.request.contextPath}/submit">
-                <div class="profile-photo">
-                    <img src="${pageContext.request.contextPath}/images/logo.webp"/>
-                </div>
-                <p class="text-muted">&iexcl;Crea un cuack ahora!</p>
-                <label class="btn btn-primary">Crear</label>
-            </a>
-
+            <c:if test="${sessionScope.user.present}">
+                <a class="create-post" href="${pageContext.request.contextPath}/submit">
+                    <div class="profile-photo">
+                        <img src="${pageContext.request.contextPath}/images/logo.webp"/>
+                    </div>
+                    <p class="text-muted">&iexcl;Crea un cuack ahora!</p>
+                    <label class="btn btn-primary">Crear</label>
+                </a>
+            </c:if>
             <!-- FEEDS -->
             <jsp:include page="/WEB-INF/pages/user/feeds.jsp"/>
         </div>

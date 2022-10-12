@@ -370,7 +370,7 @@ main .container.two-rows{
 
 }
 
-#our-team,#about-us,#our-purpouse-vision,#our-values{
+#our-team,#about-us,#our-purpouse-vision,#our-values,#privacy-policy,#ur-info,#profile-info,#info-send,#actions,#other-info{
     padding: var(--card-padding);
     margin: 1rem 0;
     background: var(--color-black);
@@ -383,6 +383,16 @@ main .container.two-rows{
     display: flex;
     justify-content: space-between;
     order: 0;
+}
+
+.row .col {
+    padding: 1rem 2px;
+}
+
+.row .col p {
+    font-size: medium;
+    line-height: 2rem;
+    text-align: justify;
 }
 
 .about-us h1{
