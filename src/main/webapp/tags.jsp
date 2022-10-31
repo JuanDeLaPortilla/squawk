@@ -17,52 +17,21 @@
         <main>
             <h1>Tags</h1>
 
-            <div class="recent-orders">
-                <h2>Lista de Tags</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Descripci&oacute;n</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!--
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                    </tbody>
-                        -->
-                        
-                </table>
-            </div>
-            
-            <div class="right">
-                <div class="sales-analytics">
-                    <div class="item add-product">
-                        <div>
-                            <span class="material-icons-sharp">add</span>
-                            <h3>A&ntilde;adir Tag</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <!-----------EN OF MAIN--------->
+            <!-- LIST USERS -->
+            <jsp:include page="WEB-INF/pages/dashboard/tags/listTags.jsp"/>
 
+            <!-- ADD USERS -->
+            <jsp:include page="WEB-INF/pages/dashboard/tags/addTag.jsp"/>
+        </main>
         <!-- PROFILE AND DARK MODE-->
         <div class="right">
             <jsp:include page="WEB-INF/pages/dashboard/commons/profile-dark-mode.jsp"/>
         </div>
     </div>
 
-    <script src="./js/tags.js"></script>
-    <script src="./js/a-tags.js"></script>
+    <!-- Conexiones con Js -->
+    <script src="./js/dashboard-side-menu.js"></script>
     <script src="./js/white-theme.js"></script>
+    <script src="./js/modal-button.js?v=3"></script>
 </body>
 </html>

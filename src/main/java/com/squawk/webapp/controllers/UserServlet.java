@@ -1,12 +1,8 @@
 package com.squawk.webapp.controllers;
 
 import com.squawk.webapp.models.User;
-import com.squawk.webapp.services.LoginService;
-import com.squawk.webapp.services.LoginServiceImpl;
 import com.squawk.webapp.services.UserService;
 import com.squawk.webapp.services.UserServiceImpl;
-import com.squawk.webapp.services.LoginService;
-import com.squawk.webapp.services.LoginServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

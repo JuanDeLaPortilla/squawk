@@ -142,7 +142,7 @@
 
                     <div class="row">
                         <div class="team-col two">
-                            <img src="./images/sindell.jpg?v=1">
+                            <img src="./images/sindell.jpg">
                         </div>
                         <div class="team-col one">
                             <h2>Sindell Leon</h2>

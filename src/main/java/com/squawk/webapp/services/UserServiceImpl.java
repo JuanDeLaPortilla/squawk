@@ -1,7 +1,7 @@
 package com.squawk.webapp.services;
 
 import com.squawk.webapp.models.User;
-import com.squawk.webapp.repositories.Repository;
+import com.squawk.webapp.repositories.UserRepository;
 import com.squawk.webapp.repositories.UserRepositoryImpl;
 
 import java.sql.Connection;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
-    private Repository<User> repositoryJdbc;
+    private UserRepository<User> repositoryJdbc;
 
     public UserServiceImpl(Connection connection) {
         this.repositoryJdbc = new UserRepositoryImpl(connection);

@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRepositoryImpl implements Repository<User> {
+public class UserRepositoryImpl implements UserRepository<User> {
     private Connection conn;
 
     public UserRepositoryImpl(Connection conn) {
@@ -81,6 +81,7 @@ public class UserRepositoryImpl implements Repository<User> {
         }
     }
 
+    @Override
     public User login(String email, String password) throws SQLException {
         User user = null;
 

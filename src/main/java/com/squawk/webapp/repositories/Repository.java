@@ -8,5 +8,4 @@ public interface Repository <T>{
     T findById(Long id) throws SQLException;
     void add(T t) throws SQLException;
     void delete(Long id) throws SQLException;
-    T login(String email, String password) throws SQLException;
 }
