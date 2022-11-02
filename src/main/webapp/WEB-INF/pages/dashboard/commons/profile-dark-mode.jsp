@@ -12,7 +12,7 @@
         <small class="text-muted">Admin</small>
       </div>
       <div class="profile-photo">
-        <img src="${pageContext.request.contextPath}/images/logo.webp">
+        <img src="${sessionScope.user.get().img}">
       </div>
     </div>
   </div>

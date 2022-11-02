@@ -11,8 +11,6 @@
             <input type="text" class="login-input" name="nickname" value="${requestScope.user.name}" required><br>
             <label>Fecha de Cumplea&ntilde;os</label><br>
             <input type="date" class="login-input" name="birthday" value="<fmt:formatDate value="${parsedBirthday}" type="date" pattern="yyyy-MM-dd"/>" required><br>
-            <label>Url de tu Foto de Perfil</label><br>
-            <input type="url" class="login-input" name="img" value="${requestScope.user.img}" required><br>
             <label>Correo Electr&oacute;nico</label><br>
             <input type="email" class="login-input" name="email" value="${requestScope.user.email}" required><br>
             <label>Contrase&ntilde;a</label><br>

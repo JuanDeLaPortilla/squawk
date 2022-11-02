@@ -20,7 +20,14 @@
             <!-- DROPDOWN MENU -->
             <details>
                 <summary class="profile-photo">
-                    <img src="${pageContext.request.contextPath}/images/logo.webp"/>
+                    <c:choose>
+                        <c:when test="${sessionScope.user.present}">
+                            <img src="${sessionScope.user.get().img}"/>
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${pageContext.request.contextPath}/profile_pictures/default.webp"/>
+                        </c:otherwise>
+                    </c:choose>
                 </summary>
                 <ul class="user-menu">
                     <c:choose>

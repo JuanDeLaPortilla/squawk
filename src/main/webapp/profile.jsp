@@ -10,7 +10,7 @@
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <!-- Conexcion con CSS -->
-    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/style.css?v=13"/>
 </head>
 <body>
 <!-- HEADER -->
@@ -37,8 +37,11 @@
 </main>
 
 <jsp:include page="/WEB-INF/pages/user/update_form.jsp"/>
+<jsp:include page="/WEB-INF/pages/user/profile_picture_form.jsp"/>
 
 <script src="./js/white-theme.js"></script>
 <script src="./js/modal-button.js"></script>
+<script src="./js/modal-button-1.js"></script>
+<script src="./js/preview-image.js?v=6"></script>
 </body>
 </html>

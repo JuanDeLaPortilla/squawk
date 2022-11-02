@@ -20,8 +20,6 @@
             <input type="text" class="login-input" placeholder="Nombre de Usuario" name="nickname" required><br>
             <label>Fecha de Cumplea&ntilde;os</label><br>
             <input type="date" class="login-input" name="birthday" required><br>
-            <label>Url de tu Foto de Perfil</label><br>
-            <input type="url" class="login-input" placeholder="Url de tu foto de perfil" name="img"><br>
             <label>Correo Electr&oacute;nico</label><br>
             <input type="email" class="login-input" placeholder="Correo Electr&oacute;nico" name="email"
                    required><br>

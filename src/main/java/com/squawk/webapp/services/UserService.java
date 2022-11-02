@@ -14,5 +14,7 @@ public interface UserService {
 
     void delete(Long id);
 
+    void uploadPicture(Long id, String img);
+
     Optional<User> login(String email, String password);
 }

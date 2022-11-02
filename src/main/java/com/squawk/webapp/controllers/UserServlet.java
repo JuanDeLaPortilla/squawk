@@ -86,7 +86,6 @@ public class UserServlet extends HttpServlet {
         String name = req.getParameter("nickname");
         String birthdayStr = req.getParameter("birthday");
         LocalDate birthday = LocalDate.parse(birthdayStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        String img = req.getParameter("img");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         //valores con try-catch
@@ -110,7 +109,7 @@ public class UserServlet extends HttpServlet {
         }
 
         //crea un usuario que recibe cada valor
-        User user = getUserInfo(name, birthday, img, email, password, id, type);
+        User user = getUserInfo(name, birthday, email, password, id, type);
 
         //llama al service para pasarle el usuario
         service.add(user);
@@ -176,12 +175,11 @@ public class UserServlet extends HttpServlet {
             session.setAttribute("user", optionalUser);
         }
     }
-    private static User getUserInfo(String name, LocalDate birthday, String img, String email, String password, long id, int type) {
+    private static User getUserInfo(String name, LocalDate birthday, String email, String password, long id, int type) {
         User user = new User();
         user.setId(id);
         user.setName(name);
         user.setBirthday(birthday);
-        user.setImg(img);
         user.setEmail(email);
         user.setPassword(password);
         user.setStatus(1);

@@ -3,14 +3,18 @@
 
 <!-- Formato para la fecha de creacion de la cuenta-->
 <fmt:setLocale value="es"/>
-<fmt:parseDate value="${sessionScope.user.get().creationDate}" type="date" pattern="yyyy-MM-dd" var="parsedCreationDate"/>
+<fmt:parseDate value="${sessionScope.user.get().creationDate}" type="date" pattern="yyyy-MM-dd"
+               var="parsedCreationDate"/>
 <fmt:formatDate value="${parsedCreationDate}" type="date" dateStyle="long" var="creationDate"/>
 
 <div class="right first">
     <div class="profile-info">
 
         <div class="heading">
-            <img class="profile-photo" src="${pageContext.request.contextPath}/images/logo.webp">
+            <div class="centered">
+                <img class="profile-photo" src="${sessionScope.user.get().img}">
+                <i class="uil uil-camera" id="modalBtn1"></i>
+            </div>
             <h4>${sessionScope.user.get().name}</h4>
             <p class="text-muted">Se uni&oacute; el <b>${creationDate}</b></p>
         </div>

@@ -53,6 +53,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void uploadPicture(Long id, String img) {
+        try{
+            repositoryJdbc.uploadPicture(id, img);
+        }catch (SQLException e){
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Override
     public Optional<User> login(String email, String password) {
         try{
             return Optional.ofNullable(repositoryJdbc.login(email, password));

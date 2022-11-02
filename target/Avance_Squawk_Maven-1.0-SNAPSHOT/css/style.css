@@ -587,6 +587,19 @@ MEDIA QUERIES FOR PHONES
     margin-top: 0.75rem;
 }
 
+.pop-up .card .default-text{
+    font-size: large;
+    font-family: 'Poppins', sans-serif;
+    color:var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.pop-up .card .default-text i{
+    font-size: x-large;
+}
+
 .pop-up .card h4, .pop-up .card a {
     margin-bottom: 0.2rem;
 }
@@ -744,6 +757,7 @@ MEDIA QUERIES FOR PHONES
 .right .profile-info .heading{
     display: block;
     gap: 0.75rem;
+    text-align: center;
 }
 
 .right .profile-info .heading h4{
@@ -760,7 +774,22 @@ MEDIA QUERIES FOR PHONES
 
 .right .profile-info .heading .profile-photo{
     width:8rem;
-    margin: auto;
+    margin: auto auto -1.55rem;
+}
+
+.right .profile-info .heading i{
+    font-size: x-large;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--color-primary);
+    color: var(--color-white);
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.right .profile-info .heading i:hover{
+    opacity: 0.8;
 }
 
 .right .profile-info .buttons{
@@ -774,6 +803,46 @@ MEDIA QUERIES FOR PHONES
     margin-top: 1rem;
 }
 
+/* ==============================================
+PROFILE PICTURE UPLOAD
+================================================= */
+
+.image-preview{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18rem;
+    min-height: 6rem;
+    margin: auto;
+    border: 2px dashed var(--color-gray);
+    border-radius: var(--border-radius-1);
+    cursor: pointer;
+}
+
+.image-preview img{
+    display: none;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.image-preview input[type="file"]{
+    display: none;
+}
+
+.image-preview:hover{
+    opacity: 0.8;
+}
+
+.centered{
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    margin-top: 1rem;
+}
 
 /* ==============================================
 MEDIA QUERIES FOR PHONES
