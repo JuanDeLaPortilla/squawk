@@ -110,6 +110,7 @@ small {
     height: 2.8rem;
     border-radius: 50%;
     overflow: hidden;
+    margin: auto;
 }
 
 .text-muted {
@@ -825,3 +826,37 @@ main .recent-orders a {
     background:var(--color-primary);
     color: white;
 }
+
+.inline-centered{
+    display: inline-flex;
+    gap: 3rem;
+}
+
+.image-preview{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18rem;
+    min-height: 6rem;
+    margin: auto;
+    border: 2px dashed var(--color-gray);
+    border-radius: var(--border-radius-1);
+    cursor: pointer;
+}
+
+.image-preview img{
+    display: none;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.image-preview input[type="file"]{
+    display: none;
+}
+
+.image-preview:hover{
+    opacity: 0.8;
+}
+

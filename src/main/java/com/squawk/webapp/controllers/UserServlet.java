@@ -74,6 +74,10 @@ public class UserServlet extends HttpServlet {
                     this.updateUser(req,resp,service);
                     getServletContext().getRequestDispatcher("/profile.jsp").forward(req, resp);
                     break;
+                case "editPicture":
+                    this.updateProfile(req,resp,service);
+                    this.defaultAction(req,resp,service);
+                    break;
                 default:
                     this.defaultAction(req, resp, service);
                     break;
@@ -98,19 +102,9 @@ public class UserServlet extends HttpServlet {
         LocalDate birthday = LocalDate.parse(birthdayStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        //obtener id
+        long id = getId(req);
         //valores con try-catch
-        String idStr;
-        try {
-            idStr = req.getParameter("idUser");
-        } catch (NullPointerException e) {
-            idStr = "";
-        }
-        long id;
-        try {
-            id = Long.parseLong(idStr);
-        } catch (NumberFormatException e) {
-            id = 0L;
-        }
         int type;
         try {
             type = Integer.parseInt(req.getParameter("type"));
@@ -127,19 +121,8 @@ public class UserServlet extends HttpServlet {
 
 
     private void deleteUser(HttpServletRequest req, HttpServletResponse resp, UserService service) throws ServletException, IOException {
-        //recuperamos el id del usuario
-        String idStr;
-        try {
-            idStr = req.getParameter("idUser");
-        } catch (NullPointerException e) {
-            idStr = "";
-        }
-        long id;
-        try {
-            id = Long.parseLong(idStr);
-        } catch (NumberFormatException e) {
-            id = 0L;
-        }
+        //obtener id
+        long id = getId(req);
         //se pasa la id al service
         service.delete(id);
         //devuelve el listado de usuarios
@@ -147,19 +130,8 @@ public class UserServlet extends HttpServlet {
     }
 
     private void updateProfile(HttpServletRequest req, HttpServletResponse resp, UserService service) throws ServletException, IOException {
-        //recuperamos el id del usuario
-        String idStr;
-        try {
-            idStr = req.getParameter("idUser");
-        } catch (NullPointerException e) {
-            idStr = "";
-        }
-        long id;
-        try {
-            id = Long.parseLong(idStr);
-        } catch (NumberFormatException e) {
-            id = 0L;
-        }
+        //obtener id
+        long id = getId(req);
         //recuperamos la imagen
         try {
             Part img = req.getPart("img");
@@ -178,19 +150,8 @@ public class UserServlet extends HttpServlet {
     }
 
     private void editUserGet(HttpServletRequest req, HttpServletResponse resp, UserService service) throws ServletException, IOException {
-        //recuperamos el id del usuario
-        String idStr;
-        try {
-            idStr = req.getParameter("idUser");
-        } catch (NullPointerException e) {
-            idStr = "";
-        }
-        long id;
-        try {
-            id = Long.parseLong(idStr);
-        } catch (NumberFormatException e) {
-            id = 0L;
-        }
+        //obtener id
+        long id = getId(req);
         //se llama al servicio para buscar al usuario por id y se guarda
         User user = new User();
         Optional<User> o = service.findById(id);
@@ -205,16 +166,31 @@ public class UserServlet extends HttpServlet {
     }
 
     private void updateUser(HttpServletRequest req, HttpServletResponse resp, UserService service) throws ServletException, IOException {
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
-
+        //obtener id
+        long id = getId(req);
         //verifica si ha iniciado sesion
-        Optional<User> optionalUser = service.login(email, password);
+        Optional<User> optionalUser = service.findById(id);
 
         if (optionalUser.isPresent()) {
             HttpSession session = req.getSession();
             session.setAttribute("user", optionalUser);
         }
+    }
+
+    private static long getId(HttpServletRequest req) {
+        String idStr;
+        try {
+            idStr = req.getParameter("idUser");
+        } catch (NullPointerException e) {
+            idStr = "";
+        }
+        long id;
+        try {
+            id = Long.parseLong(idStr);
+        } catch (NumberFormatException e) {
+            id = 0L;
+        }
+        return id;
     }
 
 

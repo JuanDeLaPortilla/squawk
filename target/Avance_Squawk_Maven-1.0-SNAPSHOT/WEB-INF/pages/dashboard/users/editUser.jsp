@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Usuarios</title>
     <!-- Conexiones con CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/a-style-listas.css?v=9">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/a-style-listas.css?v=11">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
 </head>
 <body>
@@ -17,8 +17,12 @@
     <!-- SIDEBAR AND HEADER -->
     <jsp:include page="../commons/sidebar-header.jsp"/>
     <main>
+        <div class="inline-centered">
         <!-- EDIT USER FORM -->
         <jsp:include page="./editUserForm.jsp"/>
+        <!-- EDIT USER PROFILE FORM -->
+        <jsp:include page="./editUserPictureForm.jsp"/>
+        </div>
     </main>
 
     <!-- PROFILE AND DARK MODE-->
@@ -30,5 +34,6 @@
 <!-- Conexiones con Js -->
 <script src="${pageContext.request.contextPath}/js/dashboard-side-menu.js"></script>
 <script src="${pageContext.request.contextPath}/js/white-theme.js"></script>
+<script src="${pageContext.request.contextPath}/js/preview-image.js"></script>
 </body>
 </html>
