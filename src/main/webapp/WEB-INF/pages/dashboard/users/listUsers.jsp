@@ -25,7 +25,7 @@
             <td>${u.birthday}</td>
             <td>
                 <div class="profile-photo">
-                    <img src="">
+                    <img src="${u.img}">
                 </div>
             </td>
             <td>${u.status}</td>

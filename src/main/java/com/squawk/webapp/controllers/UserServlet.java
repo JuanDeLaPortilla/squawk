@@ -3,14 +3,13 @@ package com.squawk.webapp.controllers;
 import com.squawk.webapp.models.User;
 import com.squawk.webapp.services.UserService;
 import com.squawk.webapp.services.UserServiceImpl;
+import com.squawk.webapp.util.Util;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 
-import java.io.IOException;
+import java.io.*;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -18,6 +17,12 @@ import java.util.List;
 import java.util.Optional;
 
 @WebServlet(name = "users", urlPatterns = {"/users"})
+@MultipartConfig(
+        location = "G:\\Juan Utp\\Ciclo VI\\Integrador_I\\Avance_Squawk_Maven\\src\\main\\webapp\\profile_pictures",
+        fileSizeThreshold = 1024 * 1024,  //  1 MB
+        maxFileSize = 1024 * 1024 * 10,   // 10 MB
+        maxRequestSize = 1024 * 1024 * 11 // 11 MB
+)
 public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -61,6 +66,11 @@ public class UserServlet extends HttpServlet {
                     break;
                 case "update":
                     this.addUser(req,resp,service);
+                    this.updateUser(req,resp,service);
+                    getServletContext().getRequestDispatcher("/profile.jsp").forward(req, resp);
+                    break;
+                case "updateProfile":
+                    this.updateProfile(req,resp,service);
                     this.updateUser(req,resp,service);
                     getServletContext().getRequestDispatcher("/profile.jsp").forward(req, resp);
                     break;
@@ -136,6 +146,37 @@ public class UserServlet extends HttpServlet {
         this.defaultAction(req, resp, service);
     }
 
+    private void updateProfile(HttpServletRequest req, HttpServletResponse resp, UserService service) throws ServletException, IOException {
+        //recuperamos el id del usuario
+        String idStr;
+        try {
+            idStr = req.getParameter("idUser");
+        } catch (NullPointerException e) {
+            idStr = "";
+        }
+        long id;
+        try {
+            id = Long.parseLong(idStr);
+        } catch (NumberFormatException e) {
+            id = 0L;
+        }
+        //recuperamos la imagen
+        try {
+            Part img = req.getPart("img");
+            img.write(Util.getFileName(img));//se sube la imagen al proyeto
+            img.write(getServletContext().getRealPath("\\" + "profile_pictures"+  File.separator + Util.getFileName(img)));//se sube la imagen al servidor
+
+            //se crea la direccion de la imagen
+            String imgPath = getServletContext().getContextPath()+ "\\" + "profile_pictures"+ File.separator + Util.getFileName(img);
+
+            //Se sube el directorio a la base de datos
+            service.uploadPicture(id,imgPath);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
     private void editUserGet(HttpServletRequest req, HttpServletResponse resp, UserService service) throws ServletException, IOException {
         //recuperamos el id del usuario
         String idStr;
@@ -175,6 +216,8 @@ public class UserServlet extends HttpServlet {
             session.setAttribute("user", optionalUser);
         }
     }
+
+
     private static User getUserInfo(String name, LocalDate birthday, String email, String password, long id, int type) {
         User user = new User();
         user.setId(id);

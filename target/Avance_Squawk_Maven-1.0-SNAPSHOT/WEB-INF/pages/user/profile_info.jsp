@@ -13,7 +13,7 @@
         <div class="heading">
             <div class="centered">
                 <img class="profile-photo" src="${sessionScope.user.get().img}">
-                <i class="uil uil-camera" id="modalBtn1"></i>
+                <i class="text-white uil uil-camera" id="modalBtn1"></i>
             </div>
             <h4>${sessionScope.user.get().name}</h4>
             <p class="text-muted">Se uni&oacute; el <b>${creationDate}</b></p>

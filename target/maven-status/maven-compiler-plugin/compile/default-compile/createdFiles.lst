@@ -24,6 +24,7 @@ com\squawk\webapp\models\UsersDate.class
 com\squawk\webapp\repositories\LikeCuackRepositoryImpl.class
 com\squawk\webapp\models\LikeCuack.class
 com\squawk\webapp\util\JdbcConnection.class
+com\squawk\webapp\util\Util.class
 com\squawk\webapp\services\UsersCuacksServiceImpl.class
 com\squawk\webapp\controllers\CuackServlet.class
 com\squawk\webapp\controllers\ProfileServlet.class

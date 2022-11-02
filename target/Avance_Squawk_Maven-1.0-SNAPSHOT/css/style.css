@@ -108,6 +108,10 @@ img{
     color: var(--color-gray);
 }
 
+.text-white{
+    color:#FFFFFF;
+}
+
 /*========================NAVBAR==========================*/
 
 nav{
@@ -783,7 +787,6 @@ MEDIA QUERIES FOR PHONES
     border-radius: 50%;
     overflow: hidden;
     background: var(--color-primary);
-    color: var(--color-white);
     margin-left: auto;
     cursor: pointer;
 }
