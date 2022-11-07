@@ -9,8 +9,6 @@
                 <span class="default-text">Selecciona una Imagen <i class="uil uil-camera"></i></span>
                 <img src="">
             </label>
-            <input type="hidden" value="${sessionScope.user.get().email}" name="email">
-            <input type="hidden" value="${sessionScope.user.get().password}" name="password">
             <input type="hidden" value="${sessionScope.user.get().id}" name="idUser"><br>
             <input type="submit" value="Guardar" class="btn btn-primary"/>
         </form>

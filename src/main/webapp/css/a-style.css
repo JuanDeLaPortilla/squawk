@@ -104,6 +104,7 @@ small{
 }
 
 .profile-photo{
+    display: flex;
     width: 2.8rem;
     height: 2.8rem;
     border-radius: 50%;

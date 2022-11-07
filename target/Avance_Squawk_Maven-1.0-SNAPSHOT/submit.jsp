@@ -8,7 +8,7 @@
         <!-- Conexion con Iconos -->
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
         <!-- Conexcion con CSS -->
-        <link rel="stylesheet" href="./css/style.css"/>
+        <link rel="stylesheet" href="./css/style.css?v=1"/>
     </head>
     <body>
     <!-- HEADER -->
