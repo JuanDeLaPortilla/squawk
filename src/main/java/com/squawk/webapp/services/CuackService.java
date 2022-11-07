@@ -14,5 +14,5 @@ public interface CuackService {
 
     void delete(Long id);
 
-
+    void uploadPicture(Long id, String img);
 }

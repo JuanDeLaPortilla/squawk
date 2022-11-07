@@ -9,32 +9,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Usuarios</title>
     <!-- Conexiones con CSS -->
-    <link rel="stylesheet" href="./css/a-style-listas.css?v=1.3">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/a-style-listas.css?v=11">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
 </head>
 <body>
 <div class="container">
     <!-- SIDEBAR AND HEADER -->
-    <jsp:include page="WEB-INF/pages/dashboard/commons/sidebar-header.jsp"/>
+    <jsp:include page="../commons/sidebar-header.jsp"/>
     <main>
-        <h1>Usuarios</h1>
-
-        <!-- LIST USERS -->
-        <jsp:include page="WEB-INF/pages/dashboard/users/listUsers.jsp"/>
-
-        <!-- ADD USERS -->
-        <jsp:include page="WEB-INF/pages/dashboard/users/addUser.jsp"/>
+        <div class="inline-centered">
+        <!-- EDIT USER FORM -->
+        <jsp:include page="./editUserForm.jsp"/>
+        <!-- EDIT USER PROFILE FORM -->
+        <jsp:include page="./editUserPictureForm.jsp"/>
+        </div>
     </main>
 
     <!-- PROFILE AND DARK MODE-->
     <div class="right">
-        <jsp:include page="WEB-INF/pages/dashboard/commons/profile-dark-mode.jsp"/>
+        <jsp:include page="../commons/profile-dark-mode.jsp"/>
     </div>
 </div>
 
 <!-- Conexiones con Js -->
-<script src="./js/dashboard-side-menu.js"></script>
-<script src="./js/white-theme.js"></script>
-<script src="./js/modal-button.js?v=3"></script>
+<script src="${pageContext.request.contextPath}/js/dashboard-side-menu.js"></script>
+<script src="${pageContext.request.contextPath}/js/white-theme.js"></script>
+<script src="${pageContext.request.contextPath}/js/preview-image.js"></script>
 </body>
 </html>

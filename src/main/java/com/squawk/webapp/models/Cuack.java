@@ -1,13 +1,14 @@
 package com.squawk.webapp.models;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Cuack{
 
     //Atributos
     private Long cuackID;
-    private Long tagID;
+    private Tag tag;
     private String desc;
     private String img;
     private String url;
@@ -15,13 +16,13 @@ public class Cuack{
     private int status;
     private String title;
     private double price;
-    private Date creationDate;
-    private int edited;
+    private LocalDate creationDate;
+    private int isEdited;
 
     //Constructor
-    public Cuack(Long cuackID, Long tagID, String desc, String img, String url, double rating, int status, String title, double price, Date creationDate, int edited) {
+    public Cuack(Long cuackID, Tag tag, String desc, String img, String url, double rating, int status, String title, double price, LocalDate creationDate, int edited) {
         this.cuackID = cuackID;
-        this.tagID = tagID;
+        this.tag = tag;
         this.desc = desc;
         this.img = img;
         this.url = url;
@@ -30,7 +31,7 @@ public class Cuack{
         this.title = title;
         this.price = price;
         this.creationDate = creationDate;
-        this.edited = edited;
+        this.isEdited = edited;
     }
 
     public Cuack() {
@@ -46,12 +47,12 @@ public class Cuack{
         this.cuackID = cuackID;
     }
 
-    public Long getTagID() {
-        return tagID;
+    public Tag getTag() {
+        return tag;
     }
 
-    public void setTagID(Long tagID) {
-        this.tagID = tagID;
+    public void setTag(Tag tag) {
+        this.tag = tag;
     }
 
     public String getDesc() {
@@ -110,20 +111,16 @@ public class Cuack{
         this.price = price;
     }
 
-    public Date getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 
-    public int getEdited() {
-        return edited;
-    }
+    public int isEdited() {return isEdited;}
 
-    public void setEdited(int edited) {
-        this.edited = edited;
-    }
+    public void setEdited(int edited) {this.isEdited = edited;}
     
 }

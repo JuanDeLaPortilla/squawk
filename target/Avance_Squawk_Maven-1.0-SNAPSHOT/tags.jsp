@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard-Tags</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="./css/a-style-listas.css?v=1">
+=======
+    <link rel="stylesheet" href="./css/a-style-listas.css">
+>>>>>>> 19c5f7f (changed name to some methods)
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
     rel="stylesheet"> 
 </head>

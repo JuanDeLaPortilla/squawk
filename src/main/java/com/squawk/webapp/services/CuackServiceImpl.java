@@ -50,4 +50,12 @@ public class CuackServiceImpl implements CuackService {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
+    @Override
+    public void uploadPicture(Long id, String img) {
+        try{
+            repositoryJdbc.uploadPicture(id, img);
+        }catch (SQLException e){
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
 }

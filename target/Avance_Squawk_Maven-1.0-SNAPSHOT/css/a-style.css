@@ -104,7 +104,10 @@ small{
 }
 
 .profile-photo{
+<<<<<<< HEAD
     display: flex;
+=======
+>>>>>>> 19c5f7f (changed name to some methods)
     width: 2.8rem;
     height: 2.8rem;
     border-radius: 50%;
