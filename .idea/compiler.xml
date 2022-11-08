@@ -7,10 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Avance_Squawk_Maven" />
-<<<<<<< HEAD
-=======
-        <module name="squawk-master" />
->>>>>>> 19c5f7f (changed name to some methods)
       </profile>
     </annotationProcessing>
   </component>
