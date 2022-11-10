@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebFilter({"/users.html", "/dashboard", "/tags", "/cuacks", "/staff"})
+@WebFilter({"/users", "/dashboard", "/tags", "/cuacks", "/staff", "/users.jsp", "/dashboard.jsp", "/tags.jsp", "/cuacks.jsp", "/staff.jsp" })
 public class ValidateAdmin implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
