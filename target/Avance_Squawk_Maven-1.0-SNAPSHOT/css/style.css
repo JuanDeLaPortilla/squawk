@@ -58,10 +58,7 @@ body{
 }
 
 .profile-photo{
-<<<<<<< HEAD
     display: flex;
-=======
->>>>>>> 19c5f7f (changed name to some methods)
     width: 2.7rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
@@ -192,7 +189,6 @@ details[open] summary ~ *{
 }
 
 .user-menu > li i{
-    padding: auto 0.5rem;
     margin-right: 0.5rem;
     font-size: 1rem;
 }

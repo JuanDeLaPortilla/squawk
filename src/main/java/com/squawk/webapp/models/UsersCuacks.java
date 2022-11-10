@@ -1,31 +1,30 @@
 package com.squawk.webapp.models;
 
 public class UsersCuacks {
-    private Long userID;
-    private Long cuackID;
-
-    public UsersCuacks(Long userID, Long cuackID) {
-        this.userID = userID;
-        this.cuackID = cuackID;
-    }
+    private User user;
+    private Cuack cuack;
 
     public UsersCuacks() {
     }
 
-    public Long getUserID() {
-        return userID;
+    public UsersCuacks(User user, Cuack cuack) {
+        this.user = user;
+        this.cuack = cuack;
     }
 
-    public void setUserID(Long userID) {
-        this.userID = userID;
+    public User getUser() {
+        return user;
     }
 
-    public Long getCuackID() {
-        return cuackID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setCuackID(Long cuackID) {
-        this.cuackID = cuackID;
+    public Cuack getCuack() {
+        return cuack;
     }
-    
+
+    public void setCuack(Cuack cuack) {
+        this.cuack = cuack;
+    }
 }

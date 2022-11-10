@@ -5,11 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="./css/a-style.css?v=1">
-=======
     <link rel="stylesheet" href="./css/a-style.css">
->>>>>>> 19c5f7f (changed name to some methods)
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
     rel="stylesheet"> 
 </head>

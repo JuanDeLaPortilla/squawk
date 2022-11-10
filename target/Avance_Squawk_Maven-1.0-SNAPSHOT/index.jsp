@@ -9,11 +9,7 @@
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <!-- Conexion con CSS -->
-<<<<<<< HEAD
-    <link rel="stylesheet" href="./css/style.css?v=5"/>
-=======
     <link rel="stylesheet" href="./css/style.css?v=4"/>
->>>>>>> 19c5f7f (changed name to some methods)
 </head>
 
 <body>

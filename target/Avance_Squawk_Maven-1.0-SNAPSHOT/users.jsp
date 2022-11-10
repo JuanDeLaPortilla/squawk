@@ -9,11 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Usuarios</title>
     <!-- Conexiones con CSS -->
-<<<<<<< HEAD
-    <link rel="stylesheet" href="./css/a-style-listas.css?v=1.4">
-=======
     <link rel="stylesheet" href="./css/a-style-listas.css?v=1.3">
->>>>>>> 19c5f7f (changed name to some methods)
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
 </head>
 <body>

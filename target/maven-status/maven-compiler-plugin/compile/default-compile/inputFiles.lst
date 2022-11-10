@@ -5,6 +5,7 @@ G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\w
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\controllers\ProfileServlet.java
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\repositories\LikeCuackRepositoryImpl.java
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\controllers\SessionServlet.java
+G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\repositories\CuackRepository.java
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\services\ServiceJdbcException.java
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\models\Cuack.java
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\filters\FilterConnection.java
