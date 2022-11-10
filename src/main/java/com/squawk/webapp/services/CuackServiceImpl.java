@@ -25,6 +25,15 @@ public class CuackServiceImpl implements CuackService {
     }
 
     @Override
+    public List<Cuack> findByUserId(Long id) {
+        try {
+            return repositoryJdbc.findByUserId(id);
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+    
+    @Override
     public Optional<Cuack> findById(Long id) {
         try {
             return Optional.ofNullable(repositoryJdbc.findById(id));

@@ -3,6 +3,7 @@ package com.squawk.webapp.repositories;
 import com.squawk.webapp.models.User;
 import com.squawk.webapp.models.Cuack;
 import com.squawk.webapp.models.Tag;
+import com.squawk.webapp.util.Util;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,8 +20,11 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     public List<Cuack> findAll() throws SQLException {
         List<Cuack> cuack = new ArrayList<>();
         try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT c.*, t.description as tag FROM cuacks as c " +
-                     "inner join tags as t on (c.tag_id = t.tag_id)")) {
+             ResultSet rs = stmt.executeQuery("SELECT c.cuack_id, c.description, c.img, " +
+                     "c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
+                     "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* " +
+                     "FROM cuacks as c inner join tags as t inner join users as u on " +
+                     "c.tag_id = t.tag_id and u.user_id = c.user_id")) {
             while (rs.next()) {
                 Cuack c = getCuack(rs);
                 cuack.add(c);
@@ -36,8 +40,11 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     @Override
     public Cuack findById(Long id) throws SQLException {
         Cuack cuack = null;
-        try(PreparedStatement stmt = conn.prepareStatement("SELECT c.*, t.description as tag FROM cuacks as c " +
-                "inner join tags as t on (c.tag_id = t.tag_id) where c.cuack_id = ?")) {
+        try(PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.description, c.img, " +
+                "c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
+                "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* " +
+                "FROM cuacks as c inner join tags as t inner join users as u on " +
+                "c.tag_id = t.tag_id and u.user_id = c.user_id where c.cuack_id = ?")) {
             stmt.setLong(1, id);
 
             try(ResultSet rs = stmt.executeQuery()){
@@ -50,23 +57,43 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     }
 
     @Override
+    public List<Cuack> findByUserId(Long id) throws SQLException {
+        List<Cuack> cuack = new ArrayList<>();
+        try(PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.description, c.img, " +
+                "c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
+                "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* " +
+                "FROM cuacks as c inner join tags as t inner join users as u on " +
+                "c.tag_id = t.tag_id and u.user_id = c.user_id where c.user_id = ?")) {
+            stmt.setLong(1, id);
+
+            try(ResultSet rs = stmt.executeQuery()){
+                while (rs.next()){
+                    Cuack c = getCuack(rs);
+                    cuack.add(c);
+                }
+            }
+        }
+        return cuack;
+    }
+
+    @Override
     public void add(Cuack cuack) throws SQLException {
         String sql;
         if (cuack.getCuackID() != null && cuack.getCuackID() > 0) {
-            sql = "UPDATE cuacks SET tag_id=?,description=?,img=?,product_url=?,rating=?,status=?,title=?,price_range=?,creation_date=?,is_edited=? WHERE cuack_id=?";
+            sql = "UPDATE cuacks SET user_id=?,tag_id=?,description=?,img=?,product_url=?,rating=?,status=?,title=?,is_edited=? WHERE cuack_id=?";
         } else {
-            sql = "INSERT INTO cuacks (tag_id,description,img,product_url,rating,status,title,price_range,creation_date,is_edited) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            sql = "INSERT INTO cuacks (user_id,tag_id,description,img,product_url,rating,status,title,is_edited,creation_date) VALUES (?,?,?,?,?,?,?,?,?,?)";
         }
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, cuack.getTag().getTagID());
-            stmt.setString(2, cuack.getDesc());
-            stmt.setString(3, cuack.getImg());
-            stmt.setString(4, cuack.getUrl());
-            stmt.setDouble(5, cuack.getRating());
-            stmt.setInt(6, cuack.getStatus());
-            stmt.setString(7, cuack.getTitle());
-            stmt.setDouble(8, cuack.getPrice());
+            stmt.setLong(1, cuack.getUser().getId());
+            stmt.setLong(2, cuack.getTag().getTagID());
+            stmt.setString(3, cuack.getDesc());
+            stmt.setString(4, cuack.getImg());
+            stmt.setString(5, cuack.getUrl());
+            stmt.setDouble(6, cuack.getRating());
+            stmt.setInt(7, cuack.getStatus());
+            stmt.setString(8, cuack.getTitle());
             stmt.setInt(9, cuack.isEdited());
             if (cuack.getCuackID() != null && cuack.getCuackID() > 0) {
                 stmt.setLong(10, cuack.getCuackID());
@@ -100,22 +127,24 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     
     private static Cuack getCuack(ResultSet rs) throws SQLException {
         Cuack c = new Cuack();
+
         c.setCuackID(rs.getLong("cuack_id"));
+        c.setDesc(rs.getString("description"));
+        c.setImg(rs.getString("img"));
+        c.setUrl(rs.getString("product_url"));
+        c.setRating(rs.getDouble("rating"));
+        c.setStatus(rs.getInt("cuack_status"));
+        c.setTitle(rs.getString("title"));
+        c.setCreationDate(rs.getDate("cuack_creation_date").toLocalDate());
+        c.setEdited(rs.getInt("is_edited"));
 
         Tag t = new Tag();
         t.setTagID(rs.getLong("tag_id"));
         t.setDesc(rs.getString("tag"));
         c.setTag(t);
 
-        c.setDesc(rs.getString("description"));
-        c.setImg(rs.getString("img"));
-        c.setUrl(rs.getString("product_url"));
-        c.setRating(rs.getDouble("rating"));
-        c.setStatus(rs.getInt("status"));
-        c.setTitle(rs.getString("title"));
-        c.setPrice(rs.getDouble("price_range"));
-        c.setCreationDate(rs.getDate("creation_date").toLocalDate());
-        c.setEdited(rs.getInt("is_edited"));
+        User u = Util.getUser(rs);
+        c.setUser(u);
         return c;
     }
 

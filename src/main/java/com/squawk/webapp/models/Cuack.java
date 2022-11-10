@@ -16,13 +16,12 @@ public class Cuack{
     private double rating;
     private int status;
     private String title;
-    private double price;
     private LocalDate creationDate;
     private int isEdited;
 
     //Constructor
 
-    public Cuack(Long cuackID, User user, Tag tag, String desc, String img, String url, double rating, int status, String title, double price, LocalDate creationDate, int isEdited) {
+    public Cuack(Long cuackID, User user, Tag tag, String desc, String img, String url, double rating, int status, String title, LocalDate creationDate, int isEdited) {
         this.cuackID = cuackID;
         this.user = user;
         this.tag = tag;
@@ -32,7 +31,6 @@ public class Cuack{
         this.rating = rating;
         this.status = status;
         this.title = title;
-        this.price = price;
         this.creationDate = creationDate;
         this.isEdited = isEdited;
     }
@@ -112,14 +110,6 @@ public class Cuack{
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public LocalDate getCreationDate() {
