@@ -195,7 +195,6 @@ public class CuackServlet extends HttpServlet {
         cuack.setRating(0D);
         cuack.setStatus(1);
         cuack.setTitle(title);
-        cuack.setPrice(price);
         cuack.setEdited(isEdited);
         return cuack;
     }
