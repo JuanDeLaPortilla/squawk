@@ -1,6 +1,6 @@
 package com.squawk.webapp.repositories;
 
-
+import com.squawk.webapp.models.User;
 import com.squawk.webapp.models.Cuack;
 import com.squawk.webapp.models.Tag;
 
@@ -104,7 +104,7 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
 
         Tag t = new Tag();
         t.setTagID(rs.getLong("tag_id"));
-        t.setDesc(rs.getString("description"));
+        t.setDesc(rs.getString("tag"));
         c.setTag(t);
 
         c.setDesc(rs.getString("description"));

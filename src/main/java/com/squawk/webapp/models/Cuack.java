@@ -8,6 +8,7 @@ public class Cuack{
 
     //Atributos
     private Long cuackID;
+    private User user;
     private Tag tag;
     private String desc;
     private String img;
@@ -20,8 +21,10 @@ public class Cuack{
     private int isEdited;
 
     //Constructor
-    public Cuack(Long cuackID, Tag tag, String desc, String img, String url, double rating, int status, String title, double price, LocalDate creationDate, int edited) {
+
+    public Cuack(Long cuackID, User user, Tag tag, String desc, String img, String url, double rating, int status, String title, double price, LocalDate creationDate, int isEdited) {
         this.cuackID = cuackID;
+        this.user = user;
         this.tag = tag;
         this.desc = desc;
         this.img = img;
@@ -31,7 +34,7 @@ public class Cuack{
         this.title = title;
         this.price = price;
         this.creationDate = creationDate;
-        this.isEdited = edited;
+        this.isEdited = isEdited;
     }
 
     public Cuack() {
@@ -45,6 +48,14 @@ public class Cuack{
 
     public void setCuackID(Long cuackID) {
         this.cuackID = cuackID;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Tag getTag() {
@@ -122,5 +133,5 @@ public class Cuack{
     public int isEdited() {return isEdited;}
 
     public void setEdited(int edited) {this.isEdited = edited;}
-    
+
 }
