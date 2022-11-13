@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Squawk! - Home</title>
+        <title>Publicar en Squawk!</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE-edge"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Conexion con Iconos -->
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
         <!-- Conexcion con CSS -->
-        <link rel="stylesheet" href="./css/style.css"/>
+        <link rel="stylesheet" href="./css/style.css?v=1.5"/>
     </head>
     <body>
     <!-- HEADER -->
@@ -50,5 +50,6 @@
         </main>
 
         <script src="./js/white-theme.js"></script>
+    <script src="./js/preview-image.js"></script>
     </body>
 </html>

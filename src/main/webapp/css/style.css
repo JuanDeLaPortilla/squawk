@@ -646,10 +646,10 @@ MEDIA QUERIES FOR PHONES
 
 .middle .submit-cuack .submit-form .cuack-input{
     width: 100%;
-    height: 2.5rem;
     padding: 0.70rem 0.70rem;
     margin: 8px 0;
     font-family: 'Poppins', sans-serif;
+    color: var(--color-gray);
     border-radius: var(--border-radius-input);
     background: var(--color-dark);
 }
@@ -669,10 +669,25 @@ MEDIA QUERIES FOR PHONES
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     text-align: center;
+    padding-top: 0.7rem;
+    margin: 8px 0;
+}
+
+.middle .submit-cuack .submit-form .cuack-input .image-preview{
+    border: none;
+}
+
+.middle .submit-cuack .submit-form .cuack-input .image-preview .default-text i{
+    font-size: large;
+}
+
+.middle .submit-cuack .submit-form .cuack-input .image-preview img{
+    border-radius: var(--border-radius)
 }
 
 .middle .submit-cuack .submit-form textarea::placeholder,
-.middle .submit-cuack .submit-form .cuack-input::placeholder{
+.middle .submit-cuack .submit-form .cuack-input::placeholder,
+.middle .submit-cuack .submit-form .cuack-input .image-preview .default-text{
     color: var(--color-gray);
 }
 

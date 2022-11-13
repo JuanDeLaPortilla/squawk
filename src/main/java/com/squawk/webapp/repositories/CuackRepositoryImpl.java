@@ -20,9 +20,9 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     public List<Cuack> findAll() throws SQLException {
         List<Cuack> cuack = new ArrayList<>();
         try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT c.cuack_id, c.description, c.img, " +
+             ResultSet rs = stmt.executeQuery("SELECT c.cuack_id, c.content, c.img, " +
                      "c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
-                     "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* " +
+                     "as cuack_creation_date, c.is_edited, t.tag_id, t.content as tag,u.* " +
                      "FROM cuacks as c inner join tags as t inner join users as u on " +
                      "c.tag_id = t.tag_id and u.user_id = c.user_id")) {
             while (rs.next()) {
@@ -40,9 +40,9 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     @Override
     public Cuack findById(Long id) throws SQLException {
         Cuack cuack = null;
-        try(PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.description, c.img, " +
+        try(PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.content, c.img, " +
                 "c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
-                "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* " +
+                "as cuack_creation_date, c.is_edited, t.tag_id, t.content as tag,u.* " +
                 "FROM cuacks as c inner join tags as t inner join users as u on " +
                 "c.tag_id = t.tag_id and u.user_id = c.user_id where c.cuack_id = ?")) {
             stmt.setLong(1, id);
@@ -59,9 +59,9 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     @Override
     public List<Cuack> findByUserId(Long id) throws SQLException {
         List<Cuack> cuack = new ArrayList<>();
-        try(PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.description, c.img, " +
+        try(PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.content, c.img, " +
                 "c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
-                "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* " +
+                "as cuack_creation_date, c.is_edited, t.tag_id, t.content as tag,u.* " +
                 "FROM cuacks as c inner join tags as t inner join users as u on " +
                 "c.tag_id = t.tag_id and u.user_id = c.user_id where c.user_id = ?")) {
             stmt.setLong(1, id);
@@ -80,15 +80,15 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     public void add(Cuack cuack) throws SQLException {
         String sql;
         if (cuack.getCuackID() != null && cuack.getCuackID() > 0) {
-            sql = "UPDATE cuacks SET user_id=?,tag_id=?,description=?,img=?,product_url=?,rating=?,status=?,title=?,is_edited=? WHERE cuack_id=?";
+            sql = "UPDATE cuacks SET user_id=?,tag_id=?,content=?,img=?,product_url=?,rating=?,status=?,title=?,is_edited=? WHERE cuack_id=?";
         } else {
-            sql = "INSERT INTO cuacks (user_id,tag_id,description,img,product_url,rating,status,title,is_edited,creation_date) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            sql = "INSERT INTO cuacks (user_id,tag_id,content,img,product_url,rating,status,title,is_edited,creation_date) VALUES (?,?,?,?,?,?,?,?,?,?)";
         }
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setLong(1, cuack.getUser().getId());
             stmt.setLong(2, cuack.getTag().getTagID());
-            stmt.setString(3, cuack.getDesc());
+            stmt.setString(3, cuack.getContent());
             stmt.setString(4, cuack.getImg());
             stmt.setString(5, cuack.getUrl());
             stmt.setDouble(6, cuack.getRating());
@@ -129,7 +129,7 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
         Cuack c = new Cuack();
 
         c.setCuackID(rs.getLong("cuack_id"));
-        c.setDesc(rs.getString("description"));
+        c.setContent(rs.getString("content"));
         c.setImg(rs.getString("img"));
         c.setUrl(rs.getString("product_url"));
         c.setRating(rs.getDouble("rating"));

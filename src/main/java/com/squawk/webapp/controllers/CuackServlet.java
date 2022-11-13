@@ -84,7 +84,7 @@ public class CuackServlet extends HttpServlet {
 
     private void addCuack(HttpServletRequest req, HttpServletResponse resp, CuackService service, TagService tagService) throws ServletException, IOException {
         //recuperamos los valores del formulario
-        String description = req.getParameter("description");
+        String content = req.getParameter("content");
         String url = req.getParameter("url");
         String title = req.getParameter("title");
 
@@ -118,7 +118,7 @@ public class CuackServlet extends HttpServlet {
         }
 
         //crea un cuack que recibe cada valor
-        Cuack cuack = getCuackInfo(description,imgPath,url,title,price,isEdited,cuackId,tagId,tagService);
+        Cuack cuack = getCuackInfo(content,imgPath,url,title,price,isEdited,cuackId,tagId,tagService);
 
         //llama al service para pasarle el cuack
         service.add(cuack);
@@ -181,7 +181,7 @@ public class CuackServlet extends HttpServlet {
         return cuackId;
     }
 
-    private static Cuack getCuackInfo(String description,String img, String url, String title, double price,int isEdited, long id, long tagId, TagService tagService) {
+    private static Cuack getCuackInfo(String content,String img, String url, String title, double price,int isEdited, long id, long tagId, TagService tagService) {
         Cuack cuack = new Cuack();
         Tag tag;
         Optional<Tag> optionalTag = tagService.findById(tagId);
@@ -189,7 +189,7 @@ public class CuackServlet extends HttpServlet {
 
         cuack.setCuackID(id);
         cuack.setTag(tag);
-        cuack.setDesc(description);
+        cuack.setContent(content);
         cuack.setImg(img);
         cuack.setUrl(url);
         cuack.setRating(0D);

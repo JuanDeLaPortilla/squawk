@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,6 +54,7 @@ public class SubmitServlet extends HttpServlet {
             switch (action) {
                 case "submit":
                     this.submit(request, response, cuackService, tagService, userService);
+                    getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
                     break;
                 default:
                     this.defaultAction(request, response,tagService);
@@ -65,29 +67,38 @@ public class SubmitServlet extends HttpServlet {
     //Private Methods
     private void submit(HttpServletRequest req, HttpServletResponse resp, CuackService cuackService, TagService tagService, UserService userService) throws ServletException, IOException {
         //recuperamos los valores del formulario
-        String description = req.getParameter("description");
+        String content = req.getParameter("content");
         String url = req.getParameter("url");
         String title = req.getParameter("title");
 
-        //obtener id
-        long cuackId = getCuackId(req);
-        //valores con try-catch
-        long tagId;
+        //obtener ids
+        String cuackIdStr;
         try {
-            tagId = Long.parseLong(req.getParameter("tagId"));
-        } catch (NumberFormatException e) {
-            tagId = 1;
+            cuackIdStr = req.getParameter("idCuack");
+        } catch (NullPointerException e) {
+            cuackIdStr = "";
         }
-        long userId;
-        try{
-            userId = Long.parseLong(req.getParameter("userId"));
-        }catch (NumberFormatException e){
-            userId = 0;
+        String userIdStr;
+        try {
+            userIdStr = req.getParameter("idUser");
+        } catch (NullPointerException e) {
+            userIdStr = "";
         }
+        String tagIdStr;
+        try {
+            tagIdStr = req.getParameter("idTag");
+        } catch (NullPointerException e) {
+            tagIdStr = "";
+        }
+        long cuackId = getId(cuackIdStr);
+        long userId = getId(userIdStr);
+        long tagId = getId(tagIdStr);
+
+        //valores con try-catch
         int isEdited;
         try{
             isEdited = Integer.parseInt(req.getParameter("isEdited"));
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException | NullPointerException e){
             isEdited = 0;
         }
         String imgPath;
@@ -99,7 +110,7 @@ public class SubmitServlet extends HttpServlet {
         }
 
         //crea un cuack que recibe cada valor
-        Cuack cuack = getCuackInfo(description,imgPath,url,title,isEdited,cuackId,tagId,userId,tagService,userService);
+        Cuack cuack = getCuackInfo(content,imgPath,url,title,isEdited,cuackId,tagId,userId,tagService,userService);
 
         //llama al service para pasarle el cuack
         cuackService.add(cuack);
@@ -112,23 +123,16 @@ public class SubmitServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/submit.jsp").forward(req, resp);
     }
 
-    private static long getCuackId(HttpServletRequest req) {
-        String idStr;
+    private static long getId(String idString) {
+        long id;
         try {
-            idStr = req.getParameter("idCuack");
-        } catch (NullPointerException e) {
-            idStr = "";
+            id = Long.parseLong(idString);
+        } catch (NumberFormatException | NullPointerException e) {
+            id = 0L;
         }
-        long cuackId;
-        try {
-            cuackId = Long.parseLong(idStr);
-        } catch (NumberFormatException e) {
-            cuackId = 0L;
-        }
-        return cuackId;
+        return id;
     }
-
-    private static Cuack getCuackInfo(String description, String img, String url, String title, int isEdited, long cuackId, long tagId, long userId, TagService tagService, UserService userService) {
+    private static Cuack getCuackInfo(String content, String img, String url, String title, int isEdited, long cuackId, long tagId, long userId, TagService tagService, UserService userService) {
         Cuack cuack = new Cuack();
         Tag tag;
         Optional<Tag> optionalTag = tagService.findById(tagId);
@@ -140,13 +144,14 @@ public class SubmitServlet extends HttpServlet {
         cuack.setCuackID(cuackId);
         cuack.setUser(user);
         cuack.setTag(tag);
-        cuack.setDesc(description);
+        cuack.setContent(content);
         cuack.setImg(img);
         cuack.setUrl(url);
         cuack.setRating(0D);
         cuack.setStatus(1);
         cuack.setTitle(title);
         cuack.setEdited(isEdited);
+        cuack.setCreationDate(LocalDate.now());
         return cuack;
     }
 

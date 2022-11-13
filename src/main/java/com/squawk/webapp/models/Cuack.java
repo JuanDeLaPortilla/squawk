@@ -10,7 +10,7 @@ public class Cuack{
     private Long cuackID;
     private User user;
     private Tag tag;
-    private String desc;
+    private String content;
     private String img;
     private String url;
     private double rating;
@@ -21,11 +21,11 @@ public class Cuack{
 
     //Constructor
 
-    public Cuack(Long cuackID, User user, Tag tag, String desc, String img, String url, double rating, int status, String title, LocalDate creationDate, int isEdited) {
+    public Cuack(Long cuackID, User user, Tag tag, String content, String img, String url, double rating, int status, String title, LocalDate creationDate, int isEdited) {
         this.cuackID = cuackID;
         this.user = user;
         this.tag = tag;
-        this.desc = desc;
+        this.content = content;
         this.img = img;
         this.url = url;
         this.rating = rating;
@@ -64,12 +64,12 @@ public class Cuack{
         this.tag = tag;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getContent() {
+        return content;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getImg() {
