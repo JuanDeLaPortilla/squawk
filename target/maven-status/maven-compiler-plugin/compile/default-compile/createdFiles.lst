@@ -21,10 +21,10 @@ com\squawk\webapp\repositories\CommentRepositoryImpl.class
 com\squawk\webapp\repositories\UsersCommentsRepositoryImpl.class
 com\squawk\webapp\services\LoginServiceImpl.class
 com\squawk\webapp\services\TagService.class
-com\squawk\webapp\controllers\Index.class
 com\squawk\webapp\repositories\Repository.class
 com\squawk\webapp\services\CuackService.class
 com\squawk\webapp\services\UsersCommentsService.class
+com\squawk\webapp\controllers\IndexServlet.class
 com\squawk\webapp\controllers\UserServlet.class
 com\squawk\webapp\repositories\CuackRepositoryImpl.class
 com\squawk\webapp\repositories\UserRepository.class

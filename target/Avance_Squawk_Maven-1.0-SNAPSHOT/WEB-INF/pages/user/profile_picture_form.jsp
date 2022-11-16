@@ -2,7 +2,7 @@
     <div class="card">
         <span class="close" id="closeModalBtn1">&times;</span>
         <h4>Actualizar foto del perfil</h4>
-        <form action="${pageContext.request.contextPath}/users?action=updateProfile" method="post" enctype='multipart/form-data'>
+        <form action="${pageContext.request.contextPath}/users?action=updateProfilePicture" method="post" enctype='multipart/form-data'>
             <br>
             <label for="inpFile" class="image-preview" id="imagePreview">
                 <input type="file" name="img" id="inpFile" accept=".jpg, .jpeg, .png">

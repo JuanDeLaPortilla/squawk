@@ -33,8 +33,8 @@
                     <c:choose>
                         <c:when test="${sessionScope.user.present}">
                             <li>
-                                <a href="${pageContext.request.contextPath}/profile"><i class="uil uil-user-circle"></i>Mi
-                                    Perfil</a>
+                                <a href="${pageContext.request.contextPath}/profile?id=${sessionScope.user.get().id}">
+                                    <i class="uil uil-user-circle"></i>Mi Perfil</a>
                             </li>
                         </c:when>
                         <c:otherwise>

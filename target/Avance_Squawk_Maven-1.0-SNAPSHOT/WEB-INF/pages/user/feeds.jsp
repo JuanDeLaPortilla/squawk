@@ -1,13 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="feeds">
-    <c:forEach items="${cuacks}" var="c">
+    <c:forEach items="${requestScope.cuacks}" var="c">
         <div class="feed">
             <div class="head">
                 <div class="user">
-                    <div class="profile-photo">
+                    <a class="profile-photo" href="${pageContext.request.contextPath}/profile?id=${c.user.id}">
                         <img src="${c.user.img}">
-                    </div>
+                    </a>
                     <div class="ingo">
                         <h3>${c.user.name}</h3>
                         <h2>${c.title}</h2>
