@@ -9,7 +9,7 @@
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=4"/>
+    <link rel="stylesheet" href="./css/style.css?v=4.3"/>
 </head>
 
 <body>
@@ -29,7 +29,14 @@
             <c:if test="${sessionScope.user.present}">
                 <a class="create-post" href="${pageContext.request.contextPath}/submit">
                     <div class="profile-photo">
-                        <img src="${pageContext.request.contextPath}/images/logo.webp"/>
+                        <c:choose>
+                            <c:when test="${sessionScope.user.present}">
+                                <img src="${sessionScope.user.get().img}"/>
+                            </c:when>
+                            <c:otherwise>
+                                <img src="${pageContext.request.contextPath}/profile_pictures/default.webp"/>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <p class="text-muted">&iexcl;Crea un cuack ahora!</p>
                     <label class="btn btn-primary">Crear</label>

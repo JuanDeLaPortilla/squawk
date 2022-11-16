@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav>
     <div class="container">
-        <a href="./index.jsp">
+        <a href="${pageContext.request.contextPath}/index">
             <div class="log">
                 <h2>Squawk!</h2>
                 <img class="logo" src="${pageContext.request.contextPath}/images/logo-dashboard.png"/>

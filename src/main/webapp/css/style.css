@@ -311,6 +311,11 @@ main .container.two-rows{
 }
 .middle .create-post:hover{
     opacity: 0.6;
+    transition: all 300ms ease;
+}
+
+.middle .create-post .btn.btn-primary:hover{
+    opacity: initial;
 }
 /* ============================FEEDS=====================*/
 .middle .feeds .feed{
@@ -332,10 +337,30 @@ main .container.two-rows{
     gap: 1rem;
 }
 
+.middle .feed .head .user .profile-photo{
+    height: 3rem;
+    width: 3rem;
+}
+
+.middle .feed .head .user .ingo{
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.middle .feed .head .user .ingo h2 {
+    font-size: x-large;
+}
+
 .middle .feed .photo{
-    border-radius: var(--border-radius);
     overflow: hidden;
     margin: 0.7rem 0;
+    text-align: center;
+}
+
+.middle .feed .photo img{
+    display: inline;
+    width: 80%;
+    border-radius: var(--border-radius);
 }
 
 .middle .feed .action-button{

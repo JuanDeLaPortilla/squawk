@@ -14,6 +14,7 @@ G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\w
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\services\CommentService.java
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\models\Tag.java
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\services\UsersCommentsService.java
+G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\controllers\Index.java
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\models\Comment.java
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\repositories\TagRepositoryImpl.java
 G:\Juan Utp\Ciclo VI\Integrador_I\Avance_Squawk_Maven\src\main\java\com\squawk\webapp\filters\ValidateAdmin.java

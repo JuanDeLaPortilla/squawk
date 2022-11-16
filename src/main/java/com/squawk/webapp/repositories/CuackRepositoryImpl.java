@@ -44,7 +44,7 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
                 "c.img, c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
                 "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* from " +
                 "cuacks as c inner join tags as t inner join users as u on c.tag_id = t.tag_id and " +
-                "u.user_id = c.user_id where u.user_id=? order by creation_date desc")) {
+                "u.user_id = c.user_id where c.cuack_id=? order by creation_date desc")) {
             stmt.setLong(1, id);
 
             try(ResultSet rs = stmt.executeQuery()){
@@ -59,11 +59,11 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     @Override
     public List<Cuack> findByUserId(Long id) throws SQLException {
         List<Cuack> cuack = new ArrayList<>();
-        try(PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.content, c.img, " +
-                "c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
-                "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* " +
-                "FROM cuacks as c inner join tags as t inner join users as u on " +
-                "c.tag_id = t.tag_id and u.user_id = c.user_id where c.user_id = ?")) {
+        try(PreparedStatement stmt = conn.prepareStatement("select c.cuack_id, c.content, " +
+                "c.img, c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
+                "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* from " +
+                "cuacks as c inner join tags as t inner join users as u on c.tag_id = t.tag_id and " +
+                "u.user_id = c.user_id where u.user_id=? order by creation_date desc")) {
             stmt.setLong(1, id);
 
             try(ResultSet rs = stmt.executeQuery()){
