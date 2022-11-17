@@ -39,10 +39,7 @@
                         </c:when>
                         <c:otherwise>
                             <li>
-                                <a id="modalBtn1"><i class="uil uil-sign-in-alt"></i>Iniciar Sesi&oacute;n</a>
-                            </li>
-                            <li>
-                                <a id="modalBtn"><i class="uil uil-user-plus"></i>Registrarse</a>
+                                <a id="modalBtn"><i class="uil uil-user-circle"></i>Registrarse | Iniciar Sesi&oacute;n</a>
                             </li>
                         </c:otherwise>
                     </c:choose>

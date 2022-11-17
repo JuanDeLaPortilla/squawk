@@ -359,7 +359,8 @@ main .container.two-rows{
 
 .middle .feed .photo img{
     display: inline;
-    width: 80%;
+    max-height: 30rem;
+    width: auto;
     border-radius: var(--border-radius);
 }
 
@@ -391,6 +392,11 @@ main .container.two-rows{
 
 .middle.liked-by p{
     margin-left: 0.5rem;
+}
+
+.middle .feed .head .user .profile-photo:hover{
+    opacity: 0.6;
+    transition: all 300ms ease;
 }
 
 /*========================ABOUT US======================*/
@@ -581,6 +587,7 @@ MEDIA QUERIES FOR PHONES
     padding: 3rem;
     border-radius: 1rem;
     width: 45rem;
+    height: -webkit-fill-available;
     margin: 5rem auto;
 }
 
@@ -648,6 +655,54 @@ MEDIA QUERIES FOR PHONES
     cursor: pointer;
     opacity: 0.8;
     transition: all 300ms ease;
+}
+
+/*=========================TAB FORM=======================*/
+.tab-form .tab-header{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    align-content: stretch;
+    gap: 6rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.tab-form .tab-header > div{
+    flex:1;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: opacity 300ms ease-in-out 0ms;
+}
+
+.tab-form .tab-header > div:hover{
+    opacity: 0.6;
+    transition: all 300ms ease;
+}
+
+.tab-form .tab-header > div.active{
+    border-radius: var(--border-radius);
+    background: var(--color-primary);
+}
+
+.tab-form .tab-body{
+    position: relative;
+}
+
+.tab-form .tab-body > div{
+    position: absolute;
+    width: 100%;
+    top:-150vh;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out 0ms;
+}
+
+.tab-form .tab-body > div.active{
+    top:0;
+    opacity: 1;
+    transition: opacity 300ms ease-in-out 0ms;
 }
 
 /*=========================CREATE CUACK FORM==============*/

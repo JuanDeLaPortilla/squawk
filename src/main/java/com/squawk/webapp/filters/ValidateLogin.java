@@ -18,10 +18,12 @@ public class ValidateLogin implements Filter {
         LoginService service = new LoginServiceImpl();
         Optional<User> userOptional = service.getUser((HttpServletRequest) servletRequest);
 
-        if (userOptional.isEmpty()) {
+        try {
+            if (userOptional.isPresent()) {
+                filterChain.doFilter(servletRequest, servletResponse);
+            }
+        }catch (NullPointerException e){
             ((HttpServletResponse) servletResponse).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Lo sentimos, ¡necesitas iniciar sesión para ver esta página!");
-        } else {
-            filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 }

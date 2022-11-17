@@ -9,7 +9,7 @@
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=4.3"/>
+    <link rel="stylesheet" href="./css/style.css?v=4.94"/>
 </head>
 
 <body>
@@ -49,15 +49,13 @@
     </div>
 </main>
 
-<!-- LOGIN -->
-<jsp:include page="/WEB-INF/pages/user/login.jsp"/>
-
-<!-- SIGN-UP -->
-<jsp:include page="/WEB-INF/pages/user/sign-up.jsp"/>
+<!-- SIGNUP + LOGIN FORM TAB-->
+<jsp:include page="/WEB-INF/pages/user/signup_login_form_tab.jsp"/>
 
 <!-- Conexiones con Js -->
 <script src="./js/white-theme.js"></script>
-<script src="./js/modal-button-1.js?v=1"></script>
 <script src="./js/modal-button.js"></script>
+<script src="./js/tab-form.js"></script>
+
 </body>
 </html>
