@@ -8,6 +8,8 @@ import java.util.Optional;
 public interface CuackService {
     List<Cuack> findAll();
 
+    List<Cuack> findTopMonthly();
+
     List<Cuack> findByUserId(Long id);
 
     Optional<Cuack> findById(Long id);

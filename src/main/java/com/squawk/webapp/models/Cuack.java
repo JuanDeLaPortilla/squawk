@@ -2,6 +2,7 @@ package com.squawk.webapp.models;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Cuack{
@@ -16,12 +17,12 @@ public class Cuack{
     private double rating;
     private int status;
     private String title;
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
     private int isEdited;
 
     //Constructor
 
-    public Cuack(Long cuackID, User user, Tag tag, String content, String img, String url, double rating, int status, String title, LocalDate creationDate, int isEdited) {
+    public Cuack(Long cuackID, User user, Tag tag, String content, String img, String url, double rating, int status, String title, LocalDateTime creationDate, int isEdited) {
         this.cuackID = cuackID;
         this.user = user;
         this.tag = tag;
@@ -112,11 +113,11 @@ public class Cuack{
         this.title = title;
     }
 
-    public LocalDate getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 

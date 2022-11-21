@@ -257,30 +257,6 @@ main .container.two-rows{
     color: white;
 }
 
-.middle .stories .story:nth-child(1){
-    background:url('../img/story-1.jpg?v=1') no-repeat center center/cover;
-}
-
-.middle .stories .story:nth-child(2){
-    background:url('../img/story-2.jpg?v=1') no-repeat center center/cover;
-}
-
-.middle .stories .story:nth-child(3){
-    background:url('../img/story-3.jpg?v=1') no-repeat center center/cover;
-}
-
-.middle .stories .story:nth-child(4){
-    background:url('../img/story-4.jpg?v=1') no-repeat center center/cover;
-}
-
-.middle .stories .story:nth-child(5){
-    background:url('../img/story-5.jpg?v=1') no-repeat center center/cover;
-}
-
-.middle .stories .story:nth-child(6){
-    background:url('../img/story-6.jpg?v=1') no-repeat center center/cover;
-}
-
 .middle .story .profile-photo{
     width: 2rem;
     height: 2rem;
@@ -584,7 +560,7 @@ MEDIA QUERIES FOR PHONES
 
 .pop-up .card {
     background: var(--color-black);
-    padding: 3rem;
+    padding: 2rem;
     border-radius: 1rem;
     width: 45rem;
     height: -webkit-fill-available;
@@ -646,7 +622,7 @@ MEDIA QUERIES FOR PHONES
     float: right;
     font-size: 2.5rem;
     font-weight: bold;
-    margin-top: -2.5rem;
+    margin-top: -2rem;
 }
 
 .close:hover,

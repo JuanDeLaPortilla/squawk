@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebFilter({"/profile", "/submit", "/profile.jsp", "/submit.jsp"})
+@WebFilter({"/submit", "/submit.jsp"})
 public class ValidateLogin implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {

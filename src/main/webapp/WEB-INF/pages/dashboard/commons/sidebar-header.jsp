@@ -18,10 +18,6 @@
       <span class="material-icons-sharp">diversity_2</span>
       <h3>Usuarios</h3>
     </a>
-    <a href="${pageContext.request.contextPath}/cuacks">
-      <span class="material-icons-sharp">forum</span>
-      <h3>Cuacks</h3>
-    </a>
     <a href="${pageContext.request.contextPath}/tags">
       <span class="material-icons-sharp">style</span>
       <h3>Tags</h3>

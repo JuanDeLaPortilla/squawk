@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,7 +55,7 @@ public class SubmitServlet extends HttpServlet {
             switch (action) {
                 case "submit":
                     this.submit(request, response, cuackService, tagService, userService);
-                    getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                    getServletContext().getRequestDispatcher("/submit.jsp").forward(request, response);
                     break;
                 default:
                     this.defaultAction(request, response,tagService);
@@ -151,7 +152,7 @@ public class SubmitServlet extends HttpServlet {
         cuack.setStatus(1);
         cuack.setTitle(title);
         cuack.setEdited(isEdited);
-        cuack.setCreationDate(LocalDate.now());
+        cuack.setCreationDate(LocalDateTime.now());
         return cuack;
     }
 

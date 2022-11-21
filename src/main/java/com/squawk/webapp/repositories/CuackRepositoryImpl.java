@@ -18,22 +18,22 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
 
     @Override
     public List<Cuack> findAll() throws SQLException {
-        List<Cuack> cuack = new ArrayList<>();
+        List<Cuack> cuacks = new ArrayList<>();
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("select c.cuack_id, c.content, c.img, c.product_url," +
                      " c.rating, c.status as cuack_status, c.title, c.creation_date as " +
                      "cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* " +
                      "from cuacks as c inner join tags as t inner join users as u on c.tag_id = " +
-                     "t.tag_id and u.user_id = c.user_id order by creation_date desc")) {
+                     "t.tag_id and u.user_id = c.user_id order by c.creation_date desc")) {
             while (rs.next()) {
                 Cuack c = getCuack(rs);
-                cuack.add(c);
+                cuacks.add(c);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return cuack;
+        return cuacks;
     }
 
 
@@ -44,7 +44,7 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
                 "c.img, c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
                 "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* from " +
                 "cuacks as c inner join tags as t inner join users as u on c.tag_id = t.tag_id and " +
-                "u.user_id = c.user_id where c.cuack_id=? order by creation_date desc")) {
+                "u.user_id = c.user_id where c.cuack_id=? order by c.creation_date desc")) {
             stmt.setLong(1, id);
 
             try(ResultSet rs = stmt.executeQuery()){
@@ -57,13 +57,35 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     }
 
     @Override
+    public List<Cuack> findTopMonthly() throws SQLException {
+        List<Cuack> cuacks = new ArrayList<>();
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("select c.cuack_id, c.content, c.img, c.product_url," +
+                     " c.rating, c.status as cuack_status, c.title, c.creation_date as" +
+                     " cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.*" +
+                     " from cuacks as c inner join tags as t inner join users as u on c.tag_id" +
+                     " = t.tag_id and u.user_id = c.user_id where month(c.creation_date)" +
+                     " = month(CURRENT_DATE) and year(c.creation_date) = year(CURRENT_DATE)" +
+                     " order by c.rating desc LIMIT 6")) {
+            while (rs.next()) {
+                Cuack c = getCuack(rs);
+                cuacks.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cuacks;
+    }
+
+    @Override
     public List<Cuack> findByUserId(Long id) throws SQLException {
         List<Cuack> cuack = new ArrayList<>();
         try(PreparedStatement stmt = conn.prepareStatement("select c.cuack_id, c.content, " +
                 "c.img, c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
                 "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* from " +
                 "cuacks as c inner join tags as t inner join users as u on c.tag_id = t.tag_id and " +
-                "u.user_id = c.user_id where u.user_id=? order by creation_date desc")) {
+                "u.user_id = c.user_id where u.user_id=? order by c.creation_date desc")) {
             stmt.setLong(1, id);
 
             try(ResultSet rs = stmt.executeQuery()){
@@ -98,7 +120,7 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
             if (cuack.getCuackID() != null && cuack.getCuackID() > 0) {
                 stmt.setLong(10, cuack.getCuackID());
             } else {
-                stmt.setDate(10, Date.valueOf(cuack.getCreationDate()));
+                stmt.setTimestamp(10,Timestamp.valueOf(cuack.getCreationDate()));
             }
             stmt.executeUpdate();
         }
@@ -135,7 +157,7 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
         c.setRating(rs.getDouble("rating"));
         c.setStatus(rs.getInt("cuack_status"));
         c.setTitle(rs.getString("title"));
-        c.setCreationDate(rs.getDate("cuack_creation_date").toLocalDate());
+        c.setCreationDate(rs.getTimestamp("creation_date").toLocalDateTime());
         c.setEdited(rs.getInt("is_edited"));
 
         Tag t = new Tag();

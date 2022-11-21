@@ -19,7 +19,7 @@
         </div>
         <br>
         <input type="url" class="cuack-input" placeholder="A&ntilde;ade una url del producto" name="url"
-               style="margin-top: 0" required>
+               style="margin-top: 0">
         <br>
         <input type="hidden" value="${sessionScope.user.get().id}" name="idUser">
         <input type="submit" class="btn btn-primary" value="Publicar">

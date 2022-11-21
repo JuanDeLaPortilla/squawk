@@ -51,10 +51,10 @@
                     <c:choose>
                         <c:when test="${sessionScope.user.get().id != requestScope.user.id}">
                             <p style="font-size: medium; margin-top: 1rem;"><b>&iexcl;${requestScope.user.name}</b> no ha
-                                creado ning&uacute;n cuack todav&iacute;a :(!</p>
+                                creado ning&uacute;n cuack todav&iacute;a!</p>
                         </c:when>
                         <c:otherwise>
-                            <p style="font-size: medium; margin-top: 1rem;">&iexcl;No has creado ning&uacute;n cuack todav&iacute;a :(!</p>
+                            <p style="font-size: medium; margin-top: 1rem;">&iexcl;No has creado ning&uacute;n cuack todav&iacute;a!</p>
                         </c:otherwise>
                     </c:choose>
                 </div>
