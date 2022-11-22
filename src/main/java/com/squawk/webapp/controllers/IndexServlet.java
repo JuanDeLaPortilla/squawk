@@ -17,17 +17,7 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection conn = (Connection) request.getAttribute("conn");
         CuackService service = new CuackServiceImpl(conn);
-
-        String action = request.getParameter("action");
-        if (action != null) {
-            switch (action) {
-                default:
-                    this.defaultAction(request, response, service);
-                    break;
-            }
-        } else {
-            this.defaultAction(request, response, service);
-        }
+        this.defaultAction(request,response,service);
     }
 
     @Override
