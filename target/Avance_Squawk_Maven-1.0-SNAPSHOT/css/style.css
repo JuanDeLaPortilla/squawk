@@ -42,7 +42,6 @@
     list-style: none;
     border:none;
     color: var(--color-white);
-    min-width: 0;
 }
 
 body{
