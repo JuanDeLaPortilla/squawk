@@ -181,10 +181,10 @@
 </main>
 
 <!-- LOGIN -->
-<jsp:include page="/WEB-INF/pages/user/login.jsp"/>
+<jsp:include page="/WEB-INF/pages/user/login-signup/login.jsp"/>
 
 <!-- SIGN-UP -->
-<jsp:include page="/WEB-INF/pages/user/sign-up.jsp"/>
+<jsp:include page="/WEB-INF/pages/user/login-signup/sign-up.jsp"/>
 
 <!-- Conexiones con Js -->
 <script src="./js/white-theme.js"></script>

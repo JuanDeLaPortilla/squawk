@@ -50,7 +50,7 @@
 </main>
 
 <!-- SIGNUP + LOGIN FORM TAB-->
-<jsp:include page="/WEB-INF/pages/user/signup_login_form_tab.jsp"/>
+<jsp:include page="/WEB-INF/pages/user/login-signup/signup_login_form_tab.jsp"/>
 
 <!-- Conexiones con Js -->
 <script src="./js/white-theme.js"></script>

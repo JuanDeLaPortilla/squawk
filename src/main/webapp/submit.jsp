@@ -26,7 +26,7 @@
                             <h4>Crear un Cuack</h4>
                         </div>
                         <!-- SUBMIT FORM -->
-                        <jsp:include page="/WEB-INF/pages/user/submit_form.jsp"/>
+                        <jsp:include page="/WEB-INF/pages/user/cuacks/submit_form.jsp"/>
                     </div>
                 </div> 
                 <!-- RIGHT -->

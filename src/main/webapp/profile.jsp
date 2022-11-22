@@ -32,12 +32,12 @@
             </div>
         </div>
         <!-- RIGHT -->
-        <jsp:include page="/WEB-INF/pages/user/profile_info.jsp"/>
+        <jsp:include page="/WEB-INF/pages/user/profile/profile_info.jsp"/>
     </div>
 </main>
 
-<jsp:include page="/WEB-INF/pages/user/update_form.jsp"/>
-<jsp:include page="/WEB-INF/pages/user/profile_picture_form.jsp"/>
+<jsp:include page="/WEB-INF/pages/user/profile/update_form.jsp"/>
+<jsp:include page="/WEB-INF/pages/user/profile/profile_picture_form.jsp"/>
 
 <script src="./js/white-theme.js"></script>
 <script src="./js/modal-button.js"></script>
