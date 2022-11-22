@@ -180,15 +180,11 @@
     </div>
 </main>
 
-<!-- LOGIN -->
-<jsp:include page="/WEB-INF/pages/user/login-signup/login.jsp"/>
-
-<!-- SIGN-UP -->
-<jsp:include page="/WEB-INF/pages/user/login-signup/sign-up.jsp"/>
+<!-- SIGNUP + LOGIN FORM TAB-->
+<jsp:include page="/WEB-INF/pages/user/login-signup/signup_login_form_tab.jsp"/>
 
 <!-- Conexiones con Js -->
 <script src="./js/white-theme.js"></script>
-<script src="./js/modal-button-1.js?v=1"></script>
 <script src="./js/modal-button.js"></script>
 </body>
 </html>
