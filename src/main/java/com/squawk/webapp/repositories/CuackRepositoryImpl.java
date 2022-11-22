@@ -40,15 +40,15 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     @Override
     public Cuack findById(Long id) throws SQLException {
         Cuack cuack = null;
-        try(PreparedStatement stmt = conn.prepareStatement("select c.cuack_id, c.content, " +
+        try (PreparedStatement stmt = conn.prepareStatement("select c.cuack_id, c.content, " +
                 "c.img, c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
                 "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* from " +
                 "cuacks as c inner join tags as t inner join users as u on c.tag_id = t.tag_id and " +
                 "u.user_id = c.user_id where c.cuack_id=? order by c.creation_date desc")) {
             stmt.setLong(1, id);
 
-            try(ResultSet rs = stmt.executeQuery()){
-                if(rs.next()){
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
                     cuack = getCuack(rs);
                 }
             }
@@ -59,43 +59,46 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     @Override
     public List<Cuack> findTopMonthly() throws SQLException {
         List<Cuack> cuacks = new ArrayList<>();
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("select c.cuack_id, c.content, c.img, c.product_url," +
-                     " c.rating, c.status as cuack_status, c.title, c.creation_date as" +
-                     " cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.*" +
-                     " from cuacks as c inner join tags as t inner join users as u on c.tag_id" +
-                     " = t.tag_id and u.user_id = c.user_id where month(c.creation_date)" +
-                     " = month(CURRENT_DATE) and year(c.creation_date) = year(CURRENT_DATE)" +
-                     " order by c.rating desc LIMIT 6")) {
-            while (rs.next()) {
-                Cuack c = getCuack(rs);
-                cuacks.add(c);
+        try (PreparedStatement stmt = conn.prepareStatement("select c.cuack_id, c.content, c.img, c.product_url," +
+                " c.rating, c.status as cuack_status, c.title, c.creation_date as" +
+                " cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.*" +
+                " from cuacks as c inner join tags as t inner join users as u on c.tag_id" +
+                " = t.tag_id and u.user_id = c.user_id where month(c.creation_date)" +
+                " = month(CURRENT_DATE) and year(c.creation_date) = year(CURRENT_DATE)" +
+                " order by c.rating desc limit 6")) {
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Cuack c = getCuack(rs);
+                    cuacks.add(c);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
+        }
         return cuacks;
     }
 
     @Override
     public List<Cuack> findByUserId(Long id) throws SQLException {
-        List<Cuack> cuack = new ArrayList<>();
-        try(PreparedStatement stmt = conn.prepareStatement("select c.cuack_id, c.content, " +
+        List<Cuack> cuacks = new ArrayList<>();
+        try (PreparedStatement stmt = conn.prepareStatement("select c.cuack_id, c.content, " +
                 "c.img, c.product_url, c.rating, c.status as cuack_status, c.title, c.creation_date " +
                 "as cuack_creation_date, c.is_edited, t.tag_id, t.description as tag,u.* from " +
                 "cuacks as c inner join tags as t inner join users as u on c.tag_id = t.tag_id and " +
                 "u.user_id = c.user_id where u.user_id=? order by c.creation_date desc")) {
             stmt.setLong(1, id);
 
-            try(ResultSet rs = stmt.executeQuery()){
-                while (rs.next()){
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
                     Cuack c = getCuack(rs);
-                    cuack.add(c);
+                    cuacks.add(c);
                 }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
-        return cuack;
+        return cuacks;
     }
 
     @Override
@@ -120,7 +123,7 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
             if (cuack.getCuackID() != null && cuack.getCuackID() > 0) {
                 stmt.setLong(10, cuack.getCuackID());
             } else {
-                stmt.setTimestamp(10,Timestamp.valueOf(cuack.getCreationDate()));
+                stmt.setTimestamp(10, Timestamp.valueOf(cuack.getCreationDate()));
             }
             stmt.executeUpdate();
         }
@@ -129,12 +132,12 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     @Override
     public void delete(Long id) throws SQLException {
         String sql = "DELETE FROM cuacks WHERE cuack_id=?";
-        try(PreparedStatement stmt = conn.prepareStatement(sql)){
-            stmt.setLong(1,id);
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setLong(1, id);
             stmt.executeUpdate();
         }
     }
-    
+
     @Override
     public void uploadPicture(Long id, String img) throws SQLException {
         String sql;
@@ -146,7 +149,7 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
             stmt.executeUpdate();
         }
     }
-    
+
     private static Cuack getCuack(ResultSet rs) throws SQLException {
         Cuack c = new Cuack();
 

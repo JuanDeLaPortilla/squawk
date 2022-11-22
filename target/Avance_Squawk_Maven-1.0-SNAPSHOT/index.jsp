@@ -9,7 +9,7 @@
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=4.95"/>
+    <link rel="stylesheet" href="./css/style.css?v=4.98"/>
 </head>
 
 <body>
@@ -23,8 +23,8 @@
         <div class="middle">
 
             <!-- LAST CUACKS -->
+            <h1 style="margin: 1rem 0">Cuacks En Tendencia</h1>
             <jsp:include page="/WEB-INF/pages/user/stories.jsp"/>
-
             <!-- CREATE CUACK -->
             <c:if test="${sessionScope.user.present}">
                 <a class="create-post" href="${pageContext.request.contextPath}/submit">

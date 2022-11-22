@@ -42,6 +42,7 @@
     list-style: none;
     border:none;
     color: var(--color-white);
+    min-width: 0;
 }
 
 body{
@@ -270,7 +271,7 @@ main .container.two-rows{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: 2rem;
     background: var(--color-black);
     padding: 0.4rem var(--card-padding);
     border-radius: var(--border-radius);
@@ -298,7 +299,7 @@ main .container.two-rows{
     background: var(--color-black);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
-    margin: 1rem 0;
+    margin: 2rem 0;
     font-size: 0.85rem;
     line-height: 1.5;
 }

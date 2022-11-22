@@ -37,10 +37,10 @@ public class IndexServlet extends HttpServlet {
 
     private void defaultAction(HttpServletRequest req, HttpServletResponse resp, CuackService service) throws ServletException, IOException {
         List<Cuack> cuacks = service.findAll();
-        List<Cuack> tc = service.findTopMonthly();
-
         req.setAttribute("cuacks", cuacks);
-        req.setAttribute("tc", tc);
+
+        List<Cuack> stories = service.findTopMonthly();
+        req.setAttribute("stories",stories);
         getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }
