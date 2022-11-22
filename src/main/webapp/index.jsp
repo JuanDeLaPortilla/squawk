@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=5.11"/>
+    <link rel="stylesheet" href="./css/style.css?v=5.12"/>
 </head>
 
 <body>
