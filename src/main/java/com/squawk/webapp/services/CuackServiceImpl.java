@@ -25,6 +25,15 @@ public class CuackServiceImpl implements CuackService {
     }
 
     @Override
+    public List<Cuack> findAllLiked(Long id) {
+        try {
+            return repositoryJdbc.findAllLiked(id);
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Override
     public List<Cuack> findTopMonthly() {
         try {
             return repositoryJdbc.findTopMonthly();
@@ -41,11 +50,29 @@ public class CuackServiceImpl implements CuackService {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
-    
+
+    @Override
+    public List<Cuack> findByUserIdLiked(Long userId, Long sessionId) {
+        try {
+            return repositoryJdbc.findByUserIdLiked(userId,sessionId);
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
     @Override
     public Optional<Cuack> findById(Long id) {
         try {
             return Optional.ofNullable(repositoryJdbc.findById(id));
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Override
+    public Optional<Cuack> findByIdLiked(Long cuackId, Long sessionId) {
+        try {
+            return Optional.ofNullable(repositoryJdbc.findByIdLiked(cuackId, sessionId));
         } catch (SQLException e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }

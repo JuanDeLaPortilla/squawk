@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/69e84cf231.js" crossorigin="anonymous"></script>
 
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=5.16"/>
+    <link rel="stylesheet" href="./css/style.css?v=5.17"/>
 </head>
 
 <body>
@@ -60,8 +60,9 @@
 <script src="./js/modal-button.js"></script>
 <script src="./js/tab-form.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="./js/buttons-hover.js?v=1.37"></script>
+<script src="./js/buttons-hover.js"></script>
 <script src="./js/like.js"></script>
+<script src="${pageContext.request.contextPath}/js/like-click.js"></script>
 <script src="${pageContext.request.contextPath}/js/sessionWarning.js"></script>
 
 </body>

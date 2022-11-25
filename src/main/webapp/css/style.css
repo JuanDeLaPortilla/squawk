@@ -381,7 +381,7 @@ main .container.two-rows{
     transition: all 300ms ease;
 }
 
-.like{
+.like, .liked{
     cursor: pointer;
     transition: all 300ms ease;
     padding-right: 1.5rem;

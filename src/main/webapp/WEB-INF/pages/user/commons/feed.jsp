@@ -25,7 +25,14 @@
             <c:choose>
                 <c:when test="${sessionScope.user.present}">
                     <span onclick="doLike(${cuack.cuackID},${sessionScope.user.get().id})">
-                        <i class="like fa-regular fa-heart"></i>
+                        <c:choose>
+                            <c:when test="${cuack.liked == 1}">
+                                <i class="like fa-solid fa-heart"></i>
+                            </c:when>
+                            <c:otherwise>
+                                <i class="like fa-regular fa-heart"></i>
+                            </c:otherwise>
+                        </c:choose>
                     </span>
                 </c:when>
                 <c:otherwise>
@@ -42,6 +49,9 @@
 
     <div class="caption">
         <p><b>${cuack.user.name}</b> ${cuack.content}
-            <span class="harsh-tag"> <b> #${cuack.tag.desc}</b> </span></p>
+            <c:if test="${cuack.isEdited() == 1}">
+                <b><i>&nbsp;(Editado)</i></b>
+            </c:if>
+            <span class="harsh-tag"> <b>&nbsp;#${cuack.tag.desc}</b> </span></p>
     </div>
 </div>

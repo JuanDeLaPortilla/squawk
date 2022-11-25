@@ -2,10 +2,7 @@ package com.squawk.webapp.controllers;
 
 import com.squawk.webapp.models.Cuack;
 import com.squawk.webapp.models.User;
-import com.squawk.webapp.services.CuackService;
-import com.squawk.webapp.services.CuackServiceImpl;
-import com.squawk.webapp.services.UserService;
-import com.squawk.webapp.services.UserServiceImpl;
+import com.squawk.webapp.services.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -22,16 +19,17 @@ public class ProfileServlet extends HttpServlet {
         Connection conn = (Connection) request.getAttribute("conn");
         CuackService cuackService = new CuackServiceImpl(conn);
         UserService userService = new UserServiceImpl(conn);
+        LoginService loginService = new LoginServiceImpl();
 
         String action = request.getParameter("action");
         if (action != null) {
             switch (action) {
                 default:
-                    this.defaultAction(request, response, cuackService, userService);
+                    this.defaultAction(request, response, cuackService, userService, loginService);
                     break;
             }
         } else {
-            this.defaultAction(request, response, cuackService, userService);
+            this.defaultAction(request,response,cuackService,userService, loginService);
         }
     }
 
@@ -40,16 +38,26 @@ public class ProfileServlet extends HttpServlet {
 
     }
 
-    private void defaultAction(HttpServletRequest req, HttpServletResponse resp, CuackService cuackService, UserService userService) throws ServletException, IOException {
-        String userIdStr;
-        try {
-            userIdStr = req.getParameter("id");
-        } catch (NullPointerException e) {
-            userIdStr = "";
-        }
-        long userId = getId(userIdStr);
+    private void defaultAction(HttpServletRequest req, HttpServletResponse resp, CuackService cuackService, UserService userService, LoginService loginService) throws ServletException, IOException {
+        Optional<User> sessionUser = loginService.getUser(req);
+        try{
+            if (sessionUser.isPresent()) {
+                Long sessionId = sessionUser.get().getId();
 
-        List<Cuack> cuacks = cuackService.findByUserId(userId);
+                long userId = getUserId(req);
+
+                List<Cuack> cuacks = cuackService.findByUserIdLiked(userId,sessionId);
+                redirectToJsp(req, resp, userService, userId, cuacks);
+            }
+        }catch (NullPointerException e){
+            long userId = getUserId(req);
+
+            List<Cuack> cuacks = cuackService.findByUserId(userId);
+            redirectToJsp(req, resp, userService, userId, cuacks);
+        }
+    }
+
+    private void redirectToJsp(HttpServletRequest req, HttpServletResponse resp, UserService userService, long userId, List<Cuack> cuacks) throws ServletException, IOException {
         req.setAttribute("cuacks", cuacks);
 
         User user = new User();
@@ -60,13 +68,19 @@ public class ProfileServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/profile.jsp").forward(req, resp);
     }
 
-    private static long getId(String idString) {
-        long id;
+    private static long getUserId(HttpServletRequest req) {
+        String userIdStr;
         try {
-            id = Long.parseLong(idString);
-        } catch (NumberFormatException | NullPointerException e) {
-            id = 0L;
+            userIdStr = req.getParameter("id");
+        } catch (NullPointerException e) {
+            userIdStr = "";
         }
-        return id;
+        long userId;
+        try {
+            userId = Long.parseLong(userIdStr);
+        } catch (NumberFormatException | NullPointerException e) {
+            userId = 0L;
+        }
+        return userId;
     }
 }

@@ -1,8 +1,11 @@
 package com.squawk.webapp.controllers;
 
 import com.squawk.webapp.models.Cuack;
+import com.squawk.webapp.models.User;
 import com.squawk.webapp.services.CuackService;
 import com.squawk.webapp.services.CuackServiceImpl;
+import com.squawk.webapp.services.LoginService;
+import com.squawk.webapp.services.LoginServiceImpl;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -10,6 +13,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
+import java.util.Optional;
 
 @WebServlet(name = "Index", value = "/index")
 public class IndexServlet extends HttpServlet {
@@ -17,7 +21,18 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection conn = (Connection) request.getAttribute("conn");
         CuackService service = new CuackServiceImpl(conn);
-        this.defaultAction(request,response,service);
+        LoginService loginService = new LoginServiceImpl();
+
+        Optional<User> user = loginService.getUser(request);
+
+        try{
+            if (user.isPresent()) {
+                Long id = user.get().getId();
+                this.loginAction(request,response,service,id);
+            }
+        }catch (NullPointerException e){
+            this.defaultAction(request,response,service);
+        }
     }
 
     @Override
@@ -30,7 +45,16 @@ public class IndexServlet extends HttpServlet {
         req.setAttribute("cuacks", cuacks);
 
         List<Cuack> stories = service.findTopMonthly();
-        req.setAttribute("stories",stories);
+        req.setAttribute("stories", stories);
+        getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+    }
+
+    private void loginAction(HttpServletRequest req, HttpServletResponse resp, CuackService service, Long id) throws ServletException, IOException {
+        List<Cuack> cuacks = service.findAllLiked(id);
+        req.setAttribute("cuacks", cuacks);
+
+        List<Cuack> stories = service.findTopMonthly();
+        req.setAttribute("stories", stories);
         getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }

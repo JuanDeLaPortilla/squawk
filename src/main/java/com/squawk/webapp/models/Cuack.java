@@ -18,8 +18,8 @@ public class Cuack{
     private String title;
     private LocalDateTime creationDate;
     private int isEdited;
-
     private int likes;
+    private int liked;
 
     //Constructor
     public Cuack() {
@@ -109,5 +109,13 @@ public class Cuack{
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public int getLiked() {
+        return liked;
+    }
+
+    public void setLiked(int liked) {
+        this.liked = liked;
     }
 }
