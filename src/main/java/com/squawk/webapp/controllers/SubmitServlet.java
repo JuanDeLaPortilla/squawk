@@ -148,7 +148,6 @@ public class SubmitServlet extends HttpServlet {
         cuack.setContent(content);
         cuack.setImg(img);
         cuack.setUrl(url);
-        cuack.setRating(0D);
         cuack.setStatus(1);
         cuack.setTitle(title);
         cuack.setEdited(isEdited);

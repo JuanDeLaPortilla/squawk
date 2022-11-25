@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
+    <script src="https://kit.fontawesome.com/69e84cf231.js" crossorigin="anonymous"></script>
+
     <!-- Conexion con CSS -->
     <link rel="stylesheet" href="./css/style.css?v=1.2"/>
 </head>
@@ -24,7 +25,9 @@
         <div class="middle">
 
             <!-- CUACK -->
-            <jsp:include page="/WEB-INF/pages/user/cuack/feed.jsp"/>
+            <div class="feeds">
+                <jsp:include page="/WEB-INF/pages/user/commons/feed.jsp"/>
+            </div>
         </div>
         <div></div>
     </div>
@@ -32,8 +35,9 @@
 
 <!-- Conexiones con Js -->
 <script src="${pageContext.request.contextPath}/js/white-theme.js"></script>
-<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
-<script src="${pageContext.request.contextPath}/js/comment-hover.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/buttons-hover.js"></script>
+<script src="${pageContext.request.contextPath}/js/like.js"></script>
+<script src="${pageContext.request.contextPath}/js/sessionWarning.js"></script>
 </body>
 </html>

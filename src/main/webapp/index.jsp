@@ -9,8 +9,10 @@
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
+    <script src="https://kit.fontawesome.com/69e84cf231.js" crossorigin="anonymous"></script>
+
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=5.12"/>
+    <link rel="stylesheet" href="./css/style.css?v=5.16"/>
 </head>
 
 <body>
@@ -57,8 +59,10 @@
 <script src="./js/white-theme.js"></script>
 <script src="./js/modal-button.js"></script>
 <script src="./js/tab-form.js"></script>
-<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
-<script src="./js/comment-hover.js?v=1.31"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="./js/buttons-hover.js?v=1.37"></script>
+<script src="./js/like.js"></script>
+<script src="${pageContext.request.contextPath}/js/sessionWarning.js"></script>
 
 </body>
 </html>

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <!-- Conexcion con CSS -->
     <link rel="stylesheet" href="./css/style.css?v=15.2"/>
+    <script src="https://kit.fontawesome.com/69e84cf231.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <!-- HEADER -->
@@ -43,5 +45,10 @@
 <script src="./js/modal-button.js"></script>
 <script src="./js/modal-button-1.js"></script>
 <script src="./js/preview-image.js?v=6"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="./js/buttons-hover.js"></script>
+<script src="./js/like.js"></script>
+<script src="${pageContext.request.contextPath}/js/sessionWarning.js"></script>
+
 </body>
 </html>

@@ -14,28 +14,14 @@ public class Cuack{
     private String content;
     private String img;
     private String url;
-    private double rating;
     private int status;
     private String title;
     private LocalDateTime creationDate;
     private int isEdited;
 
+    private int likes;
+
     //Constructor
-
-    public Cuack(Long cuackID, User user, Tag tag, String content, String img, String url, double rating, int status, String title, LocalDateTime creationDate, int isEdited) {
-        this.cuackID = cuackID;
-        this.user = user;
-        this.tag = tag;
-        this.content = content;
-        this.img = img;
-        this.url = url;
-        this.rating = rating;
-        this.status = status;
-        this.title = title;
-        this.creationDate = creationDate;
-        this.isEdited = isEdited;
-    }
-
     public Cuack() {
     }
 
@@ -89,14 +75,6 @@ public class Cuack{
         this.url = url;
     }
 
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
     public int getStatus() {
         return status;
     }
@@ -125,4 +103,11 @@ public class Cuack{
 
     public void setEdited(int edited) {this.isEdited = edited;}
 
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
 }

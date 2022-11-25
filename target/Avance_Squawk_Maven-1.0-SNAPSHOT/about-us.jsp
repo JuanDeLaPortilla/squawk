@@ -186,5 +186,7 @@
 <!-- Conexiones con Js -->
 <script src="./js/white-theme.js"></script>
 <script src="./js/modal-button.js"></script>
+<script src="./js/tab-form.js"></script>
+
 </body>
 </html>

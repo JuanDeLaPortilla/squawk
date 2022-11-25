@@ -351,7 +351,7 @@ main .container.two-rows{
     justify-content: space-between;
     align-items: center;
     font-size: 1.4rem;
-    margin: 0.6rem;
+    margin: 0.6rem 0;
 }
 
 .middle .liked-by{
@@ -381,12 +381,17 @@ main .container.two-rows{
     transition: all 300ms ease;
 }
 
-.comment{
+.like{
+    cursor: pointer;
     transition: all 300ms ease;
+    padding-right: 1.5rem;
 }
 
-.comment:hover{
+.fa-solid:before{
     color: var(--color-primary);
+}
+
+.comment{
     transition: all 300ms ease;
 }
 
