@@ -34,14 +34,18 @@
     </div>
 </main>
 
+<jsp:include page="/WEB-INF/pages/user/login-signup/signup_login_form_tab.jsp"/>
+
 <!-- Conexiones con Js -->
 <script src="${pageContext.request.contextPath}/js/white-theme.js"></script>
+<script src="${pageContext.request.contextPath}/js/tab-form.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/buttons-hover.js"></script>
-<script src="${pageContext.request.contextPath}/js/like.js"></script>
 <script src="${pageContext.request.contextPath}/js/sessionWarning.js"></script>
-<script src="${pageContext.request.contextPath}/js/like-click.js"></script>
-<jsp:include page="/WEB-INF/pages/user/login-signup/signup_login_form_tab.jsp"/>
+<c:if test="${sessionScope.user.isPresent()}">
+    <script src="${pageContext.request.contextPath}/js/like.js"></script>
+    <script src="${pageContext.request.contextPath}/js/like-click.js"></script>
+</c:if>
 
 </body>
 </html>

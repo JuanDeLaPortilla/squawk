@@ -43,7 +43,7 @@
 <script src="${pageContext.request.contextPath}/js/buttons-hover.js"></script>
 <script src="${pageContext.request.contextPath}/js/sessionWarning.js"></script>
 <c:if test="${sessionScope.user.isPresent()}">
-    <script src="./js/like.js"></script>
+    <script src="${pageContext.request.contextPath}/js/like.js"></script>
     <script src="${pageContext.request.contextPath}/js/like-click.js"></script>
 </c:if>
 
