@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
     <script src="https://kit.fontawesome.com/69e84cf231.js" crossorigin="anonymous"></script>
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=5.17"/>
+    <link rel="stylesheet" href="./css/style.css?v=5.18"/>
     <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
 
@@ -25,9 +25,9 @@
         <!-- MIDDLE -->
         <div class="middle">
 
-            <!-- LAST CUACKS -->
-            <h1 style="margin: 1rem 0">Cuacks En Tendencia</h1>
-            <jsp:include page="/WEB-INF/pages/user/stories.jsp"/>
+            <!-- TOP CUACKS -->
+            <jsp:include page="/WEB-INF/pages/user/top-cuacks.jsp"/>
+
             <!-- CREATE CUACK -->
             <c:if test="${sessionScope.user.present}">
                 <a class="create-post" href="${pageContext.request.contextPath}/submit">
@@ -45,6 +45,7 @@
                     <label class="btn btn-primary">Crear</label>
                 </a>
             </c:if>
+
             <!-- FEEDS -->
             <jsp:include page="/WEB-INF/pages/user/feeds.jsp"/>
         </div>
@@ -61,9 +62,11 @@
 <script src="./js/tab-form.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./js/buttons-hover.js"></script>
-<script src="./js/like.js"></script>
-<script src="${pageContext.request.contextPath}/js/like-click.js"></script>
 <script src="${pageContext.request.contextPath}/js/sessionWarning.js"></script>
+<c:if test="${sessionScope.user.isPresent()}">
+    <script src="./js/like.js"></script>
+    <script src="${pageContext.request.contextPath}/js/like-click.js"></script>
+</c:if>
 
 </body>
 </html>

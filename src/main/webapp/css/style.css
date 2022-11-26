@@ -222,6 +222,16 @@ main .container.two-rows{
 }
 
 /*========================MIDDLE==========================*/
+.middle .top-cuacks{
+    background: var(--color-black);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+}
+
+.middle .top-cuacks h1{
+    margin: 1rem 0;
+}
+
 .middle .stories{
     display: flex;
     justify-content: space-between;

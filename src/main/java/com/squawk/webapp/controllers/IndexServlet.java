@@ -25,13 +25,13 @@ public class IndexServlet extends HttpServlet {
 
         Optional<User> user = loginService.getUser(request);
 
-        try{
+        try {
             if (user.isPresent()) {
                 Long id = user.get().getId();
-                this.loginAction(request,response,service,id);
+                this.loginAction(request, response, service, id);
             }
-        }catch (NullPointerException e){
-            this.defaultAction(request,response,service);
+        } catch (NullPointerException e) {
+            this.defaultAction(request, response, service);
         }
     }
 
@@ -42,15 +42,15 @@ public class IndexServlet extends HttpServlet {
 
     private void defaultAction(HttpServletRequest req, HttpServletResponse resp, CuackService service) throws ServletException, IOException {
         List<Cuack> cuacks = service.findAll();
-        req.setAttribute("cuacks", cuacks);
-
-        List<Cuack> stories = service.findTopMonthly();
-        req.setAttribute("stories", stories);
-        getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+        redirectToJsp(req, resp, service, cuacks);
     }
 
     private void loginAction(HttpServletRequest req, HttpServletResponse resp, CuackService service, Long id) throws ServletException, IOException {
         List<Cuack> cuacks = service.findAllLiked(id);
+        redirectToJsp(req, resp, service, cuacks);
+    }
+
+    private void redirectToJsp(HttpServletRequest req, HttpServletResponse resp, CuackService service, List<Cuack> cuacks) throws ServletException, IOException {
         req.setAttribute("cuacks", cuacks);
 
         List<Cuack> stories = service.findTopMonthly();

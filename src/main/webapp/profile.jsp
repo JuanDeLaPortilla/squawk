@@ -50,15 +50,17 @@
 </c:choose>
 
 <script src="./js/white-theme.js"></script>
+<script src="./js/tab-form.js"></script>
 <script src="./js/modal-button.js"></script>
 <script src="./js/modal-button-1.js"></script>
 <script src="./js/preview-image.js?v=6"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./js/buttons-hover.js"></script>
-<script src="./js/like.js"></script>
 <script src="${pageContext.request.contextPath}/js/sessionWarning.js"></script>
-<script src="${pageContext.request.contextPath}/js/like-click.js"></script>
-<script src="./js/tab-form.js"></script>
+<c:if test="${sessionScope.user.isPresent()}">
+    <script src="./js/like.js"></script>
+    <script src="${pageContext.request.contextPath}/js/like-click.js"></script>
+</c:if>
 
 
 </body>
