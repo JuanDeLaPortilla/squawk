@@ -242,7 +242,7 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
         c.setUrl(rs.getString("product_url"));
         c.setStatus(rs.getInt("cuack_status"));
         c.setTitle(rs.getString("title"));
-        c.setCreationDate(rs.getTimestamp("creation_date").toLocalDateTime());
+        c.setCreationDate(rs.getTimestamp("cuack_creation_date").toLocalDateTime());
         c.setEdited(rs.getInt("is_edited"));
         c.setLikes(rs.getInt("likes"));
 
