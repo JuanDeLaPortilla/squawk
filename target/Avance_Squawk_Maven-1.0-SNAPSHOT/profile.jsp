@@ -10,7 +10,7 @@
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <!-- Conexcion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=15.3"/>
+    <link rel="stylesheet" href="./css/style.css?v=15.42"/>
     <script src="https://kit.fontawesome.com/69e84cf231.js" crossorigin="anonymous"></script>
     <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>

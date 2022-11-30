@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/69e84cf231.js" crossorigin="anonymous"></script>
 
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=1.3"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=1.4"/>
     <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
 
@@ -20,17 +20,23 @@
 <jsp:include page="/WEB-INF/pages/user/commons/header.jsp"/>
 <!-- MAIN -->
 <main>
-    <div class="container">
+    <div class="container two-rows">
         <div></div>
         <!-- MIDDLE -->
         <div class="middle">
-
-            <!-- CUACK -->
-            <div class="feeds">
-                <jsp:include page="/WEB-INF/pages/user/commons/feed.jsp"/>
+            <div class="submit-cuack">
+                <!-- CUACK -->
+                <div class="feeds">
+                    <jsp:include page="/WEB-INF/pages/user/commons/feed.jsp"/>
+                </div>
             </div>
         </div>
-        <div></div>
+        <!-- RIGHT -->
+        <div class="right">
+            <div class="profile-info">
+                <jsp:include page="/WEB-INF/pages/user/cuack/disqus_comment_section.jsp"/>
+            </div>
+        </div>
     </div>
 </main>
 
@@ -46,6 +52,7 @@
     <script src="${pageContext.request.contextPath}/js/like.js"></script>
     <script src="${pageContext.request.contextPath}/js/like-click.js"></script>
 </c:if>
+<script id="dsq-count-scr" src="//squawk-1.disqus.com/count.js" async></script>
 
 </body>
 </html>

@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
-:root{
+:root {
     --color-white: hsl(252, 30%, 100%);
     --color-light: hsl(252, 30%, 95%);
-    --color-light-2: rgba(0,0,0,0.4);
+    --color-light-2: rgba(0, 0, 0, 0.4);
     --color-gray: hsl(240, 2%, 65%);
     --color-primary: hsl(252, 75%, 60%);
     --color-secondary: hsl(252, 100%, 90%);
@@ -25,40 +25,40 @@
     --sticky-top-right: 5.4rem;
 }
 
-.dark-theme-variables{
+.dark-theme-variables {
     --color-white: hsl(252, 30%, 0%);
     --color-black: hsl(252, 30%, 100%);
     --color-dark: hsl(252, 30%, 95%);
     --color-light: hsl(240, 2%, 9%);
     --color-light-dark: hsl(240, 2%, 100%);
-    --color-light-2: rgba(132,139,200,0.18);
+    --color-light-2: rgba(132, 139, 200, 0.18);
 }
 
-*, *::before, *::after{
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    border:none;
+    border: none;
     color: var(--color-white);
     min-width: 0;
 }
 
-body{
+body {
     font-family: 'Poppins', sans-serif;
-    color:var(--color-dark);
+    color: var(--color-dark);
     background: var(--color-dark);
     overflow-x: hidden;
 }
 
 /*GENERAL STYLES*/
-.container{
-    width:80%;
+.container {
+    width: 80%;
     margin: 0 auto;
 }
 
-.profile-photo{
+.profile-photo {
     display: flex;
     width: 2.7rem;
     aspect-ratio: 1/1;
@@ -66,18 +66,18 @@ body{
     overflow: hidden;
 }
 
-.logo{
+.logo {
     width: 2.5rem;
     aspect-ratio: 1/1;
     overflow: hidden;
 }
 
-img{
+img {
     display: block;
     width: 100%;
 }
 
-.btn{
+.btn {
     display: inline-block;
     padding: var(--btn-padding);
     font-weight: 500;
@@ -87,36 +87,36 @@ img{
     font-size: 0.9rem;
 }
 
-.log{
-    cursor:pointer;
+.log {
+    cursor: pointer;
     display: inline-flex;
-    gap:1rem;
+    gap: 1rem;
 }
 
 .btn:hover {
     opacity: 0.8;
 }
 
-.btn-primary{
-    background:var(--color-primary);
+.btn-primary {
+    background: var(--color-primary);
     color: white;
 }
 
-.text-bold{
+.text-bold {
     font-weight: 500;
 }
 
-.text-muted{
+.text-muted {
     color: var(--color-gray);
 }
 
-.text-white{
-    color:#FFFFFF;
+.text-white {
+    color: #FFFFFF;
 }
 
 /*========================NAVBAR==========================*/
 
-nav{
+nav {
     width: 100%;
     background: var(--color-black);
     padding: 0.7rem 0;
@@ -125,19 +125,19 @@ nav{
     z-index: 10;
 }
 
-nav .container{
+nav .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-nav .search-bar{
+nav .search-bar {
     background: var(--color-dark);
     border-radius: var(--border-radius);
     padding: var(--search-padding);
 }
 
-nav .search-bar input[type="search"]{
+nav .search-bar input[type="search"] {
     background: transparent;
     width: 30vw;
     margin-left: 1rem;
@@ -147,29 +147,30 @@ nav .search-bar input[type="search"]{
     outline: none;
 }
 
-nav .search-bar input[type="search"]::placeholder{
+nav .search-bar input[type="search"]::placeholder {
     color: var(--color-gray);
 }
 
-nav .create{
+nav .create {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
+
 /*========================USER MENU=====================*/
-summary{
+summary {
     cursor: pointer;
 }
 
-summary:focus, summary:hover{
+summary:focus, summary:hover {
     border: 2.5px var(--color-primary) solid;
 }
 
-details[open] summary ~ *{
+details[open] summary ~ * {
     animation: sweep .5s ease-in-out;
 }
 
-.user-menu{
+.user-menu {
     margin-top: 0.75rem;
     position: fixed;
     background: var(--color-light-dark);
@@ -178,69 +179,70 @@ details[open] summary ~ *{
     font-size: 0.90rem;
 }
 
-.user-menu > li{
+.user-menu > li {
     display: block;
     position: relative;
     padding: 0.5rem;
     cursor: pointer;
 }
 
-.user-menu > li:hover{
+.user-menu > li:hover {
     opacity: 0.8;
 }
 
-.user-menu > li i{
+.user-menu > li i {
     margin-right: 0.5rem;
     font-size: 1rem;
 }
 
-@keyframes sweep{
-    from{
+@keyframes sweep {
+    from {
         opacity: 0;
         margin-top: -10px;
     }
-    to{
+    to {
         opacity: 1;
         margin-top: 0.75rem;
     }
 }
+
 /*========================MAIN==========================*/
-main{
+main {
     position: relative;
     top: 5.4rem;
 }
 
-main .container{
+main .container {
     display: grid;
     position: relative;
     width: 45rem;
 }
 
-main .container.two-rows{
+main .container.two-rows {
     grid-template-columns: 1vh auto 20vw;
     column-gap: 2rem;
     width: 65vw;
 }
 
 /*========================MIDDLE==========================*/
-.middle .top-cuacks{
+.middle .top-cuacks {
     background: var(--color-black);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
 }
 
-.middle .top-cuacks h1{
+.middle .top-cuacks h1 {
     margin: 1rem 0;
 }
 
-.middle .stories{
+.middle .stories {
     display: inline-flex;
     justify-content: space-between;
     gap: 0.5rem;
     height: 12rem;
 }
 
-.middle .stories .story{
+.middle .stories .story {
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
     display: flex;
@@ -254,12 +256,12 @@ main .container.two-rows{
     transition: all 300ms ease;
 }
 
-.middle .stories .story::before{
+.middle .stories .story::before {
     content: "";
     display: block;
     width: 100%;
     height: 5rem;
-    background: linear-gradient(transparent,rgba(0,0,0,0.75));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
     position: absolute;
     bottom: 0;
 }
@@ -269,12 +271,12 @@ main .container.two-rows{
     transform: scale(101%);
 }
 
-.middle .stories .story .name{
+.middle .stories .story .name {
     z-index: 2;
     color: white;
 }
 
-.middle .story .profile-photo{
+.middle .story .profile-photo {
     width: 2rem;
     height: 2rem;
     align-self: start;
@@ -282,7 +284,7 @@ main .container.two-rows{
 }
 
 /*========================CREAR CUACK=============*/
-.middle .create-post{
+.middle .create-post {
     width: 100%;
     display: flex;
     align-items: center;
@@ -293,7 +295,7 @@ main .container.two-rows{
     border-radius: var(--border-radius);
 }
 
-.middle .create-post p{
+.middle .create-post p {
     justify-self: start;
     width: 100%;
     padding-left: 1rem;
@@ -302,20 +304,22 @@ main .container.two-rows{
     margin-right: 1rem;
     font-size: small;
 }
-.middle .create-post:hover{
+
+.middle .create-post:hover {
     opacity: 0.6;
     transition: all 300ms ease;
 }
 
-.middle .create-post .btn{
+.middle .create-post .btn {
     width: 7.25rem;
 }
 
-.middle .create-post .btn.btn-primary:hover{
+.middle .create-post .btn.btn-primary:hover {
     opacity: initial;
 }
+
 /* ============================FEEDS=====================*/
-.middle .feeds .feed{
+.middle .feeds .feed {
     background: var(--color-black);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
@@ -324,22 +328,26 @@ main .container.two-rows{
     line-height: 1.5;
 }
 
-.middle .feed .head{
+.middle .submit-cuack .feeds .feed{
+    margin: 0;
+}
+
+.middle .feed .head {
     display: flex;
     justify-content: space-between;
 }
 
-.middle .feed .user{
+.middle .feed .user {
     display: flex;
     gap: 1rem;
 }
 
-.middle .feed .head .user .profile-photo{
+.middle .feed .head .user .profile-photo {
     height: 3rem;
     width: 3rem;
 }
 
-.middle .feed .head .user .ingo{
+.middle .feed .head .user .ingo {
     display: inline-flex;
     flex-direction: column;
 }
@@ -348,20 +356,20 @@ main .container.two-rows{
     font-size: x-large;
 }
 
-.middle .feed .photo{
+.middle .feed .photo {
     overflow: hidden;
     margin: 0.7rem 0;
     text-align: center;
 }
 
-.middle .feed .photo img{
+.middle .feed .photo img {
     display: inline;
     max-height: 30rem;
     width: auto;
     border-radius: var(--border-radius);
 }
 
-.middle .feed .action-button{
+.middle .feed .action-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -369,11 +377,11 @@ main .container.two-rows{
     margin: 0.6rem 0;
 }
 
-.middle .liked-by{
+.middle .liked-by {
     display: flex;
 }
 
-.middle .liked-by span{
+.middle .liked-by span {
     width: 1.4rem;
     height: 1.4rem;
     display: block;
@@ -383,42 +391,41 @@ main .container.two-rows{
     margin-left: -0.6rem;
 }
 
-.middle .liked-by span:first-child{
+.middle .liked-by span:first-child {
     margin: 0;
 }
 
-.middle.liked-by p{
+.middle.liked-by p {
     margin-left: 0.5rem;
 }
 
-.middle .feed .head .user .profile-photo:hover{
+.middle .feed .head .user .profile-photo:hover {
     opacity: 0.6;
     transition: all 300ms ease;
 }
 
-.like, .liked{
+.like, .liked {
     cursor: pointer;
     transition: all 300ms ease;
     padding-right: 1.5rem;
 }
 
-.fa-solid:before{
+.fa-solid:before {
     color: var(--color-primary);
 }
 
-.comment{
+.comment {
     transition: all 300ms ease;
 }
 
 /*========================ABOUT US======================*/
-.about-us{
+.about-us {
     padding: var(--card-padding);
 
 }
 
-#our-team,#about-us,#our-purpouse-vision,#our-values,#privacy-policy,#ur-info,#profile-info,#info-send,#actions,#other-info{
+.about-us > div{
     padding: var(--card-padding);
-    margin: 1rem 0;
     background: var(--color-black);
     border-radius: var(--card-border-radius);
     margin-bottom: 1.5rem;
@@ -441,7 +448,7 @@ main .container.two-rows{
     text-align: justify;
 }
 
-.about-us h1{
+.about-us h1 {
     font-size: xx-large;
     text-align: center;
     padding-bottom: 0.75rem;
@@ -473,7 +480,7 @@ main .container.two-rows{
     padding: 0.95rem 0;
 }
 
-.team-col .age{
+.team-col .age {
     color: var(--color-gray);
     padding: 0 0;
     margin-top: -0.30rem;
@@ -485,7 +492,7 @@ main .container.two-rows{
         padding: 0.5rem 2px;
     }
 
-    .team-col img{
+    .team-col img {
         width: 70%
     }
 }
@@ -503,11 +510,11 @@ main .container.two-rows{
         order: 2;
     }
 
-    .team-col h2, .team-col p{
+    .team-col h2, .team-col p {
         text-align: center;
     }
-    
-    .team-col img{
+
+    .team-col img {
         width: 50%
     }
 }
@@ -516,20 +523,20 @@ main .container.two-rows{
 MEDIA QUERIES FOR SMALL LAPTOPS AND BIG TABLETS
 ================================================= */
 
-@media screen and (max-width: 1200px){
-    .container{
+@media screen and (max-width: 1200px) {
+    .container {
         width: 96%;
     }
 
-    main .container{
+    main .container {
         width: 80vw;
     }
 
-    .user-menu{
+    .user-menu {
         right: 2vw;
     }
 
-    main .container.two-rows{
+    main .container.two-rows {
         grid-template-columns: 0 auto 25vw;
         column-gap: 2rem;
         width: 90vw;
@@ -540,34 +547,34 @@ MEDIA QUERIES FOR SMALL LAPTOPS AND BIG TABLETS
 MEDIA QUERIES FOR PHONES
 ================================================= */
 
-@media screen and (max-width: 900px){
-    .container{
+@media screen and (max-width: 900px) {
+    .container {
         width: 90%;
     }
 
-    nav .search-bar{
+    nav .search-bar {
         display: none;
     }
 
-    main .container{
+    main .container {
         grid-template-columns: 0 auto 0;
         width: 100vw;
     }
 
-    body{
+    body {
         width: 80vw;
     }
 }
 
-@media screen and (max-width: 700px){
-    .log img{
+@media screen and (max-width: 700px) {
+    .log img {
         display: none;
     }
 }
 
 /*=============MODAL===========*/
 
-.pop-up{
+.pop-up {
     display: none;
     background-color: rgba(0, 0, 0, 0.70);
     width: 100vw;
@@ -581,13 +588,13 @@ MEDIA QUERIES FOR PHONES
     transition: all 300ms ease;
 }
 
-.pop-up.inserted{
+.pop-up.inserted {
     display: flex;
     width: auto;
     height: auto;
     position: relative;
-    top:auto;
-    left:auto;
+    top: auto;
+    left: auto;
     z-index: auto;
     align-items: center;
     justify-content: center;
@@ -598,7 +605,6 @@ MEDIA QUERIES FOR PHONES
     padding: 2rem;
     border-radius: 1rem;
     width: 45rem;
-    height: -webkit-fill-available;
     margin: 5rem auto;
 }
 
@@ -616,11 +622,11 @@ MEDIA QUERIES FOR PHONES
     padding: 0.70rem 0.70rem;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    margin: 1.1rem;
+    margin: 1.1rem 0;
     transition: border-width 0.2s ease;
     border-radius: var(--border-radius-input);
     background: var(--color-dark);
-    color:var(--color-white);
+    color: var(--color-white);
 }
 
 .pop-up .card .login-input::placeholder {
@@ -634,16 +640,16 @@ MEDIA QUERIES FOR PHONES
     margin-top: 0.75rem;
 }
 
-.pop-up .card .default-text{
+.pop-up .card .default-text {
     font-size: large;
     font-family: 'Poppins', sans-serif;
-    color:var(--color-white);
+    color: var(--color-white);
     display: flex;
     align-items: center;
     justify-content: center
 }
 
-.pop-up .card .default-text i{
+.pop-up .card .default-text i {
     font-size: x-large;
 }
 
@@ -669,7 +675,11 @@ MEDIA QUERIES FOR PHONES
 }
 
 /*=========================TAB FORM=======================*/
-.tab-form .tab-header{
+.pop-up.tab-form .card {
+    height: -webkit-fill-available;
+}
+
+.tab-form .tab-header {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -680,53 +690,53 @@ MEDIA QUERIES FOR PHONES
     margin-bottom: 1rem;
 }
 
-.tab-form .tab-header > div{
-    flex:1;
+.tab-form .tab-header > div {
+    flex: 1;
     padding: 1rem;
     text-align: center;
     cursor: pointer;
     transition: opacity 300ms ease-in-out 0ms;
 }
 
-.tab-form .tab-header > div:hover{
+.tab-form .tab-header > div:hover {
     opacity: 0.6;
     transition: all 300ms ease;
 }
 
-.tab-form .tab-header > div.active{
+.tab-form .tab-header > div.active {
     border-radius: var(--border-radius);
     background: var(--color-primary);
 }
 
-.tab-form .tab-body{
+.tab-form .tab-body {
     position: relative;
 }
 
-.tab-form .tab-body > div{
+.tab-form .tab-body > div {
     position: absolute;
     width: 100%;
-    top:-150vh;
+    top: -150vh;
     opacity: 0;
     transition: opacity 300ms ease-in-out 0ms;
 }
 
-.tab-form .tab-body > div.active{
-    top:0;
+.tab-form .tab-body > div.active {
+    top: 0;
     opacity: 1;
     transition: opacity 300ms ease-in-out 0ms;
 }
 
 /*=========================CREATE CUACK FORM==============*/
-.middle .submit-cuack{
+.middle .submit-cuack {
     padding: var(--card-padding);
     margin: 1rem 0;
 }
 
-.middle .submit-cuack h4{
+.middle .submit-cuack h4 {
     font-size: x-large;
 }
 
-.middle .submit-cuack .submit-form{
+.middle .submit-cuack .submit-form {
     background: var(--color-black);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
@@ -735,7 +745,7 @@ MEDIA QUERIES FOR PHONES
     line-height: 1.5;
 }
 
-.middle .submit-cuack .submit-form .cuack-input{
+.middle .submit-cuack .submit-form .cuack-input {
     width: 100%;
     padding: 0.70rem 0.70rem;
     margin: 8px 0;
@@ -745,7 +755,7 @@ MEDIA QUERIES FOR PHONES
     background: var(--color-dark);
 }
 
-.middle .submit-cuack .submit-form textarea{
+.middle .submit-cuack .submit-form textarea {
     width: 100%;
     height: 10rem;
     padding: 0.70rem 0.70rem;
@@ -756,7 +766,7 @@ MEDIA QUERIES FOR PHONES
     resize: vertical;
 }
 
-.middle .submit-cuack .submit-form input[type="submit"]{
+.middle .submit-cuack .submit-form input[type="submit"] {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     text-align: center;
@@ -764,26 +774,26 @@ MEDIA QUERIES FOR PHONES
     margin: 8px 0;
 }
 
-.middle .submit-cuack .submit-form .cuack-input .image-preview{
+.middle .submit-cuack .submit-form .cuack-input .image-preview {
     border: none;
 }
 
-.middle .submit-cuack .submit-form .cuack-input .image-preview .default-text i{
+.middle .submit-cuack .submit-form .cuack-input .image-preview .default-text i {
     font-size: large;
 }
 
-.middle .submit-cuack .submit-form .cuack-input .image-preview img{
+.middle .submit-cuack .submit-form .cuack-input .image-preview img {
     border-radius: var(--border-radius)
 }
 
 .middle .submit-cuack .submit-form textarea::placeholder,
 .middle .submit-cuack .submit-form .cuack-input::placeholder,
-.middle .submit-cuack .submit-form .cuack-input .image-preview .default-text{
+.middle .submit-cuack .submit-form .cuack-input .image-preview .default-text {
     color: var(--color-gray);
 }
 
 /*==========================RIGHT=========================*/
-main .container.two-rows .right{
+main .container.two-rows .right {
     height: max-content;
     position: sticky;
     top: var(--sticky-top-right);
@@ -794,99 +804,101 @@ main .container.two-rows .right{
 MEDIA QUERIES FOR PHONES
 ================================================= */
 
-@media screen and (max-width: 900px){
-    main .container.two-rows .right{
+@media screen and (max-width: 900px) {
+    main .container.two-rows .right {
         position: relative;
         top: 0;
     }
-    main .container.two-rows{
+
+    main .container.two-rows {
         grid-template-columns: none;
         width: 100vw;
     }
 
-    .middle .submit-cuack{
+    .middle .submit-cuack {
         margin: -1rem 0 -0.3rem;
     }
 }
+
 /*===========================TERMS INFO=================*/
-.right .terms-info .heading{
+.right .terms-info .heading {
     display: inline-flex;
     gap: 0.75rem;
     align-items: center;
     justify-content: space-between;
 }
 
-.right .terms-info .heading h4{
+.right .terms-info .heading h4 {
     font-size: large;
 }
 
-.right .terms-info .heading .logo{
-    width:1.8rem;
+.right .terms-info .heading .logo {
+    width: 1.8rem;
 }
 
-.right .terms-info{
+.right .terms-info {
     background: var(--color-black);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
 }
 
-.terms-list ol, .terms-list ul{
+.terms-list ol, .terms-list ul {
     padding: var(--card-padding);
 }
 
-.terms-list ol > li{
+.terms-list ol > li {
     list-style-type: decimal;
 }
 
-.terms-list ul > li{
+.terms-list ul > li {
     list-style-type: disc;
 }
 
-.terms-list ol > li, .terms-list ul > li{
+.terms-list ol > li, .terms-list ul > li {
     font-size: 0.90rem;
     padding: 0.25rem;
 }
 
-.terms-list p{
+.terms-list p {
     font-size: small;
 }
 
-.terms-list a{
+.terms-list a {
     text-decoration: underline;
     text-underline-offset: 3px;
 }
 
 /*==========================PROFILE PAGE==============*/
-.right .profile-info{
+.right .profile-info {
     background: var(--color-black);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
 }
 
-.right .profile-info .heading{
+.right .profile-info .heading {
     display: block;
     gap: 0.75rem;
     text-align: center;
 }
 
-.right .profile-info .heading h4{
+.right .profile-info .heading h4 {
     margin-top: 1rem;
     text-align: center;
     font-size: large;
 }
 
-.right .profile-info .heading p{
+.right .profile-info .heading p {
     margin-top: 0.3rem;
     font-size: small;
     text-align: center;
 }
 
-.right .profile-info .heading .profile-photo{
-    width:8rem;
+.right .profile-info .heading .profile-photo {
+    width: 8rem;
     margin: auto auto -1.55rem;
 }
 
-.right .profile-info .heading i{
+.right .profile-info .heading i {
     font-size: x-large;
     aspect-ratio: 1/1;
     border-radius: 50%;
@@ -896,18 +908,18 @@ MEDIA QUERIES FOR PHONES
     cursor: pointer;
 }
 
-.right .profile-info .heading i:hover{
+.right .profile-info .heading i:hover {
     opacity: 0.8;
 }
 
-.right .profile-info .buttons{
+.right .profile-info .buttons {
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.right .profile-info .btn.btn-primary{
+.right .profile-info .btn.btn-primary {
     margin-top: 1rem;
 }
 
@@ -915,7 +927,7 @@ MEDIA QUERIES FOR PHONES
 PROFILE PICTURE UPLOAD
 ================================================= */
 
-.image-preview{
+.image-preview {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -927,7 +939,7 @@ PROFILE PICTURE UPLOAD
     cursor: pointer;
 }
 
-.image-preview img{
+.image-preview img {
     display: none;
     width: 100%;
     aspect-ratio: 1/1;
@@ -935,15 +947,15 @@ PROFILE PICTURE UPLOAD
     overflow: hidden;
 }
 
-.image-preview input[type="file"]{
+.image-preview input[type="file"] {
     display: none;
 }
 
-.image-preview:hover{
+.image-preview:hover {
     opacity: 0.8;
 }
 
-.centered{
+.centered {
     display: inline-flex;
     align-items: flex-end;
     justify-content: center;
@@ -956,55 +968,126 @@ PROFILE PICTURE UPLOAD
 MEDIA QUERIES FOR PHONES
 ================================================= */
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1400px){
+    .pop-up .card{
+        display: inline-block;
+        margin: 0;
+    }
+
+    .pop-up.tab-form .card .login-input{
+        margin: 0.5rem 0;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
     main .container.two-rows {
         display: inline-flex;
         flex-direction: column;
     }
 
-    main .container.two-rows .right.first{
+    main .container.two-rows .right.first {
         position: relative;
         top: 0;
         order: 1;
         margin: -1rem 0 1rem;
     }
 
-    main .container.two-rows .middle.second{
+    main .container.two-rows .middle.second {
         order: 2;
-        margin: 1rem 0;
+        margin: 0;
     }
 
     .middle .submit-cuack {
         padding: 0;
     }
 
-    .middle .submit-cuack h4{
+    .middle .submit-cuack h4 {
         padding: 0 0.5rem;
     }
 
-    .middle.second .submit-cuack{
+    .middle.second .submit-cuack {
         margin-bottom: -1rem;
     }
 
-    .middle.second .submit-cuack h4{
+    .middle.second .submit-cuack h4 {
         padding-top: 1rem;
     }
 
-    .right .terms-info{
-        margin-top: 1rem;
-    }
-
-    .middle .feeds .feed:last-child{
+    .middle .feeds .feed:last-child {
         margin-bottom: 0;
     }
 
-    .middle .create-post .btn{
+    .middle .create-post .btn {
         width: 8rem;
+    }
+
+    .pop-up .card {
+        width: 35rem;
+    }
+
+    .pop-up.tab-form .card {
+        display: block;
+        width: auto;
+        padding: 0;
+        height: 43rem;
+        margin: 5rem auto;
+    }
+
+    .pop-up.tab-form .card.login-input{
+        margin: 1.1rem 0;
+    }
+
+    .about-us {
+        padding: 0;
+    }
+
+    .about-us > div:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .middle .submit-cuack .feeds .feed{
+        margin-bottom: 2rem;
     }
 }
 
-@media screen and (max-width: 700px){
-    .middle .feed .photo img{
+@media screen and (max-width: 700px) {
+    .middle .feed .photo img {
         width: 100%;
+    }
+
+    .pop-up .card {
+        width: auto;
+    }
+
+    .pop-up.tab-form .card {
+        margin: 3rem 0;
+        height: -webkit-fill-available;
+
+    }
+
+    .user-menu {
+        right: 0;
+        font-size: medium;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .user-menu > li {
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 667px) {
+    .pop-up.tab-form .card {
+        margin: 0;
+    }
+
+    .pop-up.tab-form .card .close {
+        margin-top: 0;
+    }
+
+    .pop-up .card .login-input {
+        margin: 0.5rem 0;
     }
 }

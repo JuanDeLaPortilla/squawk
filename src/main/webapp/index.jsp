@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
     <script src="https://kit.fontawesome.com/69e84cf231.js" crossorigin="anonymous"></script>
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=5.2"/>
+    <link rel="stylesheet" href="./css/style.css?v=5.37"/>
     <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
 
