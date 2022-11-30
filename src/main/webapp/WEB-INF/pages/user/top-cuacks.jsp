@@ -5,16 +5,19 @@
 
     <c:choose>
         <c:when test="${!requestScope.stories.isEmpty()}">
-            <div class="stories">
-                <c:forEach items="${requestScope.stories}" end="5" var="c">
-                    <a class="story" href="${pageContext.request.contextPath}/cuack?id=${c.cuackID}"
-                       style="background: url('${c.img}') no-repeat center center/cover">
-                        <div class="profile-photo">
-                            <img src="${c.user.img}"/>
-                        </div>
-                        <p class="name">${c.user.name}</p>
-                    </a>
-                </c:forEach>
+            <div class="swiper-container mySwiper" style="overflow: hidden">
+                <div class="stories swiper-wrapper">
+                    <c:forEach items="${requestScope.stories}" end="5" var="c">
+                        <a class="story swiper-slide" href="${pageContext.request.contextPath}/cuack?id=${c.cuackID}"
+                           style="background: url('${c.img}') no-repeat center center/cover">
+                            <div class="profile-photo">
+                                <img src="${c.user.img}"/>
+                            </div>
+                            <p class="name">${c.user.name}</p>
+                        </a>
+                    </c:forEach>
+                </div>
+                <div class="swiper-scrollbar"></div>
             </div>
         </c:when>
         <c:otherwise>

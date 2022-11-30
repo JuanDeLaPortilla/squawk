@@ -1,19 +1,18 @@
 package com.squawk.webapp.controllers;
 
+import com.google.gson.Gson;
 import com.squawk.webapp.models.Cuack;
-import com.squawk.webapp.models.User;
 import com.squawk.webapp.services.CuackService;
 import com.squawk.webapp.services.CuackServiceImpl;
-import com.squawk.webapp.services.LoginService;
-import com.squawk.webapp.services.LoginServiceImpl;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @WebServlet(name = "Index", value = "/index")
 public class IndexServlet extends HttpServlet {
@@ -21,17 +20,21 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection conn = (Connection) request.getAttribute("conn");
         CuackService service = new CuackServiceImpl(conn);
-        LoginService loginService = new LoginServiceImpl();
+        PrintWriter out = response.getWriter();
 
-        Optional<User> user = loginService.getUser(request);
-
-        try {
-            if (user.isPresent()) {
-                Long id = user.get().getId();
-                this.loginAction(request, response, service, id);
+        String action = request.getParameter("action");
+        if(action != null){
+            switch (action){
+                case "send":
+                    String cuacks = this.sendCuacks(request,response,service);
+                    out.print(cuacks);
+                    break;
+                default:
+                    this.defaultAction(request,response,service);
+                    break;
             }
-        } catch (NullPointerException e) {
-            this.defaultAction(request, response, service);
+        }else{
+            this.defaultAction(request,response,service);
         }
     }
 
@@ -41,20 +44,37 @@ public class IndexServlet extends HttpServlet {
     }
 
     private void defaultAction(HttpServletRequest req, HttpServletResponse resp, CuackService service) throws ServletException, IOException {
-        List<Cuack> cuacks = service.findAll();
-        redirectToJsp(req, resp, service, cuacks);
-    }
-
-    private void loginAction(HttpServletRequest req, HttpServletResponse resp, CuackService service, Long id) throws ServletException, IOException {
-        List<Cuack> cuacks = service.findAllLiked(id);
-        redirectToJsp(req, resp, service, cuacks);
-    }
-
-    private void redirectToJsp(HttpServletRequest req, HttpServletResponse resp, CuackService service, List<Cuack> cuacks) throws ServletException, IOException {
-        req.setAttribute("cuacks", cuacks);
-
         List<Cuack> stories = service.findTopMonthly();
         req.setAttribute("stories", stories);
         getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+    }
+
+    private String sendCuacks(HttpServletRequest request, HttpServletResponse response, CuackService service){
+        int start = Integer.parseInt(request.getParameter("start"));//se obtiene el atributo para iniciar el bucle
+        int logged = Integer.parseInt(request.getParameter("logged"));//se obtiene si el usuario ha iniciado sesion
+
+        List<Cuack> cuacksToSend = new ArrayList<Cuack>();//se crea la lista de cuacks a enviar
+
+        if (logged == 0) {//si no ha iniciado sesion
+            List<Cuack> cuacksFounded = service.findAll();//se busca los cuacks sin contar el like
+            for (int i = start; i < start + 5; i++) {//se inicia el bucle desde donde se requiere
+                if (i < cuacksFounded.size()){
+                    cuacksToSend.add(cuacksFounded.get(i));//se añaden los cuacks a otra lista
+                }
+            }
+        }else{
+            if(logged == 1){
+                Long id = Long.parseLong(request.getParameter("id"));//se obtiene el id del usuario
+                List<Cuack> cuacksFounded = service.findAllLiked(id);//se buscan los cuacks y si el usuario le ha dado like
+                for (int i = start; i < start + 5; i++) {//se inicia el bucle desde donde se requiere
+                    if (i < cuacksFounded.size()) {
+                        cuacksToSend.add(cuacksFounded.get(i));//se añaden los cuacks a otra lista
+                    }
+                }
+            }
+        }
+
+        Gson gson = new Gson();//se crea un objeto gson
+        return gson.toJson(cuacksToSend);//se convierte la lista json
     }
 }

@@ -5,7 +5,7 @@
     <div class="head">
         <div class="user">
             <a class="profile-photo" href="${pageContext.request.contextPath}/profile?id=${cuack.user.id}">
-                <img src="${cuack.user.img}">
+                <img class="profile-photo_img" src="${cuack.user.img}">
             </a>
             <div class="ingo">
                 <div style="display: inline-flex; align-items: baseline; gap: 0.5rem">
@@ -26,14 +26,15 @@
     </div>
 
     <div class="photo">
-        <a href="${cuack.url}" target="_blank"><img src="${cuack.img}"/></a>
+        <a class = "photo_a" href="${cuack.url}" target="_blank">
+            <img class="photo_img" src="${cuack.img}"/></a>
     </div>
 
     <div class="action-button">
         <div class="interaction-buttons">
             <c:choose>
                 <c:when test="${sessionScope.user.present}">
-                    <span onclick="doLike(${cuack.cuackID},${sessionScope.user.get().id})">
+                    <span class="interaction-buttons_span" onclick="doLike(${cuack.cuackID},${sessionScope.user.get().id})">
                         <c:choose>
                             <c:when test="${cuack.liked == 1}">
                                 <i class="like fa-solid fa-heart"></i>
@@ -49,12 +50,12 @@
                 </c:otherwise>
             </c:choose>
 
-            <a href="${pageContext.request.contextPath}/cuack?id=${cuack.cuackID}"><span><i
+            <a class="comment_a" href="${pageContext.request.contextPath}/cuack?id=${cuack.cuackID}"><span><i
                     class="comment fa-regular fa-comment-dots"></i></span></a>
         </div>
     </div>
 
-    <p style="margin-bottom: 0.5rem"><b><span id="like-counter_${cuack.cuackID}">${cuack.likes}</span></b> Me gusta</p>
+    <p style="margin-bottom: 0.5rem"><b><span class="like-counter" id="like-counter_${cuack.cuackID}">${cuack.likes}</span></b> Me gusta</p>
 
     <div class="caption">
         <p><b>${cuack.user.name}</b> ${cuack.content}

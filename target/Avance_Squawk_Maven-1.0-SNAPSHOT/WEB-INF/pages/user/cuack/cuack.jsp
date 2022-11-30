@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/69e84cf231.js" crossorigin="anonymous"></script>
 
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=1.2"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=1.3"/>
     <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
 
@@ -40,7 +40,7 @@
 <script src="${pageContext.request.contextPath}/js/white-theme.js"></script>
 <script src="${pageContext.request.contextPath}/js/tab-form.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/buttons-hover.js"></script>
+<script src="${pageContext.request.contextPath}/js/comment-hover.js"></script>
 <script src="${pageContext.request.contextPath}/js/sessionWarning.js"></script>
 <c:if test="${sessionScope.user.isPresent()}">
     <script src="${pageContext.request.contextPath}/js/like.js"></script>

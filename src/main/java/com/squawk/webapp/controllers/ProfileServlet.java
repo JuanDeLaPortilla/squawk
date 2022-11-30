@@ -1,5 +1,6 @@
 package com.squawk.webapp.controllers;
 
+import com.google.gson.Gson;
 import com.squawk.webapp.models.Cuack;
 import com.squawk.webapp.models.User;
 import com.squawk.webapp.services.*;
@@ -8,7 +9,9 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,17 +22,20 @@ public class ProfileServlet extends HttpServlet {
         Connection conn = (Connection) request.getAttribute("conn");
         CuackService cuackService = new CuackServiceImpl(conn);
         UserService userService = new UserServiceImpl(conn);
-        LoginService loginService = new LoginServiceImpl();
+        PrintWriter out = response.getWriter();
 
         String action = request.getParameter("action");
         if (action != null) {
             switch (action) {
-                default:
-                    this.defaultAction(request, response, cuackService, userService, loginService);
+                case "send":
+                    String cuacks = this.sendCuacks(request,response,cuackService);
+                    out.print(cuacks);
                     break;
+                default:
+                    this.defaultAction(request,response,userService);
             }
         } else {
-            this.defaultAction(request,response,cuackService,userService, loginService);
+            this.defaultAction(request,response,userService);
         }
     }
 
@@ -38,34 +44,43 @@ public class ProfileServlet extends HttpServlet {
 
     }
 
-    private void defaultAction(HttpServletRequest req, HttpServletResponse resp, CuackService cuackService, UserService userService, LoginService loginService) throws ServletException, IOException {
-        Optional<User> sessionUser = loginService.getUser(req);
-        try{
-            if (sessionUser.isPresent()) {
-                Long sessionId = sessionUser.get().getId();
-
-                long userId = getUserId(req);
-
-                List<Cuack> cuacks = cuackService.findByUserIdLiked(userId,sessionId);
-                redirectToJsp(req, resp, userService, userId, cuacks);
-            }
-        }catch (NullPointerException e){
-            long userId = getUserId(req);
-
-            List<Cuack> cuacks = cuackService.findByUserId(userId);
-            redirectToJsp(req, resp, userService, userId, cuacks);
-        }
-    }
-
-    private void redirectToJsp(HttpServletRequest req, HttpServletResponse resp, UserService userService, long userId, List<Cuack> cuacks) throws ServletException, IOException {
-        req.setAttribute("cuacks", cuacks);
-
-        User user = new User();
+    private void defaultAction(HttpServletRequest req, HttpServletResponse resp, UserService userService) throws ServletException, IOException {
+        Long userId = getUserId(req);
         Optional<User> o = userService.findById(userId);
-        user = o.get();
+        User user = o.get();
         req.setAttribute("user", user);
 
         getServletContext().getRequestDispatcher("/profile.jsp").forward(req, resp);
+    }
+
+    private String sendCuacks(HttpServletRequest request, HttpServletResponse response, CuackService service){
+        int start = Integer.parseInt(request.getParameter("start"));//se obtiene el atributo para iniciar el bucle
+        int logged = Integer.parseInt(request.getParameter("logged"));//se obtiene si el usuario ha iniciado sesion
+        long userId = getUserId(request);
+
+        List<Cuack> cuacksToSend = new ArrayList<Cuack>();//se crea la lista de cuacks a enviar
+
+        if (logged == 0) {//si no ha iniciado sesion
+            List<Cuack> cuacksFounded = service.findByUserId(userId);//se busca los cuacks sin contar el like
+            for (int i = start; i < start + 5; i++) {//se inicia el bucle desde donde se requiere
+                if (i < cuacksFounded.size()){
+                    cuacksToSend.add(cuacksFounded.get(i));//se añaden los cuacks a otra lista
+                }
+            }
+        }else{
+            if(logged == 1){
+                Long sessionId = Long.parseLong(request.getParameter("sessionId"));//se obtiene el id del usuario
+                List<Cuack> cuacksFounded = service.findByUserIdLiked(userId,sessionId);;//se buscan los cuacks y si el usuario le ha dado like
+                for (int i = start; i < start + 5; i++) {//se inicia el bucle desde donde se requiere
+                    if (i < cuacksFounded.size()) {
+                        cuacksToSend.add(cuacksFounded.get(i));//se añaden los cuacks a otra lista
+                    }
+                }
+            }
+        }
+
+        Gson gson = new Gson();//se crea un objeto gson
+        return gson.toJson(cuacksToSend);//se convierte la lista json
     }
 
     private static long getUserId(HttpServletRequest req) {
