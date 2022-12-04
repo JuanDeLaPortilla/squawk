@@ -8,11 +8,6 @@
             </div>
         </a>
 
-        <div class="search-bar">
-            <i class="uil uil-search"></i>
-            <input type="search" placeholder="&iexcl;Busca rese&ntilde;as o productos!">
-        </div>
-
         <div class="create">
             <c:if test="${sessionScope.user.present}">
                 <a href="${pageContext.request.contextPath}/submit"><label class="btn btn-primary">Crear</label></a>

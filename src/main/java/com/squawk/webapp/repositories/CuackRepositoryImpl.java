@@ -20,12 +20,21 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     public List<Cuack> findAll() throws SQLException {
         List<Cuack> cuacks = new ArrayList<>();
         try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT c.cuack_id, c.content, c.img, c.product_url," +
-                     " c.status AS cuack_status, c.title, c.creation_date AS cuack_creation_date," +
-                     " c.is_edited, COUNT(l.cuack_id) AS likes, t.tag_id, t.description AS tag," +
-                     " u.* FROM cuacks AS c INNER JOIN tags AS t ON c.tag_id = t.tag_id INNER JOIN" +
-                     " users AS u ON c.user_id = u.user_id LEFT JOIN like_cuack AS l ON c.cuack_id" +
-                     " = l.cuack_id GROUP BY l.cuack_id ORDER BY cuack_creation_date DESC;")) {
+             ResultSet rs = stmt.executeQuery("SELECT c.cuack_id,\n" +
+                     "       c.content,\n" +
+                     "       c.img,\n" +
+                     "       c.product_url,\n" +
+                     "       c.status          AS cuack_status,\n" +
+                     "       c.title,\n" +
+                     "       c.creation_date   AS cuack_creation_date,\n" +
+                     "       c.is_edited,\n" +
+                     "       t.tag_id,\n" +
+                     "       t.description     AS tag,\n" +
+                     "       u.*\n" +
+                     "FROM cuacks AS c\n" +
+                     "         INNER JOIN tags AS t ON c.tag_id = t.tag_id\n" +
+                     "         INNER JOIN users AS u ON c.user_id = u.user_id\n" +
+                     "ORDER BY cuack_creation_date DESC;")) {
             while (rs.next()) {
                 Cuack c = getCuack(rs);
                 cuacks.add(c);
@@ -37,30 +46,6 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
         return cuacks;
     }
 
-    @Override
-    public List<Cuack> findAllLiked(Long id) throws SQLException {
-        List<Cuack> cuacks = new ArrayList<>();
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.content, c.img, c.product_url," +
-                     " c.status AS cuack_status, c.title, c.creation_date AS cuack_creation_date," +
-                     " c.is_edited, COUNT(l.cuack_id) AS likes, if((select like_id from like_cuack" +
-                     " where user_id = ? and like_cuack.cuack_id = c.cuack_id),1,0) as liked," +
-                     " t.tag_id, t.description AS tag, u.* FROM cuacks AS c INNER JOIN tags AS t" +
-                     " ON c.tag_id = t.tag_id INNER JOIN users AS u ON c.user_id = u.user_id" +
-                     " LEFT JOIN like_cuack AS l ON c.cuack_id = l.cuack_id GROUP BY l.cuack_id" +
-                     " ORDER BY cuack_creation_date desc;")) {
-            stmt.setLong(1, id);
-            try (ResultSet rs = stmt.executeQuery()){
-                while (rs.next()) {
-                    Cuack c = getCuack(rs);
-                    c.setLiked(rs.getInt("liked"));
-                    cuacks.add(c);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return cuacks;
-    }
     @Override
     public List<Cuack> findTopMonthly() throws SQLException {
         List<Cuack> cuacks = new ArrayList<>();
@@ -90,59 +75,24 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     }
 
     @Override
-    public Cuack findById(Long id) throws SQLException {
-        Cuack cuack = null;
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.content, c.img," +
-                " c.product_url, c.status AS cuack_status, c.title, c.creation_date " +
-                "AS cuack_creation_date, c.is_edited, COUNT(l.cuack_id) AS likes, t.tag_id," +
-                " t.description AS tag, u.* FROM cuacks AS c INNER JOIN tags AS t ON c.tag_id" +
-                " = t.tag_id INNER JOIN users AS u ON c.user_id = u.user_id LEFT JOIN like_cuack" +
-                " AS l ON c.cuack_id = l.cuack_id WHERE c.cuack_id = ?")) {
-            stmt.setLong(1, id);
-
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    cuack = getCuack(rs);
-                }
-            }
-        }
-        return cuack;
-    }
-
-    @Override
-    public Cuack findByIdLiked(Long cuackId, Long sessionId) throws SQLException {
-        Cuack cuack = null;
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.content, c.img," +
-                " c.product_url, c.status AS cuack_status, c.title, c.creation_date AS" +
-                " cuack_creation_date, c.is_edited, COUNT(l.cuack_id) AS likes, if((select" +
-                " like_id from like_cuack where user_id = ? and like_cuack.cuack_id = " +
-                "c.cuack_id),1,0) as liked, t.tag_id, t.description AS tag, u.* FROM cuacks" +
-                " AS c INNER JOIN tags AS t ON c.tag_id = t.tag_id INNER JOIN users AS" +
-                " u ON c.user_id = u.user_id LEFT JOIN like_cuack AS l ON c.cuack_id =" +
-                " l.cuack_id where c.cuack_id = ?;")) {
-            stmt.setLong(1, sessionId);
-            stmt.setLong(2,cuackId);
-
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    cuack = getCuack(rs);
-                    cuack.setLiked(rs.getInt("liked"));
-                }
-            }
-        }
-        return cuack;
-    }
-
-    @Override
     public List<Cuack> findByUserId(Long id) throws SQLException {
         List<Cuack> cuacks = new ArrayList<>();
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.content, c.img," +
-                " c.product_url, c.status AS cuack_status, c.title, c.creation_date AS" +
-                " cuack_creation_date, c.is_edited, COUNT(l.cuack_id) AS likes, t.tag_id," +
-                " t.description AS tag, u.* FROM cuacks AS c INNER JOIN tags AS t " +
-                "ON c.tag_id = t.tag_id INNER JOIN users AS u ON c.user_id = u.user_id" +
-                " LEFT JOIN like_cuack AS l ON c.cuack_id = l.cuack_id WHERE c.user_id = ?" +
-                " GROUP BY l.cuack_id order by cuack_creation_date desc;")) {
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id,\n" +
+                "       c.content,\n" +
+                "       c.img,\n" +
+                "       c.product_url,\n" +
+                "       c.status          AS cuack_status,\n" +
+                "       c.title,\n" +
+                "       c.creation_date   AS cuack_creation_date,\n" +
+                "       c.is_edited,\n" +
+                "       t.tag_id,\n" +
+                "       t.description     AS tag,\n" +
+                "       u.*\n" +
+                "FROM cuacks AS c\n" +
+                "         INNER JOIN tags AS t ON c.tag_id = t.tag_id\n" +
+                "         INNER JOIN users AS u ON c.user_id = u.user_id\n" +
+                "WHERE c.user_id = ?\n" +
+                "ORDER BY cuack_creation_date DESC;")) {
             stmt.setLong(1, id);
 
             try (ResultSet rs = stmt.executeQuery()) {
@@ -158,24 +108,29 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     }
 
     @Override
-    public List<Cuack> findByUserIdLiked(Long userId, Long sessionId) throws SQLException {
+    public List<Cuack> findByTagId(Long id) throws SQLException {
         List<Cuack> cuacks = new ArrayList<>();
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id, c.content, c.img," +
-                " c.product_url, c.status AS cuack_status, c.title, c.creation_date AS" +
-                " cuack_creation_date, c.is_edited, COUNT(l.cuack_id) AS likes, " +
-                "if((select like_id from like_cuack where user_id = ? and like_cuack.cuack_id" +
-                " = c.cuack_id),1,0) as liked, t.tag_id, t.description AS tag, u.* " +
-                "FROM cuacks AS c INNER JOIN tags AS t ON c.tag_id = t.tag_id INNER JOIN" +
-                " users AS u ON c.user_id = u.user_id LEFT JOIN like_cuack AS l ON c.cuack_id" +
-                " = l.cuack_id where c.user_id = ? GROUP BY l.cuack_id ORDER BY cuack_creation_date" +
-                " desc;")) {
-            stmt.setLong(1, sessionId);
-            stmt.setLong(2, userId);
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id,\n" +
+                "       c.content,\n" +
+                "       c.img,\n" +
+                "       c.product_url,\n" +
+                "       c.status          AS cuack_status,\n" +
+                "       c.title,\n" +
+                "       c.creation_date   AS cuack_creation_date,\n" +
+                "       c.is_edited,\n" +
+                "       t.tag_id,\n" +
+                "       t.description     AS tag,\n" +
+                "       u.*\n" +
+                "FROM cuacks AS c\n" +
+                "         INNER JOIN tags AS t ON c.tag_id = t.tag_id\n" +
+                "         INNER JOIN users AS u ON c.user_id = u.user_id\n" +
+                "WHERE c.tag_id = ?\n" +
+                "ORDER BY cuack_creation_date DESC;")) {
+            stmt.setLong(1, id);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     Cuack c = getCuack(rs);
-                    c.setLiked(rs.getInt("liked"));
                     cuacks.add(c);
                 }
             } catch (SQLException e) {
@@ -183,6 +138,35 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
             }
         }
         return cuacks;
+    }
+
+    @Override
+    public Cuack findById(Long id) throws SQLException {
+        Cuack cuack = null;
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id,\n" +
+                "       c.content,\n" +
+                "       c.img,\n" +
+                "       c.product_url,\n" +
+                "       c.status           AS cuack_status,\n" +
+                "       c.title,\n" +
+                "       c.creation_date    AS cuack_creation_date,\n" +
+                "       c.is_edited,\n" +
+                "       t.tag_id,\n" +
+                "       t.description      AS tag,\n" +
+                "       u.*\n" +
+                "FROM cuacks AS c\n" +
+                "         INNER JOIN tags AS t ON c.tag_id = t.tag_id\n" +
+                "         INNER JOIN users AS u ON c.user_id = u.user_id\n" +
+                "WHERE c.cuack_id = ?")) {
+            stmt.setLong(1, id);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    cuack = getCuack(rs);
+                }
+            }
+        }
+        return cuack;
     }
 
     @Override
@@ -221,18 +205,6 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
         }
     }
 
-    @Override
-    public void uploadPicture(Long id, String img) throws SQLException {
-        String sql;
-        sql = "UPDATE cuacks SET img=? WHERE cuack_id=?";
-
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, img);
-            stmt.setLong(2, id);
-            stmt.executeUpdate();
-        }
-    }
-
     private static Cuack getCuack(ResultSet rs) throws SQLException {
         Cuack c = new Cuack();
 
@@ -244,7 +216,6 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
         c.setTitle(rs.getString("title"));
         c.setCreationDate(rs.getTimestamp("cuack_creation_date").toLocalDateTime());
         c.setEdited(rs.getInt("is_edited"));
-        c.setLikes(rs.getInt("likes"));
 
         Tag t = new Tag();
         t.setTagID(rs.getLong("tag_id"));

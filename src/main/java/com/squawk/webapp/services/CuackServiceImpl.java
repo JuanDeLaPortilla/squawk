@@ -25,15 +25,6 @@ public class CuackServiceImpl implements CuackService {
     }
 
     @Override
-    public List<Cuack> findAllLiked(Long id) {
-        try {
-            return repositoryJdbc.findAllLiked(id);
-        } catch (SQLException e) {
-            throw new ServiceJdbcException(e.getMessage(), e.getCause());
-        }
-    }
-
-    @Override
     public List<Cuack> findTopMonthly() {
         try {
             return repositoryJdbc.findTopMonthly();
@@ -52,9 +43,9 @@ public class CuackServiceImpl implements CuackService {
     }
 
     @Override
-    public List<Cuack> findByUserIdLiked(Long userId, Long sessionId) {
+    public List<Cuack> findByTagId(Long id) {
         try {
-            return repositoryJdbc.findByUserIdLiked(userId,sessionId);
+            return repositoryJdbc.findByTagId(id);
         } catch (SQLException e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
@@ -64,15 +55,6 @@ public class CuackServiceImpl implements CuackService {
     public Optional<Cuack> findById(Long id) {
         try {
             return Optional.ofNullable(repositoryJdbc.findById(id));
-        } catch (SQLException e) {
-            throw new ServiceJdbcException(e.getMessage(), e.getCause());
-        }
-    }
-
-    @Override
-    public Optional<Cuack> findByIdLiked(Long cuackId, Long sessionId) {
-        try {
-            return Optional.ofNullable(repositoryJdbc.findByIdLiked(cuackId, sessionId));
         } catch (SQLException e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
@@ -92,14 +74,6 @@ public class CuackServiceImpl implements CuackService {
         try {
             repositoryJdbc.delete(id);
         } catch (SQLException e) {
-            throw new ServiceJdbcException(e.getMessage(), e.getCause());
-        }
-    }
-    @Override
-    public void uploadPicture(Long id, String img) {
-        try{
-            repositoryJdbc.uploadPicture(id, img);
-        }catch (SQLException e){
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }

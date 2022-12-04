@@ -21,25 +21,14 @@ function printCuack(r, i) {
     templateCuack.querySelector('h2').textContent = r[i].title;
     templateCuack.querySelector('.photo_a').setAttribute("href", r[i].url);
     templateCuack.querySelector('.photo_img').setAttribute("src", r[i].img);
-    if (logged === 1) {
-        templateCuack.querySelector('.interaction-buttons_span').setAttribute("onclick", "doLike(" + r[i].cuackID + "," + id + ")")
-        if (r[i].liked === 1) {
-            templateCuack.querySelector('.like').classList.remove('fa-regular');
-            templateCuack.querySelector('.like').classList.add('fa-solid');
-        }
-    } else {
-        templateCuack.querySelector('.interaction-buttons_span').setAttribute("onclick", "sessionWarning()");
-    }
-    templateCuack.querySelector('.comment_a').setAttribute("href", "./cuack?id=" + r[i].cuackID);
-    templateCuack.querySelector('.like-counter').setAttribute("id","like-counter_" + r[i].cuackID);
-    templateCuack.querySelector('.like-counter').textContent = r[i].likes;
-    templateCuack.querySelector('.cuack-author').textContent = r[i].user.name + " ";
+    templateCuack.querySelector('.cuack-author').textContent = r[i].user.name + ": ";
     templateCuack.querySelector('.cuack-content').textContent = r[i].content + " ";
     if (r[i].isEdited === 1) {
         templateCuack.querySelector('.cuack-edited').textContent = "(Editado) ";
     }
+    templateCuack.querySelector('.harsh-tag').setAttribute("href", "./cuack?action=viewByTag&id=" + r[i].tag.tagID);
     templateCuack.querySelector('.tag').textContent = "#" + r[i].tag.desc;
-
+    templateCuack.querySelector('.btn_ver_mas').setAttribute("href", "./cuack?action=viewCuack&id=" + r[i].cuackID);
     const clone = templateCuack.cloneNode(true);
     fragment.appendChild(clone);
 }

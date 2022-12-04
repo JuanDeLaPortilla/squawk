@@ -10,7 +10,7 @@
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <!-- Conexcion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=15.42"/>
+    <link rel="stylesheet" href="./css/style.css?v=15.47"/>
     <script src="https://kit.fontawesome.com/69e84cf231.js" crossorigin="anonymous"></script>
     <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
@@ -38,28 +38,12 @@
     </div>
 </main>
 
-<c:choose>
-    <c:when test="${sessionScope.user.isPresent()}">
-        <jsp:include page="/WEB-INF/pages/user/profile/update_form.jsp"/>
-        <jsp:include page="/WEB-INF/pages/user/profile/profile_picture_form.jsp"/>
-        <script>
-            const logged = 1;
-            const id = ${requestScope.user.id};
-            const sessionId = ${sessionScope.user.get().id};
-        </script>
-    </c:when>
-    <c:otherwise>
-        <!-- SIGNUP + LOGIN FORM TAB-->
-        <jsp:include page="/WEB-INF/pages/user/login-signup/signup_login_form_tab.jsp"/>
-        <script>
-            const logged = 0;
-            const id = ${requestScope.user.id};
-        </script>
-    </c:otherwise>
-</c:choose>
+<script>
+    const id = ${requestScope.user.id};
+</script>
 
 <!-- CUACK TEMPLATE -->
-<%@include file="/WEB-INF/pages/user/commons/feed-template.jsp"%>
+<%@include file="/WEB-INF/pages/user/commons/feed-template.jsp" %>
 
 <!-- Conexiones Js -->
 <script src="${pageContext.request.contextPath}/js/white-theme.js"></script>
@@ -70,8 +54,8 @@
 <script src="${pageContext.request.contextPath}/js/sessionWarning.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/ajaxError.js"></script>
-<script src="${pageContext.request.contextPath}/js/create-dynamic-cuack.js"></script>
-<script src="${pageContext.request.contextPath}/js/ajax-profile.js?v=1"></script>
+<script src="${pageContext.request.contextPath}/js/create-dynamic-cuack.js?v=1"></script>
+<script src="${pageContext.request.contextPath}/js/ajax-profile.js?v=1.2"></script>
 <script src="${pageContext.request.contextPath}/js/comment-hover.js"></script>
 <c:if test="${sessionScope.user.isPresent()}">
     <script src="${pageContext.request.contextPath}/js/like.js"></script>

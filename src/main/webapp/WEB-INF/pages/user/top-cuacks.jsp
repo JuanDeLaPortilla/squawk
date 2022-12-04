@@ -8,7 +8,7 @@
             <div class="swiper-container mySwiper" style="overflow: hidden">
                 <div class="stories swiper-wrapper">
                     <c:forEach items="${requestScope.stories}" end="5" var="c">
-                        <a class="story swiper-slide" href="${pageContext.request.contextPath}/cuack?id=${c.cuackID}"
+                        <a class="story swiper-slide" href="${pageContext.request.contextPath}/cuack?action=viewCuack&id=${c.cuackID}"
                            style="background: url('${c.img}') no-repeat center center/cover">
                             <div class="profile-photo">
                                 <img src="${c.user.img}"/>

@@ -1,9 +1,6 @@
 package com.squawk.webapp.models;
 
-import java.text.DecimalFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Cuack{
 
@@ -18,8 +15,6 @@ public class Cuack{
     private String title;
     private LocalDateTime creationDate;
     private int isEdited;
-    private int likes;
-    private int liked;
 
     //Constructor
     public Cuack() {
@@ -102,20 +97,4 @@ public class Cuack{
     public int isEdited() {return isEdited;}
 
     public void setEdited(int edited) {this.isEdited = edited;}
-
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
-    }
-
-    public int getLiked() {
-        return liked;
-    }
-
-    public void setLiked(int liked) {
-        this.liked = liked;
-    }
 }

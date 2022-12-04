@@ -7,13 +7,10 @@ import java.util.Optional;
 
 public interface CuackService {
     List<Cuack> findAll();
-    List<Cuack> findAllLiked(Long id);
     List<Cuack> findTopMonthly();
     List<Cuack> findByUserId(Long id);
-    List<Cuack> findByUserIdLiked (Long userId, Long sessionId);
+    List<Cuack> findByTagId(Long id);
     Optional<Cuack> findById(Long id);
-    Optional<Cuack> findByIdLiked(Long cuackId, Long sessionId);
     void add(Cuack cuack);
     void delete(Long id);
-    void uploadPicture(Long id, String img);
 }

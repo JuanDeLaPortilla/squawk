@@ -26,36 +26,71 @@
     </div>
 
     <div class="photo">
-        <a class = "photo_a" href="${cuack.url}" target="_blank">
+        <a class="photo_a" href="${cuack.url}" target="_blank">
             <img class="photo_img" src="${cuack.img}"/></a>
     </div>
 
     <div class="action-button">
-        <div class="interaction-buttons">
-            <c:choose>
-                <c:when test="${sessionScope.user.present}">
-                    <span class="interaction-buttons_span" onclick="doLike(${cuack.cuackID},${sessionScope.user.get().id})">
+        <c:choose>
+            <c:when test="${sessionScope.user.present}">
+                    <span class="interaction-buttons_span"
+                          onclick="doLike(${cuack.cuackID},${sessionScope.user.get().id})">
                         <c:choose>
-                            <c:when test="${cuack.liked == 1}">
-                                <i class="like fa-solid fa-heart"></i>
+                            <c:when test="${liked == 1}">
+                                <i class="like fa-solid fa-thumbs-up"></i>
                             </c:when>
                             <c:otherwise>
-                                <i class="like fa-regular fa-heart"></i>
+                                <i class="like fa-regular fa-thumbs-up"></i>
                             </c:otherwise>
                         </c:choose>
+                        <p>
+                            <b>
+                            <span class="like-counter"
+                                  id="like-counter_${cuack.cuackID}">${likes}</span>
+                            </b>Me gusta
+                        </p>
                     </span>
-                </c:when>
-                <c:otherwise>
-                    <span onclick="sessionWarning()"><i class="like fa-regular fa-heart"></i></span>
-                </c:otherwise>
-            </c:choose>
-
-            <a class="comment_a" href="${pageContext.request.contextPath}/cuack?id=${cuack.cuackID}"><span><i
-                    class="comment fa-regular fa-comment-dots"></i></span></a>
-        </div>
+                <span class="interaction-buttons_span"
+                      onclick="doDislike(${cuack.cuackID},${sessionScope.user.get().id})">
+                        <c:choose>
+                            <c:when test="${disliked == 1}">
+                                <i class="dislike fa-solid fa-thumbs-down"></i>
+                            </c:when>
+                            <c:otherwise>
+                                <i class="dislike fa-regular fa-thumbs-down"></i>
+                            </c:otherwise>
+                        </c:choose>
+                    <p>
+                        <b>
+                            <span class="dislike-counter"
+                                  id="dislike-counter_${cuack.cuackID}">${dislikes}</span>
+                        </b>No me gusta
+                    </p>
+                </span>
+            </c:when>
+            <c:otherwise>
+                    <span onclick="sessionWarning()">
+                        <i class="like fa-regular fa-thumbs-up"></i>
+                    <p>
+                        <b>
+                            <span class="like-counter"
+                                  id="like-counter_${cuack.cuackID}">${likes}</span>
+                        </b>Me gusta
+                    </p>
+                    </span>
+                <span onclick="sessionWarning()">
+                        <i class="dislike fa-regular fa-thumbs-down"></i>
+                    <p>
+                        <b>
+                            <span class="dislike-counter"
+                                  id="dislike-counter_${cuack.cuackID}">${dislikes}</span>
+                        </b>No me gusta
+                    </p>
+                </span>
+            </c:otherwise>
+        </c:choose>
     </div>
 
-    <p style="margin-bottom: 0.5rem"><b><span class="like-counter" id="like-counter_${cuack.cuackID}">${cuack.likes}</span></b> Me gusta</p>
 
     <div class="caption">
         <p><b>${cuack.user.name}</b> ${cuack.content}

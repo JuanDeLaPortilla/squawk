@@ -24,30 +24,15 @@
                 <img class="photo_img" src=""/></a>
         </div>
 
-        <div class="action-button">
-            <div class="interaction-buttons">
-
-                <span class="interaction-buttons_span" onclick="">
-                    <i class="like fa-regular fa-heart"></i>
-                </span>
-
-                <a class="comment_a" href="">
-                <span>
-                    <i class="comment fa-regular fa-comment-dots"></i>
-                </span>
-                </a>
-            </div>
-        </div>
-
-        <p style="margin-bottom: 0.5rem"><b><span class="like-counter"></span></b> Me gusta</p>
-
         <div class="caption">
             <p>
                 <b class="cuack-author"></b>
                 <span class="cuack-content"></span>
                 <b><i class="cuack-edited"></i></b>
-                <span class="harsh-tag"><b class="tag"></b></span>
+                <a class="harsh-tag"><b class="tag"></b></a>
             </p>
         </div>
+
+        <a href="" class="btn_ver_mas"><label class="btn btn-primary">Ver M&aacute;s</label></a>
     </div>
 </template>

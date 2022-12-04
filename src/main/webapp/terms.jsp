@@ -8,7 +8,7 @@
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <!-- Conexcion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=5.14"/>
+    <link rel="stylesheet" href="./css/style.css?v=5.17"/>
     <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
 

@@ -28,14 +28,14 @@ public class ProfileServlet extends HttpServlet {
         if (action != null) {
             switch (action) {
                 case "send":
-                    String cuacks = this.sendCuacks(request,response,cuackService);
+                    String cuacks = this.sendCuacks(request, cuackService);
                     out.print(cuacks);
                     break;
                 default:
-                    this.defaultAction(request,response,userService);
+                    this.defaultAction(request, response, userService);
             }
         } else {
-            this.defaultAction(request,response,userService);
+            this.defaultAction(request, response, userService);
         }
     }
 
@@ -53,29 +53,16 @@ public class ProfileServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/profile.jsp").forward(req, resp);
     }
 
-    private String sendCuacks(HttpServletRequest request, HttpServletResponse response, CuackService service){
+    private String sendCuacks(HttpServletRequest request, CuackService service) {
         int start = Integer.parseInt(request.getParameter("start"));//se obtiene el atributo para iniciar el bucle
-        int logged = Integer.parseInt(request.getParameter("logged"));//se obtiene si el usuario ha iniciado sesion
         long userId = getUserId(request);
 
         List<Cuack> cuacksToSend = new ArrayList<Cuack>();//se crea la lista de cuacks a enviar
 
-        if (logged == 0) {//si no ha iniciado sesion
-            List<Cuack> cuacksFounded = service.findByUserId(userId);//se busca los cuacks sin contar el like
-            for (int i = start; i < start + 5; i++) {//se inicia el bucle desde donde se requiere
-                if (i < cuacksFounded.size()){
-                    cuacksToSend.add(cuacksFounded.get(i));//se añaden los cuacks a otra lista
-                }
-            }
-        }else{
-            if(logged == 1){
-                Long sessionId = Long.parseLong(request.getParameter("sessionId"));//se obtiene el id del usuario
-                List<Cuack> cuacksFounded = service.findByUserIdLiked(userId,sessionId);;//se buscan los cuacks y si el usuario le ha dado like
-                for (int i = start; i < start + 5; i++) {//se inicia el bucle desde donde se requiere
-                    if (i < cuacksFounded.size()) {
-                        cuacksToSend.add(cuacksFounded.get(i));//se añaden los cuacks a otra lista
-                    }
-                }
+        List<Cuack> cuacksFounded = service.findByUserId(userId);//se busca los cuacks sin contar el like
+        for (int i = start; i < start + 5; i++) {//se inicia el bucle desde donde se requiere
+            if (i < cuacksFounded.size()) {
+                cuacksToSend.add(cuacksFounded.get(i));//se añaden los cuacks a otra lista
             }
         }
 
