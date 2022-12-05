@@ -45,6 +45,17 @@
 <!-- CUACK TEMPLATE -->
 <%@include file="/WEB-INF/pages/user/commons/feed-template.jsp" %>
 
+<c:choose>
+    <c:when test="${sessionScope.user.get().id == requestScope.user.id}">
+        <jsp:include page="/WEB-INF/pages/user/profile/profile_picture_form.jsp"/>
+        <jsp:include page="/WEB-INF/pages/user/profile/update_form.jsp"/>
+    </c:when>
+    <c:otherwise>
+        <jsp:include page="/WEB-INF/pages/user/login-signup/signup_login_form_tab.jsp"/>
+    </c:otherwise>
+</c:choose>
+
+
 <!-- Conexiones Js -->
 <script src="${pageContext.request.contextPath}/js/white-theme.js"></script>
 <script src="${pageContext.request.contextPath}/js/tab-form.js"></script>
