@@ -5,47 +5,45 @@ import com.squawk.webapp.repositories.LikeCuackRepositoryImpl;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Optional;
 
 public class LikeCuackServiceImpl implements LikeCuackService {
-    private LikeCuackRepositoryImpl repositoryJdbc;
+    private LikeCuackRepositoryImpl repository;
 
-    public LikeCuackServiceImpl(Connection connection) {
-        this.repositoryJdbc = new LikeCuackRepositoryImpl(connection);
+    public LikeCuackServiceImpl(Connection conn) {
+        this.repository = new LikeCuackRepositoryImpl(conn);
     }
 
     @Override
-    public List<LikeCuack> findAll() {
+    public String add(Long cuackId, Long userId) {
         try {
-            return repositoryJdbc.findAll();
+            return repository.add(cuackId, userId);
         } catch (SQLException e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
 
     @Override
-    public Optional<LikeCuack> findById(Long id) {
+    public Integer countLikesOnCuacks(Long cuackId) {
         try {
-            return Optional.ofNullable(repositoryJdbc.findById(id));
+            return repository.countLikesOnCuacks(cuackId);
         } catch (SQLException e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
 
     @Override
-    public void add(LikeCuack lc) {
+    public Boolean isLikedByUser(Long cuackId, Long userId) {
         try {
-            repositoryJdbc.add(lc);
+            return repository.isLikedByUser(cuackId,userId);
         } catch (SQLException e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
 
     @Override
-    public void delete(Long id) {
+    public String delete(Long cuackId, Long userId) {
         try {
-            repositoryJdbc.delete(id);
+            return repository.delete(cuackId,userId);
         } catch (SQLException e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }

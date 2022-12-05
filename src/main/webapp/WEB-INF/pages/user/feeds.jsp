@@ -1,243 +1,30 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <div class="feeds">
-
-    <!-- FEED 1 -->
-    <div class="feed">
-        <div class="head">
-            <div class="user">
-                <div class="profile-photo">
-                    <img src="./img/profile-13.jpg">
-                </div>
-                <div class="ingo">
-                    <h3>Lana Rose</h3>
-                    <small>HACE 15 MINUTOS</small>
-                </div>
-            </div>
-            <span class="edit">
-            <i class="uil uil-ellipsis-h"></i>
-            </span>
-        </div>
-
-        <div class="photo">
-            <img src="./img/feed-1.jpg?v=1">
-        </div>
-
-        <div class="action-button">
-            <div class="interaction-buttons">
-                <span><i class="uil uil-heart"></i></span>
-                <span><i class="uil uil-comment-dots"></i></span>
-                <span><i class="uil uil-share-alt"></i></span>
-            </div>
-            <div class="bookmark">
-                <span><i class="uil uil-bookmark-full"></i></span>
-            </div>
-        </div>
-
-        <div class="liked-by">
-            <span><img src="./img/profile-10.jpg" alt="alt"/></span>
-            <span><img src="./img/profile-4.jpg" alt="alt"/></span>
-            <span><img src="./img/profile-15.jpg" alt="alt"/></span>
-            <p>Le gusta a <b>Ernest Achiver</b> y a <b> 2,323 personas </b></p>
-        </div>
-
-        <div class="caption">
-            <p><b>Lana Rose</b> Me da&ntilde;&oacute; la piel, no recomiendo el Pack Isdin Protecci&oacute;n con Color.
-                <span class="harsh-tag"></span></p>
-        </div>
-        <div class="comments text-muted">
-            Mira todos los <b>277</b> comentarios
-        </div>
-    </div>
-
-    <!-- FEED 2 -->
-    <div class="feed">
-        <div class="head">
-            <div class="user">
-                <div class="profile-photo">
-                    <img src="./img/profile-17.jpg">
-                </div>
-                <div class="ingo">
-                    <h3>Elena Nito</h3>
-                    <small>HACE 42 MINUTOS</small>
+    <c:choose>
+        <c:when test="${!requestScope.cuacks.isEmpty()}">
+            <c:forEach items="${requestScope.cuacks}" var="cuack">
+                <%@include file="/WEB-INF/pages/user/commons/feed.jsp"%>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <div class="feed">
+                <div class="photo">
+                    <img style="max-height: 10rem"
+                         src="${pageContext.request.contextPath}/images/error_duck_purple.png">
+                    <c:choose>
+                        <c:when test="${sessionScope.user.get().id != requestScope.user.id}">
+                            <p style="font-size: medium; margin-top: 1rem;"><b>&iexcl;${requestScope.user.name}</b> no
+                                ha
+                                creado ning&uacute;n cuack todav&iacute;a!</p>
+                        </c:when>
+                        <c:otherwise>
+                            <p style="font-size: medium; margin-top: 1rem;">&iexcl;No has creado ning&uacute;n cuack
+                                todav&iacute;a!</p>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
-            <span class="edit">
-            <i class="uil uil-ellipsis-h"></i>
-            </span>
-        </div>
-
-        <div class="photo">
-            <img src="./img/feed-2.jpg?v=1">
-        </div>
-
-        <div class="action-button">
-            <div class="interaction-buttons">
-                <span><i class="uil uil-heart"></i></span>
-                <span><i class="uil uil-comment-dots"></i></span>
-                <span><i class="uil uil-share-alt"></i></span>
-            </div>
-            <div class="bookmark">
-                <span><i class="uil uil-bookmark-full"></i></span>
-            </div>
-        </div>
-
-        <div class="liked-by">
-            <span><img src="./img/profile-1.jpg" alt="alt"/></span>
-            <span><img src="./img/profile-5.jpg" alt="alt"/></span>
-            <span><img src="./img/profile-16.jpg" alt="alt"/></span>
-            <p>Le gusta a <b>Gianpi</b> y a <b> 6,420 personas </b></p>
-        </div>
-
-        <div class="caption">
-            <p><b>Elena Nito</b> La bater&iacute;a no dura mucho del celular Samsung Galaxy A23 128GB 4GB.
-                <span class="harsh-tag"></span></p>
-        </div>
-        <div class="comments text-muted">
-            Mira todos los <b>69</b> comentarios
-        </div>
-    </div>
-
-    <!-- FEED 3 -->
-    <div class="feed">
-        <div class="head">
-            <div class="user">
-                <div class="profile-photo">
-                    <img src="./img/profile-18.jpg">
-                </div>
-                <div class="ingo">
-                    <h3>Jacky Sieras</h3>
-                    <small>HACE 23 MINUTOS</small>
-                </div>
-            </div>
-            <span class="edit">
-            <i class="uil uil-ellipsis-h"></i>
-            </span>
-        </div>
-
-        <div class="photo">
-            <img src="./img/feed-3.jpg?v=1">
-        </div>
-
-        <div class="action-button">
-            <div class="interaction-buttons">
-                <span><i class="uil uil-heart"></i></span>
-                <span><i class="uil uil-comment-dots"></i></span>
-                <span><i class="uil uil-share-alt"></i></span>
-            </div>
-            <div class="bookmark">
-                <span><i class="uil uil-bookmark-full"></i></span>
-            </div>
-        </div>
-
-        <div class="liked-by">
-            <span><img src="./img/profile-7.jpg" alt="alt"/></span>
-            <span><img src="./img/profile-2.jpg" alt="alt"/></span>
-            <span><img src="./img/profile-8.jpg" alt="alt"/></span>
-            <p>Le gusta a <b>Ernesto de la Cruz</b> y a <b> 2,323 personas </b></p>
-        </div>
-
-        <div class="caption">
-            <p><b>Jacky Sieras</b> Botas de combate minimalista con cremallera lateral, la mejor compra que hice.
-                <span class="harsh-tag"></span></p>
-        </div>
-        <div class="comments text-muted">
-            Mira todos los <b>277</b> comentarios
-        </div>
-    </div>
-
-    <!-- FEED 4 -->
-    <div class="feed">
-        <div class="head">
-            <div class="user">
-                <div class="profile-photo">
-                    <img src="./img/profile-6.jpg">
-                </div>
-                <div class="ingo">
-                    <h3>Joseph Cavero</h3>
-                    <small>HACE 69 HORAS</small>
-                </div>
-            </div>
-            <span class="edit">
-            <i class="uil uil-ellipsis-h"></i>
-            </span>
-        </div>
-
-        <div class="photo">
-            <img src="./img/feed-4.jpg?v=1">
-        </div>
-
-        <div class="action-button">
-            <div class="interaction-buttons">
-                <span><i class="uil uil-heart"></i></span>
-                <span><i class="uil uil-comment-dots"></i></span>
-                <span><i class="uil uil-share-alt"></i></span>
-            </div>
-            <div class="bookmark">
-                <span><i class="uil uil-bookmark-full"></i></span>
-            </div>
-        </div>
-
-        <div class="liked-by">
-            <span><img src="./img/profile-10.jpg" alt="alt"/></span>
-            <span><img src="./img/profile-4.jpg" alt="alt"/></span>
-            <span><img src="./img/profile-15.jpg" alt="alt"/></span>
-            <p>Le gusta a <b>Ernest Achiver</b> y a <b> 69,699 personas </b></p>
-        </div>
-
-        <div class="caption">
-            <p><b>Joseph Cavero</b> FIFA World Cup Qatar 2022 &Aacute;lbum Tapa Dura + 1 Paquetón, ahora si podr&eacute; completar mi sue&ntilde;o.
-                <span class="harsh-tag"></span></p>
-        </div>
-        <div class="comments text-muted">
-            Mira todos los <b>54</b> comentarios
-        </div>
-    </div>
-
-    <!-- FEED 5 -->
-    <div class="feed">
-        <div class="head">
-            <div class="user">
-                <div class="profile-photo">
-                    <img src="./img/profile-20.jpg">
-                </div>
-                <div class="ingo">
-                    <h3>Leslie Serrano</h3>
-                    <small>HACE 43 MINUTOS</small>
-                </div>
-            </div>
-            <span class="edit">
-            <i class="uil uil-ellipsis-h"></i>
-            </span>
-        </div>
-
-        <div class="photo">
-            <img src="./img/feed-5.jpg?v=1">
-        </div>
-
-        <div class="action-button">
-            <div class="interaction-buttons">
-                <span><i class="uil uil-heart"></i></span>
-                <span><i class="uil uil-comment-dots"></i></span>
-                <span><i class="uil uil-share-alt"></i></span>
-            </div>
-            <div class="bookmark">
-                <span><i class="uil uil-bookmark-full"></i></span>
-            </div>
-        </div>
-
-        <div class="liked-by">
-            <span><img src="./img/profile-10.jpg" alt="alt"/></span>
-            <span><img src="./img/profile-4.jpg" alt="alt"/></span>
-            <span><img src="./img/profile-15.jpg" alt="alt"/></span>
-            <p>Le gusta a <b>Ernest Achiver</b> y a <b> 2,323 personas </b></p>
-        </div>
-
-        <div class="caption">
-            <p><b>Leslie Serrano</b> Mejor&eacute; en mis juegos gracias al Teclado Gamer Mec&aacute;nico T-Dagger BORA WHITE Rainbow T-TGK313W-RD-SP.
-                <span class="harsh-tag"></span></p>
-        </div>
-        <div class="comments text-muted">
-            Mira todos los <b>47</b> comentarios
-        </div>
-    </div>
-
+        </c:otherwise>
+    </c:choose>
 </div>

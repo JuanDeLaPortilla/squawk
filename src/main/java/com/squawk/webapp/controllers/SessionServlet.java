@@ -50,7 +50,7 @@ public class SessionServlet extends HttpServlet {
     }
 
     private void defaultAction(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/index").forward(req, resp);
     }
 
     private void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -64,9 +64,9 @@ public class SessionServlet extends HttpServlet {
             HttpSession session = req.getSession();
             session.setAttribute("user", optionalUser);
 
-            resp.sendRedirect(req.getContextPath() + "/index.jsp");
+            resp.sendRedirect(req.getContextPath() + "/index");
         } else {
-            resp.sendRedirect(req.getContextPath() + "/index.jsp");
+            resp.sendRedirect(req.getContextPath() + "/index");
         }
     }
 
@@ -77,6 +77,6 @@ public class SessionServlet extends HttpServlet {
             HttpSession session = req.getSession();
             session.invalidate();
         }
-        resp.sendRedirect(req.getContextPath()+"/index.jsp");
+        resp.sendRedirect(req.getContextPath()+"/index");
     }
 }

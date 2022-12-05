@@ -11,17 +11,21 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebFilter({"/users.html", "/dashboard", "/tags", "/cuacks", "/staff"})
+@WebFilter({"/users", "/dashboard", "/tags", "/cuacks", "/staff", "/users.jsp", "/dashboard.jsp", "/tags.jsp", "/cuacks.jsp", "/staff.jsp"})
 public class ValidateAdmin implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         LoginService service = new LoginServiceImpl();
         Optional<User> userOptional = service.getUser((HttpServletRequest) servletRequest);
 
-        if (userOptional.isPresent() && userOptional.get().getType() == 3) {
-            filterChain.doFilter(servletRequest, servletResponse);
-        } else {
-            ((HttpServletResponse) servletResponse).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Lo sentimos, ¡no estás autorizado para ver esta página!");
+        try {
+            if (userOptional.isPresent() && userOptional.get().getType() == 3) {
+                filterChain.doFilter(servletRequest, servletResponse);
+            } else {
+                ((HttpServletResponse) servletResponse).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Lo sentimos, ¡no estás autorizado para ver esta página!");
+            }
+        } catch (NullPointerException e) {
+            ((HttpServletResponse) servletResponse).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Lo sentimos, ¡necesitas iniciar sesión para ver esta página!");
         }
     }
 }

@@ -7,10 +7,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Usuarios</title>
+    <title>Usuarios | Squawk!s</title>
     <!-- Conexiones con CSS -->
     <link rel="stylesheet" href="./css/a-style-listas.css?v=1.4">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
 <body>
 <div class="container">

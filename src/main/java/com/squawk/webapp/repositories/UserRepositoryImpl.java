@@ -1,6 +1,7 @@
 package com.squawk.webapp.repositories;
 
 import com.squawk.webapp.models.User;
+import com.squawk.webapp.util.Util;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -110,16 +111,7 @@ public class UserRepositoryImpl implements UserRepository<User> {
     }
 
     private static User getUser(ResultSet rs) throws SQLException {
-        User u = new User();
-        u.setId(rs.getLong("user_id"));
-        u.setName(rs.getString("nickname"));
-        u.setPassword(rs.getString("password"));
-        u.setEmail(rs.getString("email"));
-        u.setImg(rs.getString("profile_picture"));
-        u.setType(rs.getInt("user_type"));
-        u.setStatus(rs.getInt("status"));
-        u.setBirthday(rs.getDate("birthday").toLocalDate());
-        u.setCreationDate(rs.getDate("creation_date").toLocalDate());
+        User u = Util.getUser(rs);
         return u;
     }
 }

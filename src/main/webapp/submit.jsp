@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Squawk! - Home</title>
+        <title>Publicar | Squawk!</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE-edge"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Conexion con Iconos -->
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
         <!-- Conexcion con CSS -->
-        <link rel="stylesheet" href="./css/style.css?v=1"/>
+        <link rel="stylesheet" href="./css/style.css?v=1.53"/>
+        <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
     </head>
     <body>
     <!-- HEADER -->
@@ -26,7 +27,7 @@
                             <h4>Crear un Cuack</h4>
                         </div>
                         <!-- SUBMIT FORM -->
-                        <jsp:include page="/WEB-INF/pages/user/submit_form.jsp"/>
+                        <jsp:include page="/WEB-INF/pages/user/cuack/submit_form.jsp"/>
                     </div>
                 </div> 
                 <!-- RIGHT -->
@@ -50,5 +51,6 @@
         </main>
 
         <script src="./js/white-theme.js"></script>
+    <script src="./js/preview-image.js"></script>
     </body>
 </html>

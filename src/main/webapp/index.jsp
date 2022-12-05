@@ -2,14 +2,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Squawk! - Home</title>
+    <title>Squawk!</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
+    <script src="https://kit.fontawesome.com/69e84cf231.js" crossorigin="anonymous"></script>
     <!-- Conexion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=5"/>
+    <link rel="stylesheet" href="./css/style.css?v=5.394"/>
+    <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
 
 <body>
@@ -22,35 +25,56 @@
         <!-- MIDDLE -->
         <div class="middle">
 
-            <!-- LAST CUACKS -->
-            <jsp:include page="/WEB-INF/pages/user/stories.jsp"/>
+            <!-- TOP CUACKS -->
+            <jsp:include page="/WEB-INF/pages/user/top-cuacks.jsp"/>
 
             <!-- CREATE CUACK -->
             <c:if test="${sessionScope.user.present}">
                 <a class="create-post" href="${pageContext.request.contextPath}/submit">
                     <div class="profile-photo">
-                        <img src="${pageContext.request.contextPath}/images/logo.webp"/>
+                        <c:choose>
+                            <c:when test="${sessionScope.user.present}">
+                                <img src="${sessionScope.user.get().img}"/>
+                            </c:when>
+                            <c:otherwise>
+                                <img src="${pageContext.request.contextPath}/profile_pictures/default.webp"/>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <p class="text-muted">&iexcl;Crea un cuack ahora!</p>
                     <label class="btn btn-primary">Crear</label>
                 </a>
             </c:if>
+
             <!-- FEEDS -->
-            <jsp:include page="/WEB-INF/pages/user/feeds.jsp"/>
+            <div class="feeds" id="feeds"></div>
         </div>
         <div></div>
     </div>
 </main>
 
-<!-- LOGIN -->
-<jsp:include page="/WEB-INF/pages/user/login.jsp"/>
+<!-- SIGNUP + LOGIN FORM TAB-->
+<jsp:include page="/WEB-INF/pages/user/login-signup/signup_login_form_tab.jsp"/>
 
-<!-- SIGN-UP -->
-<jsp:include page="/WEB-INF/pages/user/sign-up.jsp"/>
+<!-- CUACK TEMPLATE -->
+<%@include file="/WEB-INF/pages/user/commons/feed-template.jsp"%>
 
 <!-- Conexiones con Js -->
-<script src="./js/white-theme.js"></script>
-<script src="./js/modal-button-1.js?v=1"></script>
-<script src="./js/modal-button.js"></script>
+<script src="${pageContext.request.contextPath}/js/white-theme.js"></script>
+<script src="${pageContext.request.contextPath}/js/modal-button.js"></script>
+<script src="${pageContext.request.contextPath}/js/tab-form.js"></script>
+<script src="${pageContext.request.contextPath}/js/sessionWarning.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/ajaxError.js"></script>
+<script src="${pageContext.request.contextPath}/js/create-dynamic-cuack.js?v=1"></script>
+<script src="${pageContext.request.contextPath}/js/ajax-index.js?v=1"></script>
+<script src="${pageContext.request.contextPath}/js/comment-hover.js"></script>
+<c:if test="${sessionScope.user.isPresent()}">
+    <script src="${pageContext.request.contextPath}/js/like.js"></script>
+    <script src="${pageContext.request.contextPath}/js/like-click.js?v=1"></script>
+</c:if>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/top-cuacks-swiper.js?v=1.293"></script>
+
 </body>
 </html>

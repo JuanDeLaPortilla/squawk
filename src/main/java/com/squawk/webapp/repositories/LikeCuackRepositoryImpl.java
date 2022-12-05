@@ -1,12 +1,13 @@
 package com.squawk.webapp.repositories;
 
-
 import com.squawk.webapp.models.LikeCuack;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
-public class LikeCuackRepositoryImpl implements Repository<LikeCuack> {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class LikeCuackRepositoryImpl implements LikeCuackRepository<LikeCuack> {
     private Connection conn;
 
     public LikeCuackRepositoryImpl(Connection conn) {
@@ -14,56 +15,79 @@ public class LikeCuackRepositoryImpl implements Repository<LikeCuack> {
     }
 
     @Override
-    public List<LikeCuack> findAll() throws SQLException {
-        List<LikeCuack> lc = new ArrayList<>();
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM like_cuack")) {
-            while (rs.next()) {
-                LikeCuack l = getLikeCuack(rs);
+    public String add(Long cuackId, Long userId) throws SQLException {
+        String msg = "";
+        boolean f = false;
+        try {
+            String sql = "insert into like_cuack(cuack_id,user_id) values (?,?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
 
-                lc.add(l);
-            }
-        } catch (SQLException e) {
+            stmt.setLong(1, cuackId);
+            stmt.setLong(2, userId);
+            stmt.executeUpdate();
+            f = true;
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return lc;
+        msg += f;
+        if (f){
+            msg+="&1";
+        }
+        return msg;
     }
 
-
     @Override
-    public LikeCuack findById(Long id) throws SQLException {
-        LikeCuack lc = null;
-        try(PreparedStatement stmt = conn.prepareStatement("SELECT * FROM like_cuack WHERE like_cuack_id= ?")){
-            stmt.setLong(1, id);
+    public Integer countLikesOnCuacks(Long cuackId) throws SQLException {
+        int count = 0;
 
-            try(ResultSet rs = stmt.executeQuery()){
-                if(rs.next()){
-                    lc = getLikeCuack(rs);
-                }
+        String sql = "select count(*) from like_cuack where cuack_id=?";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setLong(1, cuackId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("count(*)");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return lc;
+        return count;
     }
 
     @Override
-    public void add(LikeCuack lc) throws SQLException {
-
+    public Boolean isLikedByUser(Long cuackId, Long userId) throws SQLException {
+        boolean f = false;
+        try {
+            PreparedStatement stmt = conn.prepareStatement("select * from like_cuack where cuack_id=? and user_id=?");
+            stmt.setLong(1, cuackId);
+            stmt.setLong(2, userId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                f = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return f;
     }
 
     @Override
-    public void delete(Long id) throws SQLException {
-        String sql = "DELETE FROM like_cuack WHERE like_cuack_id=?";
-        try(PreparedStatement stmt = conn.prepareStatement(sql)){
-            stmt.setLong(1,id);
+    public String delete(Long cuackId, Long userId) throws SQLException {
+        String msg="";
+        boolean f = false;
+        try {
+            PreparedStatement stmt = conn.prepareStatement("delete from like_cuack where cuack_id=? and user_id=?");
+            stmt.setLong(1, cuackId);
+            stmt.setLong(2, userId);
             stmt.executeUpdate();
+            f = true;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }
-    private static LikeCuack getLikeCuack(ResultSet rs) throws SQLException {
-        LikeCuack t = new LikeCuack();
-        t.setLikeCuackID(rs.getLong("like_cuack_id"));
-        t.setUserID(rs.getLong("user_id"));
-        t.setCuackID(rs.getLong("cuack_id"));
-        return t;
+        msg += f;
+        if (f){
+            msg+="&0";
+        }
+        return msg;
     }
 }

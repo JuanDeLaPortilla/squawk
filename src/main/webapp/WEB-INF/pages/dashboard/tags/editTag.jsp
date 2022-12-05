@@ -11,6 +11,7 @@
     <!-- Conexiones con CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/a-style-listas.css?v=9">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
 <body>
 <div class="container">

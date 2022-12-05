@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Squawk! - Terms and Conditions</title>
+    <title>T&eacute;rminos y C&oacute;ndiciones | Squawk!</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Conexion con Iconos -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <!-- Conexcion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=5.1"/>
+    <link rel="stylesheet" href="./css/style.css?v=5.17"/>
+    <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
 
 <body>
@@ -156,15 +157,13 @@
     </div>
 </main>
 
-<!-- LOGIN -->
-<jsp:include page="/WEB-INF/pages/user/login.jsp"/>
-
-<!-- SIGN-UP -->
-<jsp:include page="/WEB-INF/pages/user/sign-up.jsp"/>
+<!-- SIGNUP + LOGIN FORM TAB-->
+<jsp:include page="/WEB-INF/pages/user/login-signup/signup_login_form_tab.jsp"/>
 
 <!-- Conexiones con Js -->
 <script src="./js/white-theme.js"></script>
-<script src="./js/modal-button-1.js?v=1"></script>
 <script src="./js/modal-button.js"></script>
+<script src="./js/tab-form.js"></script>
+
 </body>
 </html>

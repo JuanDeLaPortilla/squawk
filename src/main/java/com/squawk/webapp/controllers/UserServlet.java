@@ -62,17 +62,15 @@ public class UserServlet extends HttpServlet {
                     break;
                 case "sign-up":
                     this.addUser(req,resp,service);
-                    getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+                    getServletContext().getRequestDispatcher("/index").forward(req, resp);
                     break;
                 case "update":
                     this.addUser(req,resp,service);
                     this.updateUser(req,resp,service);
-                    getServletContext().getRequestDispatcher("/profile.jsp").forward(req, resp);
                     break;
-                case "updateProfile":
+                case "updateProfilePicture":
                     this.updateProfile(req,resp,service);
                     this.updateUser(req,resp,service);
-                    getServletContext().getRequestDispatcher("/profile.jsp").forward(req, resp);
                     break;
                 case "editPicture":
                     this.updateProfile(req,resp,service);
@@ -175,6 +173,8 @@ public class UserServlet extends HttpServlet {
             HttpSession session = req.getSession();
             session.setAttribute("user", optionalUser);
         }
+
+        getServletContext().getRequestDispatcher("/profile?id="+id).forward(req, resp);
     }
 
     private static long getId(HttpServletRequest req) {

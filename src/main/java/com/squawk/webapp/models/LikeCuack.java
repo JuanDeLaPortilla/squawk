@@ -1,41 +1,45 @@
 package com.squawk.webapp.models;
 
 public class LikeCuack {
-    private Long likeCuackID;
-    private Long userID;
-    private Long cuackID;
-
-    public LikeCuack(Long likeCuackID, Long userID, Long cuackID) {
-        this.likeCuackID = likeCuackID;
-        this.userID = userID;
-        this.cuackID = cuackID;
-    }
+    private Long id;
+    private Cuack cuack;
+    private User user;
 
     public LikeCuack() {
     }
 
-    public Long getLikeCuackID() {
-        return likeCuackID;
+    public LikeCuack(Long id, Cuack cuack, User user) {
+        this.id = id;
+        this.cuack = cuack;
+        this.user = user;
     }
 
-    public void setLikeCuackID(Long likeCuackID) {
-        this.likeCuackID = likeCuackID;
+    public LikeCuack(Cuack cuack, User user) {
+        this.cuack = cuack;
+        this.user = user;
     }
 
-    public Long getUserID() {
-        return userID;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserID(Long userID) {
-        this.userID = userID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getCuackID() {
-        return cuackID;
+    public Cuack getCuack() {
+        return cuack;
     }
 
-    public void setCuackID(Long cuackID) {
-        this.cuackID = cuackID;
+    public void setCuack(Cuack cuack) {
+        this.cuack = cuack;
     }
-    
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

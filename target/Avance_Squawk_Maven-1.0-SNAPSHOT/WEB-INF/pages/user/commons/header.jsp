@@ -1,17 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav>
     <div class="container">
-        <a href="./index.jsp">
+        <a href="${pageContext.request.contextPath}/index">
             <div class="log">
                 <h2>Squawk!</h2>
                 <img class="logo" src="${pageContext.request.contextPath}/images/logo-dashboard.png"/>
             </div>
         </a>
-
-        <div class="search-bar">
-            <i class="uil uil-search"></i>
-            <input type="search" placeholder="&iexcl;Busca rese&ntilde;as o productos!">
-        </div>
 
         <div class="create">
             <c:if test="${sessionScope.user.present}">
@@ -33,16 +28,13 @@
                     <c:choose>
                         <c:when test="${sessionScope.user.present}">
                             <li>
-                                <a href="${pageContext.request.contextPath}/profile"><i class="uil uil-user-circle"></i>Mi
-                                    Perfil</a>
+                                <a href="${pageContext.request.contextPath}/profile?id=${sessionScope.user.get().id}">
+                                    <i class="uil uil-user-circle"></i>Mi Perfil</a>
                             </li>
                         </c:when>
                         <c:otherwise>
                             <li>
-                                <a id="modalBtn1"><i class="uil uil-sign-in-alt"></i>Iniciar Sesi&oacute;n</a>
-                            </li>
-                            <li>
-                                <a id="modalBtn"><i class="uil uil-user-plus"></i>Registrarse</a>
+                                <a id="modalBtn"><i class="uil uil-user-circle"></i>Registrarse | Iniciar Sesi&oacute;n</a>
                             </li>
                         </c:otherwise>
                     </c:choose>

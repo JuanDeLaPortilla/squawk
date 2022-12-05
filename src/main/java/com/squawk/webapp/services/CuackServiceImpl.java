@@ -25,6 +25,33 @@ public class CuackServiceImpl implements CuackService {
     }
 
     @Override
+    public List<Cuack> findTopMonthly() {
+        try {
+            return repositoryJdbc.findTopMonthly();
+        }catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Override
+    public List<Cuack> findByUserId(Long id) {
+        try {
+            return repositoryJdbc.findByUserId(id);
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Override
+    public List<Cuack> findByTagId(Long id) {
+        try {
+            return repositoryJdbc.findByTagId(id);
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Override
     public Optional<Cuack> findById(Long id) {
         try {
             return Optional.ofNullable(repositoryJdbc.findById(id));

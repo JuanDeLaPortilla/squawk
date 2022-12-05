@@ -1,38 +1,22 @@
 package com.squawk.webapp.models;
 
-import java.text.DecimalFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Cuack{
 
     //Atributos
     private Long cuackID;
-    private Long tagID;
-    private String desc;
+    private User user;
+    private Tag tag;
+    private String content;
     private String img;
     private String url;
-    private double rating;
     private int status;
     private String title;
-    private double price;
-    private Date creationDate;
-    private int edited;
+    private LocalDateTime creationDate;
+    private int isEdited;
 
     //Constructor
-    public Cuack(Long cuackID, Long tagID, String desc, String img, String url, double rating, int status, String title, double price, Date creationDate, int edited) {
-        this.cuackID = cuackID;
-        this.tagID = tagID;
-        this.desc = desc;
-        this.img = img;
-        this.url = url;
-        this.rating = rating;
-        this.status = status;
-        this.title = title;
-        this.price = price;
-        this.creationDate = creationDate;
-        this.edited = edited;
-    }
-
     public Cuack() {
     }
 
@@ -46,20 +30,28 @@ public class Cuack{
         this.cuackID = cuackID;
     }
 
-    public Long getTagID() {
-        return tagID;
+    public User getUser() {
+        return user;
     }
 
-    public void setTagID(Long tagID) {
-        this.tagID = tagID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getDesc() {
-        return desc;
+    public Tag getTag() {
+        return tag;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setTag(Tag tag) {
+        this.tag = tag;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getImg() {
@@ -78,14 +70,6 @@ public class Cuack{
         this.url = url;
     }
 
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
     public int getStatus() {
         return status;
     }
@@ -102,28 +86,15 @@ public class Cuack{
         this.title = title;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Date getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
-    public int getEdited() {
-        return edited;
-    }
+    public int isEdited() {return isEdited;}
 
-    public void setEdited(int edited) {
-        this.edited = edited;
-    }
-    
+    public void setEdited(int edited) {this.isEdited = edited;}
 }
