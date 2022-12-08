@@ -2,8 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:parseDate value="${requestScope.user.birthday}" type="date" pattern="yyyy-MM-dd" var="parsedBirthday"/>
 
-<div class="pop-up inserted">
+<div class="pop-up" id="modalForm">
     <div class="card">
+        <span class="close" id="closeModalBtn">&times;</span>
         <h4>Editar Un Usuario</h4><br>
         <form action="${pageContext.request.contextPath}/users?action=edit&idUser=${requestScope.user.id}"
               method="POST" class="login-form">
@@ -18,7 +19,7 @@
                    required><br>
             <label>Tipo de Usuario</label><br>
             <input type="number" class="login-input" name="type" value="${requestScope.user.type}" required min="1"
-                   max="3"><br>
+                   max="2"><br>
             <input type="submit" value="Editar" class="btn btn-primary"/>
         </form>
     </div>

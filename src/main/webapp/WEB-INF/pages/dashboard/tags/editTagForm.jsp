@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <div class="pop-up inserted">
-    <div class="card">
+    <div class="card" style="margin: 5rem auto !important;">
         <h4>Editar Tag</h4><br>
         <form action="${pageContext.request.contextPath}/tags?action=edit&idTag=${requestScope.tag.tagID}"
               method="POST" class="login-form">

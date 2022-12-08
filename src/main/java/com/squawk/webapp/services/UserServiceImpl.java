@@ -7,6 +7,7 @@ import com.squawk.webapp.repositories.UserRepositoryImpl;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
@@ -26,6 +27,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findStaffLazy() {
+        try {
+            return repositoryJdbc.findStaffLazy();
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Override
+    public List<Object> findByMonth() {
+        try {
+            return repositoryJdbc.findByMonth();
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Override
     public Optional<User> findById(Long id) {
         try {
             return Optional.ofNullable(repositoryJdbc.findById(id));
@@ -33,6 +52,33 @@ public class UserServiceImpl implements UserService {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
+
+    @Override
+    public Integer countMonthlyUsers() {
+        try {
+            return repositoryJdbc.countMonthlyUsers();
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Override
+    public Integer countAllUsers() {
+        try {
+            return repositoryJdbc.countAllUsers();
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+    @Override
+    public Integer countActiveUsers() {
+        try {
+            return repositoryJdbc.countActiveUsers();
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
 
     @Override
     public void add(User user) {

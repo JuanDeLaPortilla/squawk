@@ -1,15 +1,3 @@
-<!-- ADD USER BUTTON-->
-<div class="right">
-    <div class="sales-analytics">
-        <div class="item add-product">
-            <div id="modalBtn">
-                <span class="material-icons-sharp">add</span>
-                <h3>A&ntilde;adir Tag</h3>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- ADD TAG FORM-->
 <div class="pop-up" id="modalForm">
     <div class="card">

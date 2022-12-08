@@ -141,6 +141,38 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
     }
 
     @Override
+    public List<Object> findByMonth() throws SQLException {
+        List<Object> findByMonth = new ArrayList<>();
+        List<String> labels = new ArrayList<>();
+        List<Integer> data = new ArrayList<>();
+        int cuack;
+        String creation_month;
+
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT\n" +
+                     "    DATE_FORMAT(creation_date, '%M-%Y') AS creation_month,\n" +
+                     "    COUNT(*) AS cuacks\n" +
+                     "FROM cuacks\n" +
+                     "where year(creation_date) = year(current_date)\n" +
+                     "GROUP BY\n" +
+                     "    MONTH(creation_date),\n" +
+                     "    YEAR(creation_date)")) {
+            while (rs.next()) {
+                cuack = rs.getInt("cuacks");
+                data.add(cuack);
+                creation_month = rs.getString("creation_month");
+                labels.add(creation_month);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        findByMonth.add(labels);
+        findByMonth.add(data);
+
+        return findByMonth;
+    }
+
+    @Override
     public Cuack findById(Long id) throws SQLException {
         Cuack cuack = null;
         try (PreparedStatement stmt = conn.prepareStatement("SELECT c.cuack_id,\n" +
@@ -168,6 +200,20 @@ public class CuackRepositoryImpl implements CuackRepository<Cuack> {
         }
         return cuack;
     }
+
+    public int countMonthlyCuacks() throws SQLException {
+        int cuacks = 0;
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) as cuacks from cuacks where month(creation_date)=month(current_date) and year(creation_date)=year(current_date)")) {
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    cuacks = rs.getInt("cuacks");
+                }
+            }
+        }
+        return cuacks;
+    }
+
 
     @Override
     public void add(Cuack cuack) throws SQLException {

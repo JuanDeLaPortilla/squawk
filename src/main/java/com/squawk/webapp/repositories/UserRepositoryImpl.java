@@ -31,6 +31,25 @@ public class UserRepositoryImpl implements UserRepository<User> {
         return users;
     }
 
+    @Override
+    public List<User> findStaffLazy() throws SQLException {
+        List<User> users = new ArrayList<>();
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT nickname, profile_picture, email from users where user_type=3")) {
+            while (rs.next()) {
+                User u = new User();
+                u.setName(rs.getString("nickname"));
+                u.setImg(rs.getString("profile_picture"));
+                u.setEmail(rs.getString("email"));
+
+                users.add(u);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
 
     @Override
     public User findById(Long id) throws SQLException {
@@ -45,6 +64,80 @@ public class UserRepositoryImpl implements UserRepository<User> {
             }
         }
         return user;
+    }
+
+    @Override
+    public List<Object> findByMonth() throws SQLException {
+        List<Object> findByMonth = new ArrayList<>();
+        List<String> labels = new ArrayList<>();
+        List<Integer> data = new ArrayList<>();
+        int user;
+        String creation_month;
+
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT\n" +
+                     "    DATE_FORMAT(creation_date, '%M-%Y') AS creation_month,\n" +
+                     "    COUNT(*) AS users\n" +
+                     "FROM users\n" +
+                     "where year(creation_date) = year(current_date)\n" +
+                     "GROUP BY\n" +
+                     "    MONTH(creation_date),\n" +
+                     "    YEAR(creation_date)")) {
+            while (rs.next()) {
+                user = rs.getInt("users");
+                data.add(user);
+                creation_month = rs.getString("creation_month");
+                labels.add(creation_month);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        findByMonth.add(labels);
+        findByMonth.add(data);
+
+        return findByMonth;
+    }
+
+    @Override
+    public int countMonthlyUsers() throws SQLException {
+        int users = 0;
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) as users from users where month(creation_date)=month(current_date) and year(creation_date)=year(current_date)")) {
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    users = rs.getInt("users");
+                }
+            }
+        }
+        return users;
+    }
+
+    @Override
+    public int countAllUsers() throws SQLException {
+        int users = 0;
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) as users from users")) {
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    users = rs.getInt("users");
+                }
+            }
+        }
+        return users;
+    }
+
+    @Override
+    public int countActiveUsers() throws SQLException {
+        int users = 0;
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) as users from users where status=1")) {
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    users = rs.getInt("users");
+                }
+            }
+        }
+        return users;
     }
 
     @Override

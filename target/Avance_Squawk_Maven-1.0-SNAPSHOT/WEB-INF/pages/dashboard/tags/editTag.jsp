@@ -17,15 +17,16 @@
 <div class="container">
     <!-- SIDEBAR AND HEADER -->
     <jsp:include page="../commons/sidebar-header.jsp"/>
-    <main>
+    <main style="padding: 0 !important;">
+        <!-- PROFILE AND DARK MODE-->
+        <div class="right">
+            <jsp:include page="../commons/profile-dark-mode.jsp"/>
+        </div>
+
         <!-- EDIT TAG FORM -->
         <jsp:include page="./editTagForm.jsp?v=2"/>
     </main>
 
-    <!-- PROFILE AND DARK MODE-->
-    <div class="right">
-        <jsp:include page="../commons/profile-dark-mode.jsp"/>
-    </div>
 </div>
 
 <!-- Conexiones con Js -->

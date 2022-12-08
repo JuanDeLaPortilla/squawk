@@ -28,7 +28,7 @@ public class CuackServiceImpl implements CuackService {
     public List<Cuack> findTopMonthly() {
         try {
             return repositoryJdbc.findTopMonthly();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
@@ -55,6 +55,24 @@ public class CuackServiceImpl implements CuackService {
     public Optional<Cuack> findById(Long id) {
         try {
             return Optional.ofNullable(repositoryJdbc.findById(id));
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Override
+    public List<Object> findByMonth() {
+        try {
+            return repositoryJdbc.findByMonth();
+        } catch (SQLException e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Override
+    public Integer countMonthlyCuacks() {
+        try {
+            return repositoryJdbc.countMonthlyCuacks();
         } catch (SQLException e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
