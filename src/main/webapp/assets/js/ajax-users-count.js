@@ -1,5 +1,5 @@
-(async () =>{
-    const respuestRaw = await fetch("/Avance_Squawk_Maven/dashboard?action=sendUsers")
+(async () => {
+    const respuestRaw = await fetch("dashboard?action=sendUsers")
     const respuesta = await respuestRaw.json()
     const $grafica = document.querySelector('#users')
     const etiquetas = respuesta[0]
@@ -8,18 +8,16 @@
         labels: etiquetas,
         datasets: [{
             label: "Usuarios Registrados Por Mes",
-            data: arrayNumeros
+            data: arrayNumeros,
+            fill: false,
+            backgroundColor: 'rgb(120, 146, 250)',
+            borderColor: 'rgb(120, 146, 250)',
+            tension: 0.1,
+            borderWidth: 1
         }]
     }
     new Chart($grafica, {
-        type: 'bar',
-        data: datos,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        },
+        type: 'line',
+        data: datos
     })
 })();

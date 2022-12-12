@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Squawk!</title>
     <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
-    <link rel="stylesheet" href="./css/a-style.css?v=1">
+    <link rel="stylesheet" href="./css/a-style-listas.css?v=1.3">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
           rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.js"></script>
@@ -17,7 +17,10 @@
     <!-- SIDEBAR AND HEADER -->
     <jsp:include page="WEB-INF/pages/dashboard/commons/sidebar-header.jsp"/>
     <main>
-        <h1>Dashboard</h1>
+        <div class="right"></div>
+        <div class="heading">
+            <h1 style="padding: 1rem 1rem 0">Dashboard</h1>
+        </div>
 
         <div class="insights">
             <div class="sales">
@@ -52,12 +55,15 @@
             <!-----END OF INCOME-------->
         </div>
         <!-----END OF INSIGHTS-------->
-
-        <div class="recent-orders">
-            <h2>Estadisticas</h2>
-            <div>
-                <canvas id="users"></canvas>
-                <canvas id="cuacks"></canvas>
+        <div class="statistics">
+            <h1>Estadisticas</h1>
+            <div class="charts-container">
+                <div class="charts">
+                    <canvas id="users"></canvas>
+                </div>
+                <div class="charts">
+                    <canvas id="cuacks"></canvas>
+                </div>
             </div>
         </div>
     </main>
@@ -90,8 +96,8 @@
 <script src="./js/white-theme.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/ajaxError.js"></script>
-<script src="${pageContext.request.contextPath}/js/ajax-cuacks-count.js?v=2"></script>
-<script src="${pageContext.request.contextPath}/js/ajax-users-count.js?v=2"></script>
+<script src="${pageContext.request.contextPath}/js/ajax-cuacks-count.js?v=2.4"></script>
+<script src="${pageContext.request.contextPath}/js/ajax-users-count.js?v=2.4"></script>
 
 </body>
 </html>

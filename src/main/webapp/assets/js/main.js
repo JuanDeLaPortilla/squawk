@@ -36,7 +36,9 @@
    */
   const datatables = select('.datatable', true)
   datatables.forEach(datatable => {
-    new simpleDatatables.DataTable(datatable,{ perPage: 5 });
+    new simpleDatatables.DataTable(datatable,{
+      perPage: 5
+    });
   })
 
 })();

@@ -377,8 +377,6 @@ main .container.two-rows {
 }
 
 .middle .feed .action-button {
-    display: flex;
-    align-items: center;
     margin: 1rem 0;
 }
 
@@ -437,6 +435,11 @@ main .container.two-rows {
     color: var(--color-primary);
 }
 
+.buttons-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 /*========================ABOUT US======================*/
 .about-us {
@@ -583,6 +586,10 @@ MEDIA QUERIES FOR PHONES
 
     body {
         width: 80vw;
+    }
+
+    .buttons-container{
+        flex-direction: column;
     }
 }
 /*=============MODAL===========*/
