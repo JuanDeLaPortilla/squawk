@@ -19,7 +19,7 @@
                    required><br>
             <label>Tipo de Usuario</label><br>
             <input type="number" class="login-input" name="type" value="${requestScope.user.type}" required min="1"
-                   max="2"><br>
+                   max="3"><br>
             <input type="submit" value="Editar" class="btn btn-primary"/>
         </form>
     </div>

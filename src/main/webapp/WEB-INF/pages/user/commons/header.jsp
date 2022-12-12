@@ -4,7 +4,7 @@
         <a href="${pageContext.request.contextPath}/index">
             <div class="log">
                 <h2>Squawk!</h2>
-                <img class="logo" src="${pageContext.request.contextPath}/images/logo-dashboard.png"/>
+                <img class="logo" src="${pageContext.request.contextPath}/assets/images/logo-dashboard.png"/>
             </div>
         </a>
 
@@ -20,7 +20,7 @@
                             <img src="${sessionScope.user.get().img}"/>
                         </c:when>
                         <c:otherwise>
-                            <img src="${pageContext.request.contextPath}/profile_pictures/default.webp"/>
+                            <img src="${pageContext.request.contextPath}/assets/profile_pictures/default.webp"/>
                         </c:otherwise>
                     </c:choose>
                 </summary>

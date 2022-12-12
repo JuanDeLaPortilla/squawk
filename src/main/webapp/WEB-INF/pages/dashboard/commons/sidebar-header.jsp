@@ -1,7 +1,7 @@
 <aside>
   <div class="top">
     <div class="logo">
-      <img src="./images/logo-dashboard.png" id="myImage">
+      <img src="${pageContext.request.contextPath}/assets/images/logo-dashboard.png" id="myImage">
       <h2><span class="primary">SQU</span>AWK!</h2>
     </div>
     <div class="close" id="close-btn">
@@ -21,17 +21,6 @@
     <a href="${pageContext.request.contextPath}/tags">
       <span class="material-icons-sharp">style</span>
       <h3>Tags</h3>
-    </a>
-    <!----- Contador de mensajes
-    <a href="">
-        <span class="material-icons-sharp">mail_outline</span>
-        <h3>Messages</h3>
-        <span class="message-count">26</span>
-    </a>
-        ------->
-    <a href="${pageContext.request.contextPath}/staff">
-      <span class="material-icons-sharp">groups_3</span>
-      <h3>Staff</h3>
     </a>
     <a href="${pageContext.request.contextPath}/index">
       <span class="material-icons-sharp">logout</span>

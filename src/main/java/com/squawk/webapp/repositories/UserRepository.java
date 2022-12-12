@@ -15,5 +15,6 @@ public interface UserRepository<T>{
     void add(T t) throws SQLException;
     void uploadPicture(Long id, String img) throws SQLException;
     void delete(Long id) throws SQLException;
+    void activate(Long id) throws SQLException;
     T login(String email, String password) throws SQLException;
 }

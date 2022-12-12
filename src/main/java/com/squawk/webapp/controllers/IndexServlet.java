@@ -46,7 +46,7 @@ public class IndexServlet extends HttpServlet {
     private void defaultAction(HttpServletRequest req, HttpServletResponse resp, CuackService service) throws ServletException, IOException {
         List<Cuack> stories = service.findTopMonthly();
         req.setAttribute("stories", stories);
-        getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/pages/user/index.jsp").forward(req, resp);
     }
 
     private String sendCuacks(HttpServletRequest request, CuackService service) {

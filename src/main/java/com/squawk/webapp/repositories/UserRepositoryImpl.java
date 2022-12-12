@@ -129,7 +129,15 @@ public class UserRepositoryImpl implements UserRepository<User> {
     @Override
     public int countActiveUsers() throws SQLException {
         int users = 0;
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) as users from users where status=1")) {
+        try (PreparedStatement stmt = conn.prepareStatement("select count(DISTINCT u.user_id) as users\n" +
+                "from users u\n" +
+                "         LEFT JOIN like_cuack lc\n" +
+                "                   ON u.user_id = lc.user_id\n" +
+                "         LEFT JOIN dislike_cuack dc\n" +
+                "                   ON u.user_id = dc.user_id\n" +
+                "         LEFT JOIN cuacks c\n" +
+                "                   ON u.user_id = c.user_id\n" +
+                "WHERE year(CURRENT_DATE) = year(c.creation_date)")) {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -167,7 +175,16 @@ public class UserRepositoryImpl implements UserRepository<User> {
 
     @Override
     public void delete(Long id) throws SQLException {
-        String sql = "DELETE FROM users WHERE user_id=?";
+        String sql = "UPDATE users SET status=2 WHERE user_id=?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+        }
+    }
+
+    @Override
+    public void activate(Long id) throws SQLException {
+        String sql = "UPDATE users SET status=1 WHERE user_id=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setLong(1, id);
             stmt.executeUpdate();

@@ -22,9 +22,18 @@
 
                 <div class="buttons">
                     <label class="btn btn-primary" id="modalBtn">Editar Datos</label>
-                    <a onclick="return confirm('&iquest;Est&aacute; seguro que desea eliminar al usuario?');"
-                       href="${pageContext.request.contextPath}/users?action=delete&idUser=${requestScope.user.id}"
-                       class="btn btn-primary">Eliminar Usuario</a>
+                    <c:choose>
+                        <c:when test="${requestScope.user.status == 1}">
+                            <a onclick="return confirm('&iquest;Est&aacute; seguro que desea eliminar al usuario?');"
+                               href="${pageContext.request.contextPath}/users?action=delete&idUser=${requestScope.user.id}"
+                               class="btn btn-primary">Eliminar Usuario</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a onclick="return confirm('&iquest;Est&aacute; seguro que desea activar al usuario?');"
+                               href="${pageContext.request.contextPath}/users?action=activate&idUser=${requestScope.user.id}"
+                               class="btn btn-primary">Activar Usuario</a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>

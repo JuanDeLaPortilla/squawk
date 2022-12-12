@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @WebServlet(name = "submit", value = "/submit")
 @MultipartConfig(
-        location = "G:\\Juan Utp\\Ciclo VI\\Integrador_I\\Avance_Squawk_Maven\\src\\main\\webapp\\cuack_pictures",
+        location = "G:\\Juan Utp\\Ciclo VI\\Integrador_I\\Avance_Squawk_Maven\\src\\main\\webapp\\assets\\cuack_pictures",
         fileSizeThreshold = 1024 * 1024,  //  1 MB
         maxFileSize = 1024 * 1024 * 10,   // 10 MB
         maxRequestSize = 1024 * 1024 * 11 // 11 MB
@@ -55,7 +55,7 @@ public class SubmitServlet extends HttpServlet {
             switch (action) {
                 case "submit":
                     this.submit(request, response, cuackService, tagService, userService);
-                    getServletContext().getRequestDispatcher("/submit.jsp").forward(request, response);
+                    getServletContext().getRequestDispatcher("/WEB-INF/pages/user/submit.jsp").forward(request, response);
                     break;
                 default:
                     this.defaultAction(request, response,tagService);
@@ -121,7 +121,7 @@ public class SubmitServlet extends HttpServlet {
         List<Tag> tags = tagService.findAll();
 
         req.setAttribute("tags",tags);
-        getServletContext().getRequestDispatcher("/submit.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/pages/user/submit.jsp").forward(req, resp);
     }
 
     private static long getId(String idString) {
@@ -158,10 +158,10 @@ public class SubmitServlet extends HttpServlet {
     private String getImgPath(HttpServletRequest req) throws IOException, ServletException {
         Part img = req.getPart("img");
         img.write(Util.getFileName(img));//se sube la imagen al proyeto
-        img.write(getServletContext().getRealPath("\\" + "cuack_pictures"+  File.separator + Util.getFileName(img)));//se sube la imagen al servidor
+        img.write(getServletContext().getRealPath("\\" + "assets" + "\\" + "cuack_pictures"+  File.separator + Util.getFileName(img)));//se sube la imagen al servidor
 
         //se crea la direccion de la imagen
-        String imgPath = getServletContext().getContextPath()+ "\\" + "cuack_pictures"+ File.separator + Util.getFileName(img);
+        String imgPath = "assets" + "\\" + "cuack_pictures"+ File.separator + Util.getFileName(img);
         return imgPath;
     }
 }

@@ -16,6 +16,7 @@ public interface UserService {
     Integer countActiveUsers();
     void add(User user);
     void delete(Long id);
+    void activate(Long id);
     void uploadPicture(Long id, String img);
     Optional<User> login(String email, String password);
 }

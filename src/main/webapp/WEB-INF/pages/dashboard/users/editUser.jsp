@@ -4,16 +4,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <title>${requestScope.user.name} | Squawk!</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Usuarios</title>
     <!-- Conexiones con CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/a-style-listas.css?v=12.98">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin-style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
+
 <body>
 <div class="container">
     <!-- SIDEBAR AND HEADER -->
@@ -54,19 +55,18 @@
 <%@include file="/WEB-INF/pages/user/commons/feed-template.jsp" %>
 
 <!-- Conexiones con Js -->
-<script src="${pageContext.request.contextPath}/js/dashboard-side-menu.js"></script>
-<script src="${pageContext.request.contextPath}/js/white-theme.js"></script>
-<script src="${pageContext.request.contextPath}/js/preview-image.js"></script>
-<script src="${pageContext.request.contextPath}/js/modal-button.js"></script>
-<script src="${pageContext.request.contextPath}/js/modal-button-1.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/dashboard-side-menu.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/white-theme.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/preview-image.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/modal-button.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/modal-button-1.js"></script>
 <script>
     const id = ${requestScope.user.id};
 </script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/ajaxError.js"></script>
-<script src="${pageContext.request.contextPath}/js/create-dynamic-cuack.js?v=1"></script>
-<script src="${pageContext.request.contextPath}/js/ajax-profile.js"></script>
-
+<script src="${pageContext.request.contextPath}/assets/js/ajaxError.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/create-dynamic-cuack.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/ajax-profile.js"></script>
 
 </body>
 </html>

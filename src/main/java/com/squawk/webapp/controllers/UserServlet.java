@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @WebServlet(name = "users", urlPatterns = {"/users"})
 @MultipartConfig(
-        location = "G:\\Juan Utp\\Ciclo VI\\Integrador_I\\Avance_Squawk_Maven\\src\\main\\webapp\\profile_pictures",
+        location = "G:\\Juan Utp\\Ciclo VI\\Integrador_I\\Avance_Squawk_Maven\\src\\main\\webapp\\assets\\profile_pictures",
         fileSizeThreshold = 1024 * 1024,  //  1 MB
         maxFileSize = 1024 * 1024 * 10,   // 10 MB
         maxRequestSize = 1024 * 1024 * 11 // 11 MB
@@ -37,6 +37,9 @@ public class UserServlet extends HttpServlet {
                     break;
                 case "delete":
                     this.deleteUser(req, resp, service);
+                    break;
+                case "activate":
+                    this.activateUser(req, resp, service);
                     break;
                 default:
                     this.defaultAction(req, resp, service);
@@ -58,23 +61,23 @@ public class UserServlet extends HttpServlet {
                 case "add":
                 case "edit":
                     this.addUser(req, resp, service);
-                    this.defaultAction(req,resp,service);
+                    this.defaultAction(req, resp, service);
                     break;
                 case "sign-up":
-                    this.addUser(req,resp,service);
+                    this.addUser(req, resp, service);
                     getServletContext().getRequestDispatcher("/index").forward(req, resp);
                     break;
                 case "update":
-                    this.addUser(req,resp,service);
-                    this.updateUser(req,resp,service);
+                    this.addUser(req, resp, service);
+                    this.updateUser(req, resp, service);
                     break;
                 case "updateProfilePicture":
-                    this.updateProfile(req,resp,service);
-                    this.updateUser(req,resp,service);
+                    this.updateProfile(req, resp, service);
+                    this.updateUser(req, resp, service);
                     break;
                 case "editPicture":
-                    this.updateProfile(req,resp,service);
-                    this.defaultAction(req,resp,service);
+                    this.updateProfile(req, resp, service);
+                    this.defaultAction(req, resp, service);
                     break;
                 default:
                     this.defaultAction(req, resp, service);
@@ -90,7 +93,7 @@ public class UserServlet extends HttpServlet {
         List<User> users = service.findAll();
 
         req.setAttribute("users", users);
-        getServletContext().getRequestDispatcher("/users.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/pages/dashboard/users.jsp").forward(req, resp);
     }
 
     private void addUser(HttpServletRequest req, HttpServletResponse resp, UserService service) throws ServletException, IOException {
@@ -127,6 +130,15 @@ public class UserServlet extends HttpServlet {
         this.defaultAction(req, resp, service);
     }
 
+    private void activateUser(HttpServletRequest req, HttpServletResponse resp, UserService service) throws ServletException, IOException {
+        //obtener id
+        long id = getId(req);
+        //se pasa la id al service
+        service.activate(id);
+        //devuelve el listado de usuarios
+        this.defaultAction(req, resp, service);
+    }
+
     private void updateProfile(HttpServletRequest req, HttpServletResponse resp, UserService service) throws ServletException, IOException {
         //obtener id
         long id = getId(req);
@@ -134,14 +146,14 @@ public class UserServlet extends HttpServlet {
         try {
             Part img = req.getPart("img");
             img.write(Util.getFileName(img));//se sube la imagen al proyeto
-            img.write(getServletContext().getRealPath("\\" + "profile_pictures"+  File.separator + Util.getFileName(img)));//se sube la imagen al servidor
+            img.write(getServletContext().getRealPath("\\" + "assets" + "\\" + "profile_pictures" + File.separator + Util.getFileName(img)));//se sube la imagen al servidor
 
             //se crea la direccion de la imagen
-            String imgPath = getServletContext().getContextPath()+ "\\" + "profile_pictures"+ File.separator + Util.getFileName(img);
+            String imgPath = "assets" + "\\" + "profile_pictures" + File.separator + Util.getFileName(img);
 
             //Se sube el directorio a la base de datos
-            service.uploadPicture(id,imgPath);
-        }catch (Exception e){
+            service.uploadPicture(id, imgPath);
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -174,7 +186,7 @@ public class UserServlet extends HttpServlet {
             session.setAttribute("user", optionalUser);
         }
 
-        getServletContext().getRequestDispatcher("/profile?id="+id).forward(req, resp);
+        getServletContext().getRequestDispatcher("/profile?id=" + id).forward(req, resp);
     }
 
     private static long getId(HttpServletRequest req) {

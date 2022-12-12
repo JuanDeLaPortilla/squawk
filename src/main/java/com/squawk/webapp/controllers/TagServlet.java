@@ -66,7 +66,7 @@ public class TagServlet extends HttpServlet {
         List<Tag> tags = service.findAll();
 
         req.setAttribute("tags", tags);
-        getServletContext().getRequestDispatcher("/tags.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/pages/dashboard/tags.jsp").forward(req, resp);
     }
 
     private void addTag(HttpServletRequest req, HttpServletResponse resp, TagService service) throws ServletException, IOException {

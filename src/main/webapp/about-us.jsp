@@ -1,15 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Acerca de Nosotros | Squawk!</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Conexion con Iconos -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
-    <!-- Conexcion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=1.43"/>
-    <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
+    <%@include file="/WEB-INF/pages/user/commons/head-imports.jsp"%>
 </head>
 
 <body>
@@ -36,7 +32,7 @@
                             </p>
                         </div>
                         <div class="team-col">
-                            <img src="./images/Patofondo.jpg">
+                            <img src="${pageContext.request.contextPath}/assets/images/Patofondo.jpg">
                         </div>
                     </div>
                 </div>
@@ -47,7 +43,7 @@
                     <h1>&iexcl;Conoce Nuestra Misi&oacute;n y Visi&oacute;n!</h1>
                     <div class="row">
                         <div class="team-col two">
-                            <img src="./images/mision.jpg">
+                            <img src="${pageContext.request.contextPath}/assets/images/mision.jpg">
                         </div>
                         <div class="team-col one">
                             <h2>Nuestra Misi&oacute;n</h2>
@@ -67,7 +63,7 @@
                             </p>
                         </div>
                         <div class="team-col">
-                            <img src="./images/vision.jpg">
+                            <img src="${pageContext.request.contextPath}/assets/images/vision.jpg">
                         </div>
                     </div>
                 </div>
@@ -78,7 +74,7 @@
                     <h1>&iexcl;Conoce Nuestros Valores!</h1>
                     <div class="row">
                         <div class="team-col two">
-                            <img src="./images/valores.jpg">
+                            <img src="${pageContext.request.contextPath}/assets/images/valores.jpg">
                         </div>
                         <div class="team-col one">
                             <p>
@@ -107,13 +103,13 @@
                             </p>
                         </div>
                         <div class="team-col">
-                            <img src="./img/gian.jpg">
+                            <img src="${pageContext.request.contextPath}/assets/img/gian.jpg">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="team-col two">
-                            <img src="./img/juan.jpg">
+                            <img src="${pageContext.request.contextPath}/assets/img/juan.jpg">
                         </div>
                         <div class="team-col one">
                             <h2>Juan De La Portilla</h2>
@@ -137,13 +133,13 @@
                             </p>
                         </div>
                         <div class="team-col">
-                            <img src="./img/joseph.jpg">
+                            <img src="${pageContext.request.contextPath}/assets/img/joseph.jpg">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="team-col two">
-                            <img src="./images/sindell.jpg">
+                            <img src="${pageContext.request.contextPath}/assets/images/sindell.jpg">
                         </div>
                         <div class="team-col one">
                             <h2>Sindell Leon</h2>
@@ -185,9 +181,15 @@
 <jsp:include page="/WEB-INF/pages/user/login-signup/signup_login_form_tab.jsp"/>
 
 <!-- Conexiones con Js -->
-<script src="./js/white-theme.js"></script>
-<script src="./js/modal-button.js"></script>
-<script src="./js/tab-form.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/white-theme.js"></script>
+<c:choose>
+    <c:when test="${sessionScope.user.isPresent()}">
+    </c:when>
+    <c:otherwise>
+        <script src="${pageContext.request.contextPath}/assets/js/modal-button.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/tab-form.js"></script>
+    </c:otherwise>
+</c:choose>
 
 </body>
 </html>

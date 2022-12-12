@@ -1,21 +1,22 @@
-<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html lang="es">
 <head>
+    <title>Dashboard | Squawk!</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Squawk!</title>
     <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
-    <link rel="stylesheet" href="./css/a-style-listas.css?v=1.3">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin-style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
           rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.js"></script>
 </head>
+
 <body>
 <div class="container">
     <!-- SIDEBAR AND HEADER -->
-    <jsp:include page="WEB-INF/pages/dashboard/commons/sidebar-header.jsp"/>
+    <jsp:include page="commons/sidebar-header.jsp"/>
     <main>
         <div class="right"></div>
         <div class="heading">
@@ -70,7 +71,7 @@
     <!-----------END OF MAIN--------->
 
     <div class="right">
-        <jsp:include page="WEB-INF/pages/dashboard/commons/profile-dark-mode.jsp"/>
+        <jsp:include page="commons/profile-dark-mode.jsp"/>
         <!----------END OF TOP---------->
         <div class="recent-updates">
             <h2>Miembros de Squawk!</h2>
@@ -91,13 +92,12 @@
     </div>
 </div>
 
-<script src="${pageContext.request.contextPath}/js/dashboard-side-menu.js"></script>
-<script src="./js/users.js?v=1"></script>
-<script src="./js/white-theme.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/dashboard-side-menu.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/white-theme.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/ajaxError.js"></script>
-<script src="${pageContext.request.contextPath}/js/ajax-cuacks-count.js?v=2.4"></script>
-<script src="${pageContext.request.contextPath}/js/ajax-users-count.js?v=2.4"></script>
+<script src="${pageContext.request.contextPath}/assets/js/ajaxError.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/ajax-cuacks-count.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/ajax-users-count.js"></script>
 
 </body>
 </html>

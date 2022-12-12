@@ -51,6 +51,6 @@
 <script>
     const tagId = ${requestScope.tag.tagID};
 </script>
-<script src="${pageContext.request.contextPath}/js/ajax-cuacks-by-tag.js?v=1"></script>
+<script src="${pageContext.request.contextPath}/js/ajax-cuacks-by-tag.js?v=1.1"></script>
 </body>
 </html>

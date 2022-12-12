@@ -31,8 +31,11 @@
     </div>
 
     <div class="action-button">
+        <div class="buttons-container">
+            <div>
         <c:choose>
             <c:when test="${sessionScope.user.present}">
+
                     <span class="interaction-buttons_span"
                           onclick="doLike(${cuack.cuackID},${sessionScope.user.get().id})">
                         <c:choose>
@@ -89,6 +92,9 @@
                 </span>
             </c:otherwise>
         </c:choose>
+            </div>
+            <p class="text-muted"><b id="approval">${approval}</b> % de Aprobaci&oacute;n</p>
+        </div>
     </div>
 
 

@@ -1,15 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>T&eacute;rminos y C&oacute;ndiciones | Squawk!</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Conexion con Iconos -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
-    <!-- Conexcion con CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=5.17"/>
-    <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
+    <%@include file="/WEB-INF/pages/user/commons/head-imports.jsp"%>
 </head>
 
 <body>
@@ -161,9 +157,15 @@
 <jsp:include page="/WEB-INF/pages/user/login-signup/signup_login_form_tab.jsp"/>
 
 <!-- Conexiones con Js -->
-<script src="./js/white-theme.js"></script>
-<script src="./js/modal-button.js"></script>
-<script src="./js/tab-form.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/white-theme.js"></script>
+<c:choose>
+    <c:when test="${sessionScope.user.isPresent()}">
+    </c:when>
+    <c:otherwise>
+        <script src="${pageContext.request.contextPath}/assets/js/modal-button.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/tab-form.js"></script>
+    </c:otherwise>
+</c:choose>
 
 </body>
 </html>

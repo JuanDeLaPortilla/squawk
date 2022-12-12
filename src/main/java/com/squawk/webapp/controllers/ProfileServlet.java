@@ -50,7 +50,7 @@ public class ProfileServlet extends HttpServlet {
         User user = o.get();
         req.setAttribute("user", user);
 
-        getServletContext().getRequestDispatcher("/profile.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/pages/user/profile.jsp").forward(req, resp);
     }
 
     private String sendCuacks(HttpServletRequest request, CuackService service) {

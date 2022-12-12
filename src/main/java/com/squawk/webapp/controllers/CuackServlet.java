@@ -93,6 +93,9 @@ public class CuackServlet extends HttpServlet {
         req.setAttribute("likes", likes);
         req.setAttribute("dislikes", dislikes);
 
+        double approval = getApproval(likes,dislikes);
+        req.setAttribute("approval",String.format("%.2f",approval));
+
         getServletContext().getRequestDispatcher("/WEB-INF/pages/user/cuack/cuack.jsp").forward(req, resp);
     }
 
@@ -120,6 +123,11 @@ public class CuackServlet extends HttpServlet {
         Gson gson = new Gson();//se crea un objeto gson
         return gson.toJson(cuacksToSend);//se convierte la lista json
     }
+
+    private double getApproval(int likes, int dislikes){
+        return likes*100.0/(dislikes+likes);
+    }
+
 
     private static long getCuackId(HttpServletRequest req) {
         String idStr;

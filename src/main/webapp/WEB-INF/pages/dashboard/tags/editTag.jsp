@@ -4,15 +4,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <title>Editar Tag | Squawk!</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Tags</title>
     <!-- Conexiones con CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/a-style-listas.css?v=9">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin-style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <jsp:include page="/WEB-INF/pages/user/commons/icon.jsp"/>
 </head>
+
 <body>
 <div class="container">
     <!-- SIDEBAR AND HEADER -->
@@ -30,7 +31,8 @@
 </div>
 
 <!-- Conexiones con Js -->
-<script src="${pageContext.request.contextPath}/js/dashboard-side-menu.js"></script>
-<script src="${pageContext.request.contextPath}/js/white-theme.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/dashboard-side-menu.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/white-theme.js"></script>
+
 </body>
 </html>

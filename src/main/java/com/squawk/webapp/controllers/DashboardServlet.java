@@ -1,9 +1,7 @@
 package com.squawk.webapp.controllers;
 
 import com.google.gson.Gson;
-import com.squawk.webapp.models.Cuack;
 import com.squawk.webapp.models.User;
-import com.squawk.webapp.models.countByMonth;
 import com.squawk.webapp.services.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -12,7 +10,6 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "dashboard", urlPatterns = {"/dashboard"})
@@ -20,7 +17,6 @@ public class DashboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection conn = (Connection) request.getAttribute("conn");
-        countByMonthService service = new countByMonthServiceImpl(conn);
         UserService userService = new UserServiceImpl(conn);
         CuackService cuackService = new CuackServiceImpl(conn);
         PrintWriter out = response.getWriter();
@@ -63,12 +59,12 @@ public class DashboardServlet extends HttpServlet {
         Integer users = userService.countAllUsers();
 
         double porcentage = (activeUsers*100.00)/users;
-        req.setAttribute("porcentage",porcentage);
+        req.setAttribute("porcentage", String.format("%.2f",porcentage));
 
         List<User> staff = userService.findStaffLazy();
         req.setAttribute("staff",staff);
 
-        getServletContext().getRequestDispatcher("/dashboard.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/pages/dashboard/dashboard.jsp").forward(req, resp);
     }
     
     private String cantCuack(HttpServletRequest request, CuackService cuackService) {
